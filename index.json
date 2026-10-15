@@ -1,0 +1,30 @@
+{
+  "format": 1,
+  "name": "owl-registry",
+  "description": "The default OWL skill registry - curated skills that 'owl install' can fetch.",
+  "generated_at": "2026-10-15T11:49:37+00:00",
+  "count": 1,
+  "skills": [
+    {
+      "ref": "michaelweissdev/conventional-commits",
+      "author": "michaelweissdev",
+      "name": "conventional-commits",
+      "version": "1.0.0",
+      "description": "Write, review, validate, and organize precise Conventional Commits 1.0.0 messages from actual code changes. Use when the user asks for a commit message, wants to commit changes, reviews commit history, prepares a clean commit series, or needs guidance on commit types, scopes, breaking changes, release impact, or commit-message compliance. Inspect the real diff and repository conventions before composing messages; never infer changes from filenames alone.",
+      "tags": [
+        "commits",
+        "conventional-commits",
+        "git",
+        "release"
+      ],
+      "topics": [
+        "devtools",
+        "version-control"
+      ],
+      "sha256": "f43b7b4eb553f2b532c343c289f05a74bd04d47f57c5a358def786eb575c06ab",
+      "path": "skills/michaelweissdev/conventional-commits",
+      "files": 1,
+      "updated_at": "2026-10-15T11:49:37+00:00"
+    }
+  ]
+}

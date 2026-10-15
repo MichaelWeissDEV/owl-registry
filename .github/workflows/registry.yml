@@ -1,0 +1,47 @@
+name: registry
+
+on:
+  pull_request:
+    paths: ["skills/**", "registry.json"]
+  push:
+    branches: [main]
+    paths: ["skills/**", "registry.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: registry-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history: last-update times come from git
+      - uses: astral-sh/setup-uv@v5
+      - name: Install OWL
+        run: uv tool install "git+https://github.com/MichaelWeissDEV/OWL"
+      - name: Validate skills
+        run: |
+          if [ -d skills ] && [ -n "$(find skills -name SKILL.md -print -quit)" ]; then
+            owl validate skills
+          fi
+      - name: Regenerate index.json and INDEX.md
+        if: github.event_name != 'pull_request'
+        run: owl registry index .
+      - name: Commit the index
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json INDEX.md
+          if git diff --cached --quiet; then
+            echo "index is up to date"
+          else
+            git commit -m "chore: update registry index [skip ci]"
+            git push
+          fi

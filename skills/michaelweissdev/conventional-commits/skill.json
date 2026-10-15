@@ -1,0 +1,16 @@
+{
+  "author": "michaelweissdev",
+  "name": "conventional-commits",
+  "version": "1.0.0",
+  "description": "Write, review, validate, and organize precise Conventional Commits 1.0.0 messages from actual code changes. Use when the user asks for a commit message, wants to commit changes, reviews commit history, prepares a clean commit series, or needs guidance on commit types, scopes, breaking changes, release impact, or commit-message compliance. Inspect the real diff and repository conventions before composing messages; never infer changes from filenames alone.",
+  "tags": [
+    "git",
+    "commits",
+    "conventional-commits",
+    "release"
+  ],
+  "topics": [
+    "devtools",
+    "version-control"
+  ]
+}

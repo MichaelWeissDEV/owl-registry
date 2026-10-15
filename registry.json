@@ -1,0 +1,5 @@
+{
+  "format": 1,
+  "name": "owl-registry",
+  "description": "The default OWL skill registry - curated skills that 'owl install' can fetch."
+}
