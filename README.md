@@ -121,5 +121,6 @@ Agent skills operate within the local environment of the user. To maintain trust
 
 ## License
 
-No license has been chosen yet. Until the owner decides, all rights remain with the author. Skills may
-carry their own `license` in their metadata. See the [documentation](docs/index.md).
+Copyright 2026 Michael Weiss. The registry tooling and documentation are licensed under the
+[Apache License 2.0](LICENSE) (see [`NOTICE`](NOTICE)). Individual skills may declare their own `license` in
+their metadata; if they do not, they are covered by the license of this repository.
