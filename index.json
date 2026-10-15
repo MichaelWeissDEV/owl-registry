@@ -2,9 +2,319 @@
   "format": 2,
   "name": "owl-registry",
   "description": "The default OWL skill registry - curated skills that 'owl install' can fetch.",
-  "generated_at": "2026-10-15T12:48:15+00:00",
-  "count": 1,
+  "generated_at": "2026-10-15T16:40:46+00:00",
+  "count": 80,
   "skills": [
+    {
+      "ref": "michaelweissdev/agent-skill-authoring",
+      "author": "michaelweissdev",
+      "name": "agent-skill-authoring",
+      "version": "1.0.0",
+      "description": "Author, structure, document, and validate compliant, high-quality Agent Skills for OWL, Claude Code, and other Agent Skills-compatible systems. Use when creating new skills, authoring SKILL.md frontmatter, writing activation-focused trigger descriptions, designing progressive disclosure structures with references/ and assets/, or preparing skills for inclusion in the OWL registry.",
+      "tags": [
+        "agent-skills",
+        "ai-agents",
+        "meta-skill",
+        "owl",
+        "skill-authoring",
+        "specifications"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents authoring or evaluating agent skill packages.\n",
+      "sha256": "62818124c0cd8bb4eb52679459494fa7d87dcd46f3c0dd8a906d8d6967802da3",
+      "path": "skills/agent-skill-authoring",
+      "files": 3,
+      "size": 8949,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37e28ff18a89fa98801d44a8af8b117075d77e39"
+    },
+    {
+      "ref": "michaelweissdev/ansible-automation",
+      "author": "michaelweissdev",
+      "name": "ansible-automation",
+      "version": "1.0.0",
+      "description": "Design, author, harden, and validate Ansible playbooks, roles, and automation workflows. Use when writing Ansible tasks, structuring reusable roles, enforcing task idempotency, managing inventory and variables, encrypting secrets with Ansible Vault, implementing resilient block/rescue error handling, or complying with ansible-lint standards.",
+      "tags": [
+        "ansible",
+        "ansible-lint",
+        "automation",
+        "devops",
+        "idempotency",
+        "playbooks",
+        "roles",
+        "vault"
+      ],
+      "topics": [
+        "devops"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to ansible, ansible-playbook, or ansible-lint tooling. Tooling is required only for executable validation.\n",
+      "sha256": "8a131253eaa484d954f2d3e66be84472f46d76871e2d4d7b02d5dd8ead341326",
+      "path": "skills/ansible-automation",
+      "files": 1,
+      "size": 11347,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "cedbb53c28d649bab9bfb5989dac3c3c1e65822e"
+    },
+    {
+      "ref": "michaelweissdev/api-design",
+      "author": "michaelweissdev",
+      "name": "api-design",
+      "version": "1.0.0",
+      "description": "Architect intuitive, consistent, and backward-compatible RESTful and library APIs. Use when defining HTTP REST endpoints, standardizing JSON payloads and status codes, designing clean function signatures, enforcing semantic versioning on APIs, or writing OpenAPI / Swagger specifications.",
+      "tags": [
+        "api-design",
+        "backward-compatibility",
+        "endpoints",
+        "json",
+        "openapi",
+        "rest"
+      ],
+      "topics": [
+        "architecture",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents designing or reviewing public library interfaces or REST HTTP services.\n",
+      "sha256": "d0a3128b116cc159f43ae94dd311626eb23d830eb9ae709b9113e8b954a1fb28",
+      "path": "skills/api-design",
+      "files": 1,
+      "size": 5478,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/aws-cloud-architecture",
+      "author": "michaelweissdev",
+      "name": "aws-cloud-architecture",
+      "version": "1.0.0",
+      "description": "Architect, secure, and evaluate cloud infrastructure on Amazon Web Services (AWS) using the Well-Architected Framework. Use when designing multi-AZ VPC networks, configuring least-privilege IAM policies and trust boundaries, hardening S3 storage with KMS, selecting compute architectures (Lambda, ECS, EKS), or establishing CloudTrail and CloudWatch observability.",
+      "tags": [
+        "aws",
+        "cloud-architecture",
+        "devops",
+        "ecs",
+        "eks",
+        "iam",
+        "lambda",
+        "s3",
+        "vpc",
+        "well-architected"
+      ],
+      "topics": [
+        "devops"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to aws-cli, terraform, or cloudformation tooling. Tooling is required only for executable validation.\n",
+      "sha256": "18b9cd36d8df8e3b3e5d7ee292993c9b92fd6a62e8065225ebee1765a3c0f16b",
+      "path": "skills/aws-cloud-architecture",
+      "files": 1,
+      "size": 13231,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "bc87967fd9d55cd312ff4c30d034951ab3e9d3df"
+    },
+    {
+      "ref": "michaelweissdev/bash-scripting",
+      "author": "michaelweissdev",
+      "name": "bash-scripting",
+      "version": "1.0.0",
+      "description": "Write reliable, defensive, and portable Bash scripts following industry best practices. Use when authoring shell scripts, automating build/deploy steps, implementing error traps and signal handling, working with bash arrays and functions, or linting with ShellCheck.",
+      "tags": [
+        "automation",
+        "bash",
+        "posix",
+        "scripting",
+        "shell",
+        "shellcheck"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents creating or reviewing Bash 4+ shell scripts.\n",
+      "sha256": "051261e915d1fc5a26f917c57af1d6f2fcab2d7ce9437418f1fddb34dcd103a2",
+      "path": "skills/bash-scripting",
+      "files": 1,
+      "size": 7338,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/c-development",
+      "author": "michaelweissdev",
+      "name": "c-development",
+      "version": "1.0.0",
+      "description": "Develop, review, and secure robust C applications (C11/C17/C23) with explicit memory management, boundary checks, and sanitizer verification. Use when writing C modules, designing clean C APIs, managing pointers and object lifetimes, preventing buffer overflows and undefined behavior, or configuring compiler warnings.",
+      "tags": [
+        "c",
+        "clang",
+        "gcc",
+        "memory-safety",
+        "pointers",
+        "sanitizers",
+        "undefined-behavior"
+      ],
+      "topics": [
+        "programming-languages",
+        "security",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on C codebases with GCC or Clang toolchains.\n",
+      "sha256": "8a2418f6c6f53cf4a46e58fbb3e4bb0b86e3805430956127320dfd5f54861455",
+      "path": "skills/c-development",
+      "files": 4,
+      "size": 10358,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/changelog-writing",
+      "author": "michaelweissdev",
+      "name": "changelog-writing",
+      "version": "1.0.0",
+      "description": "Write and maintain clean, human-readable CHANGELOG.md files adhering to the Keep a Changelog convention. Use when documenting releases, updating the Unreleased section from commit logs or PRs, preparing release notes, or writing migration guides for breaking changes.",
+      "tags": [
+        "changelog",
+        "documentation",
+        "keep-a-changelog",
+        "release-notes",
+        "releases"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents editing Markdown changelogs or generating release notes.\n",
+      "sha256": "4bed58e29d88ae5d2f19929408e5f71c6cd875cae8644c59315b19bc5dbfe161",
+      "path": "skills/changelog-writing",
+      "files": 1,
+      "size": 5635,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
+    },
+    {
+      "ref": "michaelweissdev/ci-github-actions",
+      "author": "michaelweissdev",
+      "name": "ci-github-actions",
+      "version": "1.0.0",
+      "description": "Design, harden, and optimize automated CI/CD workflows using GitHub Actions. Use when writing workflow YAML files, configuring matrix builds, implementing dependency caching, locking workflow permissions to least privilege, authenticating cloud providers via OIDC, or preventing pull_request_target security vulnerabilities.",
+      "tags": [
+        "automation",
+        "caching",
+        "ci-cd",
+        "devops",
+        "github-actions",
+        "oidc",
+        "security"
+      ],
+      "topics": [
+        "devops",
+        "devtools",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents authoring or auditing GitHub Actions workflows.\n",
+      "sha256": "8a53c08924e66bbaa19483247c84ef95d4af79e4998463fda118f42b0ee73169",
+      "path": "skills/ci-github-actions",
+      "files": 1,
+      "size": 6529,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/code-comments",
+      "author": "michaelweissdev",
+      "name": "code-comments",
+      "version": "1.0.0",
+      "description": "Write purposeful, accurate, and maintainable code comments and API documentation across major programming languages. Use when deciding whether to add or remove comments, writing public API documentation (docstrings, rustdoc, Javadoc, JSDoc, GoDoc), explaining non-obvious algorithms, documenting security invariants, or refactoring noisy, redundant comments.",
+      "tags": [
+        "best-practices",
+        "comments",
+        "docstrings",
+        "documentation",
+        "godoc",
+        "javadoc",
+        "jsdoc",
+        "rustdoc"
+      ],
+      "topics": [
+        "documentation",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents reading, writing, or reviewing code comments across Python, Rust, C/C++, Go, Java, Kotlin, TS/JS, Swift, Bash, and SQL.\n",
+      "sha256": "67873b451854397a73fae79130c34b4d338d394d3a92847cdf2c1e2134a51e82",
+      "path": "skills/code-comments",
+      "files": 3,
+      "size": 14076,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
+    },
+    {
+      "ref": "michaelweissdev/code-review",
+      "author": "michaelweissdev",
+      "name": "code-review",
+      "version": "1.0.0",
+      "description": "Conduct systematic, actionable code reviews assessing correctness, security, architecture, performance, maintainability, and test coverage. Use when reviewing pull requests, inspecting diffs, providing constructive code feedback, identifying edge cases and regressions, or prioritizing findings by severity.",
+      "tags": [
+        "code-review",
+        "maintainability",
+        "pr-review",
+        "quality",
+        "security",
+        "testing"
+      ],
+      "topics": [
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents analyzing code diffs, pull requests, or codebase refactorings.\n",
+      "sha256": "d00781cf4ae24d493fc5a29d245fb71b07dfab9a78c62a8ff2695cd0fb9229ed",
+      "path": "skills/code-review",
+      "files": 1,
+      "size": 5904,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
+    },
+    {
+      "ref": "michaelweissdev/container-security",
+      "author": "michaelweissdev",
+      "name": "container-security",
+      "version": "1.0.0",
+      "description": "Harden, scan, and secure container images and runtimes against privilege escalation and supply-chain exploits. Use when configuring rootless containers, dropping Linux capabilities (--cap-drop=ALL), enforcing read-only root filesystems, scanning container images with Trivy, implementing Distroless base images, or securing the Docker daemon socket.",
+      "tags": [
+        "capabilities",
+        "container-security",
+        "distroless",
+        "docker",
+        "hardening",
+        "rootless",
+        "trivy"
+      ],
+      "topics": [
+        "devops",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents configuring Dockerfiles, Kubernetes PodSecurity, or container security scanning pipelines.\n",
+      "sha256": "5cfc72d107ea2181f66064150beb069ef36caf273634d37fbdc1cc743e5ef653",
+      "path": "skills/container-security",
+      "files": 1,
+      "size": 5281,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
     {
       "ref": "michaelweissdev/conventional-commits",
       "author": "michaelweissdev",
@@ -29,6 +339,1919 @@
       "size": 19597,
       "updated_at": "2026-10-15T12:48:15+00:00",
       "revision": "37ad26f0c60ca918ee20b83e94f1d0bf11faf4fa"
+    },
+    {
+      "ref": "michaelweissdev/cpp-development",
+      "author": "michaelweissdev",
+      "name": "cpp-development",
+      "version": "1.0.0",
+      "description": "Develop, review, and modernize idiomatic C++ applications (C++17/C++20/C++23) following the C++ Core Guidelines and RAII principles. Use when writing modern C++ classes, managing lifetimes with smart pointers, applying move and value semantics, writing generic templates/concepts, ensuring exception safety, or configuring modern CMake targets.",
+      "tags": [
+        "cmake",
+        "core-guidelines",
+        "cpp",
+        "modern-cpp",
+        "raii",
+        "smart-pointers",
+        "templates"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on C++ codebases with Clang, GCC, or MSVC toolchains.\n",
+      "sha256": "83d28157fa10bebd2da6a534b1976cc466bf38b38973e6df075ed69a4f38024f",
+      "path": "skills/cpp-development",
+      "files": 4,
+      "size": 11172,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/csv-data-processing",
+      "author": "michaelweissdev",
+      "name": "csv-data-processing",
+      "version": "1.0.0",
+      "description": "Parse, validate, clean, transform, and export CSV and TSV tabular data following RFC 4180. Use when handling delimiter ambiguity (comma, semicolon, tab), resolving text encodings (UTF-8, UTF-8-BOM, Latin-1), escaping multi-line quoted fields, processing multi-gigabyte files via streaming, or preventing CSV injection.",
+      "tags": [
+        "csv",
+        "data-processing",
+        "duckdb",
+        "encoding",
+        "rfc4180",
+        "streaming",
+        "tsv"
+      ],
+      "topics": [
+        "databases",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents processing tabular data across Python, command-line tools (csvkit, xsv, duckdb), and shell environments.\n",
+      "sha256": "24b40b70fabf7836d9b844d9f3930502e98a6daa1f794a5ad856b762cf4a0959",
+      "path": "skills/csv-data-processing",
+      "files": 1,
+      "size": 5697,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/debugging-workflow",
+      "author": "michaelweissdev",
+      "name": "debugging-workflow",
+      "version": "1.0.0",
+      "description": "Systematically reproduce, isolate, diagnose, and resolve software bugs using hypothesis-driven debugging. Use when diagnosing failing test suites, tracing unhandled exceptions, isolating regressions with git bisect, performing root cause analysis (RCA), or writing regression tests to prevent recurrence.",
+      "tags": [
+        "debugging",
+        "git-bisect",
+        "rca",
+        "regression-testing",
+        "testing",
+        "troubleshooting"
+      ],
+      "topics": [
+        "devtools",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents diagnosing software defects across languages.\n",
+      "sha256": "b40a78c9d583ac73fda8f0da53f27fd5d8b131f334970e9b06ba899823719306",
+      "path": "skills/debugging-workflow",
+      "files": 1,
+      "size": 5220,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/dependency-management",
+      "author": "michaelweissdev",
+      "name": "dependency-management",
+      "version": "1.0.0",
+      "description": "Audit, update, lock, and secure third-party open-source dependencies across software supply chains. Use when analyzing transitive dependencies, generating Software Bill of Materials (SBOM), auditing packages with cargo audit, pip-audit, or npm audit, configuring Renovate/Dependabot, or managing deterministic lockfiles.",
+      "tags": [
+        "audit",
+        "dependabot",
+        "dependencies",
+        "lockfiles",
+        "sbom",
+        "security",
+        "supply-chain"
+      ],
+      "topics": [
+        "devops",
+        "security",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents managing dependencies across package managers (npm, pnpm, uv, pip, cargo, go mod).\n",
+      "sha256": "6b383c78d43efc8df23db2176c0d57a51e083f34ab772e7c65e267cfa5aeb811",
+      "path": "skills/dependency-management",
+      "files": 1,
+      "size": 5527,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/diagrams-mermaid",
+      "author": "michaelweissdev",
+      "name": "diagrams-mermaid",
+      "version": "1.0.0",
+      "description": "Design, render, and validate technical architecture diagrams using Mermaid.js syntax within Markdown. Use when authoring system architecture flowcharts, API sequence diagrams, state machine transitions, entity-relationship (ER) database schemas, or Git branch workflows in documentation.",
+      "tags": [
+        "architecture",
+        "diagrams",
+        "flowcharts",
+        "mermaid",
+        "sequence-diagram",
+        "visualization"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents creating or reviewing Mermaid diagrams.\n",
+      "sha256": "3e8bb05bda3182312248e2da530fc25dfe4581ffd2fe15af25ae17fa908a693e",
+      "path": "skills/diagrams-mermaid",
+      "files": 1,
+      "size": 5588,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/docker-development",
+      "author": "michaelweissdev",
+      "name": "docker-development",
+      "version": "1.0.0",
+      "description": "Build, optimize, run, and orchestrate containerized applications using Docker and Docker Compose. Use when writing efficient multi-stage Dockerfiles, optimizing image layer caching, configuring docker-compose services and networks, managing persistent volumes, or setting up reproducible local development containers.",
+      "tags": [
+        "compose",
+        "containers",
+        "devops",
+        "docker",
+        "dockerfile",
+        "multi-stage"
+      ],
+      "topics": [
+        "devops",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating with Docker and Docker Compose.\n",
+      "sha256": "1896f03e5075100acf764c73bdb768c57288e303538d04035eca6596a3cbdafc",
+      "path": "skills/docker-development",
+      "files": 1,
+      "size": 6094,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/docx-processing",
+      "author": "michaelweissdev",
+      "name": "docx-processing",
+      "version": "1.0.0",
+      "description": "Generate, parse, modify, and format Microsoft Word (.docx) documents programmatically. Use when creating styled corporate reports, extracting text and tables from Word documents with python-docx, manipulating document sections, headers, footers, and page breaks, or inspecting OpenXML document structures.",
+      "tags": [
+        "document-processing",
+        "docx",
+        "formatting",
+        "office",
+        "python-docx",
+        "word"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "office"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating with Python docx manipulation libraries (python-docx).\n",
+      "sha256": "88f9a199b3f5cb5dfaa8c8e9774192faca108d0c8ec654e44d94ae458c6912af",
+      "path": "skills/docx-processing",
+      "files": 2,
+      "size": 8153,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/elasticsearch-search",
+      "author": "michaelweissdev",
+      "name": "elasticsearch-search",
+      "version": "1.0.0",
+      "description": "Architect, index, query, and optimize Elasticsearch and OpenSearch distributed search clusters. Use when defining explicit schema mappings, configuring custom text analyzers (tokenizers and filters), authoring complex Query DSL searches (bool, multi_match, aggregations), tuning shard routing and bulk indexing throughput, managing Index Lifecycle Management (ILM) data tiers, or diagnosing cluster health.",
+      "tags": [
+        "aggregations",
+        "elasticsearch",
+        "fulltext",
+        "ilm",
+        "indexing",
+        "inverted-index",
+        "opensearch",
+        "query-dsl",
+        "search"
+      ],
+      "topics": [
+        "databases"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents administering or querying Elasticsearch 8+ or OpenSearch 2+ distributed clusters via REST API or client libraries. Tooling is required only for executable validation.\n",
+      "sha256": "bb1be0e55b72f15b6873b7542d8e30db45423e394b92bc99b8b6a708b7d3bda4",
+      "path": "skills/elasticsearch-search",
+      "files": 1,
+      "size": 14595,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "786cafee174ef2523be24361ae6ec742e0b9d63a"
+    },
+    {
+      "ref": "michaelweissdev/error-handling",
+      "author": "michaelweissdev",
+      "name": "error-handling",
+      "version": "1.0.0",
+      "description": "Architect and implement resilient error handling, custom error hierarchies, and recovery strategies across application boundaries. Use when distinguishing transient from permanent failures, designing Result types vs exception hierarchies, implementing exponential backoff with jitter for retries, or preventing silent error swallowing and information leakage.",
+      "tags": [
+        "error-handling",
+        "exceptions",
+        "exponential-backoff",
+        "jitter",
+        "resilience",
+        "retry"
+      ],
+      "topics": [
+        "architecture",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents designing error handling strategies across backend and systems codebases.\n",
+      "sha256": "5379c31f4291a79a5eff70d576b99acf6c6f39c13f6df43070e2579a9fd95f8e",
+      "path": "skills/error-handling",
+      "files": 1,
+      "size": 6827,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/git-branching-worktrees",
+      "author": "michaelweissdev",
+      "name": "git-branching-worktrees",
+      "version": "1.0.0",
+      "description": "Manage Git feature branches and isolated Git worktrees for concurrent tasks without context-switching overhead or stashing conflicts. Use when creating feature branches, running multi-agent tasks simultaneously, managing multiple isolated workspaces, or cleaning up obsolete worktrees and branches.",
+      "tags": [
+        "branches",
+        "concurrency",
+        "git",
+        "isolation",
+        "worktrees"
+      ],
+      "topics": [
+        "devtools",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating in a Git repository environment supporting Git 2.5+.\n",
+      "sha256": "72e01a7138e360308f9525fa5bfb1c0723e0a65b236ce7c9720ccc1cb40d7b72",
+      "path": "skills/git-branching-worktrees",
+      "files": 1,
+      "size": 6252,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
+    },
+    {
+      "ref": "michaelweissdev/git-merge-conflicts",
+      "author": "michaelweissdev",
+      "name": "git-merge-conflicts",
+      "version": "1.0.0",
+      "description": "Detect, analyze, and resolve three-way Git merge and rebase conflicts without discarding code changes. Use when merge or rebase operations stop with conflict markers (<<<<<<<, =======, >>>>>>>), resolving divergence between branches, verifying post-conflict test suites, or safely aborting failed merges.",
+      "tags": [
+        "conflict-resolution",
+        "diff3",
+        "git",
+        "merge-conflicts",
+        "rebase",
+        "three-way-merge"
+      ],
+      "topics": [
+        "devtools",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating in a Git repository environment.\n",
+      "sha256": "c6f1ed6bb9dff734ff197113554d1ed9dc8b08afe0447ed328a3a594010f4838",
+      "path": "skills/git-merge-conflicts",
+      "files": 1,
+      "size": 4652,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/git-workflow",
+      "author": "michaelweissdev",
+      "name": "git-workflow",
+      "version": "1.0.0",
+      "description": "Inspect repository status, inspect diffs, stage focused changes, create well-scoped commits, and coordinate with remotes safely. Use when preparing code changes for commit, reviewing unstaged modifications, managing Git staging, resolving repository dirty state, or synchronizing with remote branches.",
+      "tags": [
+        "commits",
+        "diff",
+        "git",
+        "staging",
+        "version-control"
+      ],
+      "topics": [
+        "devtools",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to a Git repository in the local workspace.\n",
+      "sha256": "aa6de782d3b454c26af1136b9159a95f8d264c73d04bac3dca71ea26d7e054b2",
+      "path": "skills/git-workflow",
+      "files": 1,
+      "size": 7189,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
+    },
+    {
+      "ref": "michaelweissdev/github-actions-security",
+      "author": "michaelweissdev",
+      "name": "github-actions-security",
+      "version": "1.0.0",
+      "description": "Harden, audit, and secure GitHub Actions CI/CD workflows and supply chains. Use when configuring GITHUB_TOKEN permissions to least privilege, authenticating cloud providers via OIDC without static secrets, pinning third-party actions to immutable commit SHAs, preventing script injection from untrusted event contexts, securing pull_request_target, or running actionlint and zizmor security scans.",
+      "tags": [
+        "actionlint",
+        "ci-cd",
+        "devops",
+        "github-actions",
+        "hardening",
+        "oidc",
+        "security",
+        "supply-chain"
+      ],
+      "topics": [
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to git, gh, actionlint, or zizmor tooling. Tooling is required only for executable validation.\n",
+      "sha256": "a480f525fa63f241bf5eb3ad8deb248e6e7e0ba8fe04a79aa5680d7cefd93b27",
+      "path": "skills/github-actions-security",
+      "files": 1,
+      "size": 12346,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "476382e6bb2c3834794013ecb03eadf59fb73423"
+    },
+    {
+      "ref": "michaelweissdev/github-issues-prs",
+      "author": "michaelweissdev",
+      "name": "github-issues-prs",
+      "version": "1.0.0",
+      "description": "Draft reproducible GitHub issues, structured pull request descriptions, technical responses to code reviews, and cross-referenced issue discussions. Use when opening new issues with reproduction steps, composing PR descriptions linked to issues, summarizing changes for reviewers, or responding constructively to review feedback.",
+      "tags": [
+        "bug-reports",
+        "code-review",
+        "collaboration",
+        "github",
+        "issues",
+        "pull-requests"
+      ],
+      "topics": [
+        "devtools",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents interacting with GitHub repository collaboration workflows.\n",
+      "sha256": "292ad5702959d22d2e07099088918f1f6ab5668ee7458c9e4487bb893237c72d",
+      "path": "skills/github-issues-prs",
+      "files": 1,
+      "size": 4876,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/go-development",
+      "author": "michaelweissdev",
+      "name": "go-development",
+      "version": "1.0.0",
+      "description": "Develop, test, and maintain idiomatic Go applications following official Go conventions. Use when writing Go packages and modules, implementing explicit error handling with wrapping, designing small consumer-owned interfaces, managing concurrency with goroutines, channels, and context.Context, or running golangci-lint.",
+      "tags": [
+        "concurrency",
+        "context",
+        "go",
+        "golang",
+        "goroutines",
+        "interfaces",
+        "testing"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Go 1.20+ codebases with the Go toolchain.\n",
+      "sha256": "1aef1b2e87d16f652797b41fcd2e20c62fba242c5cdb09a79184ca23879af0f3",
+      "path": "skills/go-development",
+      "files": 1,
+      "size": 6195,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/graphql-development",
+      "author": "michaelweissdev",
+      "name": "graphql-development",
+      "version": "1.0.0",
+      "description": "Architect, implement, secure, and optimize production GraphQL APIs using Schema Definition Language (SDL), resolver design, DataLoader batching for N+1 prevention, cursor-based pagination, input validation, and defensive complexity controls. Use when designing GraphQL schemas, building query and mutation resolvers, eliminating N+1 database queries, implementing Relay Connection pagination, handling errors with extensions, or defending against denial-of-service through query depth and complexity limiting.",
+      "tags": [
+        "api",
+        "backend",
+        "dataloader",
+        "graphql",
+        "relay-pagination",
+        "resolvers",
+        "sdl",
+        "security"
+      ],
+      "topics": [
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents implementing or querying GraphQL APIs with Node.js, TypeScript, Python, or Go tooling. Tooling is required only for executable validation.\n",
+      "sha256": "6ac95a568e4f00a16140f5f2ddebf87908966f18bfe959c59f906c3515828082",
+      "path": "skills/graphql-development",
+      "files": 1,
+      "size": 13625,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "71087cbf9b87837c5a6b66275ca97e7c2ac32f9f"
+    },
+    {
+      "ref": "michaelweissdev/grpc-protobuf",
+      "author": "michaelweissdev",
+      "name": "grpc-protobuf",
+      "version": "1.0.0",
+      "description": "Design, implement, and maintain high-performance gRPC microservices and Protocol Buffers v3 schemas. Use when authoring proto3 definitions, applying backward and forward compatibility rules, implementing unary and streaming RPCs (client, server, bidirectional), handling rich error status codes and details, configuring deadlines and context cancellation, implementing interceptors for auth and telemetry, or enforcing linting with buf.",
+      "tags": [
+        "buf",
+        "distributed-systems",
+        "grpc",
+        "microservices",
+        "proto3",
+        "protobuf",
+        "rpc",
+        "streaming"
+      ],
+      "topics": [
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents working with gRPC, Protocol Buffers v3, and buf tooling across Go, Python, Java, or TypeScript. Tooling is required only for executable validation.\n",
+      "sha256": "af38ca1daccd8180e86eb530fbb84758bad50e5df518a9e7972bcc2ba5d6e243",
+      "path": "skills/grpc-protobuf",
+      "files": 1,
+      "size": 13526,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "97f38743c06d51eee4e1f4016e3eb30cecccfb1f"
+    },
+    {
+      "ref": "michaelweissdev/integration-testing",
+      "author": "michaelweissdev",
+      "name": "integration-testing",
+      "version": "1.0.0",
+      "description": "Architect, implement, and run reliable integration tests verifying interactions across database, network, API, and process boundaries. Use when testing real database transactions with Testcontainers or ephemeral DBs, mocking external third-party HTTP services with WireMock/responses, managing test fixtures, or orchestrating end-to-end integration test suites.",
+      "tags": [
+        "api-testing",
+        "databases",
+        "fixtures",
+        "integration-tests",
+        "testcontainers",
+        "testing"
+      ],
+      "topics": [
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents implementing integration tests across application stacks.\n",
+      "sha256": "4334edbb30b4d05955e5203fa40f694d9912d078d99c6c96a005eb3cdf9a0677",
+      "path": "skills/integration-testing",
+      "files": 1,
+      "size": 5858,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/java-development",
+      "author": "michaelweissdev",
+      "name": "java-development",
+      "version": "1.0.0",
+      "description": "Develop, refactor, and review modern Java applications (Java 17/21 LTS) following clean OOP and functional paradigms. Use when writing immutable Records, pattern matching with switch, sealed class hierarchies, designing clean generic APIs, writing JUnit 5 tests, or configuring Maven/Gradle build manifests.",
+      "tags": [
+        "gradle",
+        "java",
+        "junit5",
+        "maven",
+        "pattern-matching",
+        "records",
+        "sealed-classes"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Java 17+ codebases with Maven or Gradle build tools.\n",
+      "sha256": "6da29414ab93d807526212d3862fc67987a58059c425bf733be0b187fd87178b",
+      "path": "skills/java-development",
+      "files": 1,
+      "size": 6499,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/javascript-development",
+      "author": "michaelweissdev",
+      "name": "javascript-development",
+      "version": "1.0.0",
+      "description": "Develop, refactor, and review modern JavaScript (ES2022+) applications using standard ECMAScript features. Use when writing ES modules, managing async flows with Promises and async/await, understanding event loop microtasks, avoiding prototype and closure traps, or writing clean vanilla JavaScript.",
+      "tags": [
+        "async",
+        "ecmascript",
+        "esm",
+        "event-loop",
+        "javascript",
+        "nodejs",
+        "promises"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Node.js or browser JavaScript codebases.\n",
+      "sha256": "584f2bfa038d0eb2ac56e73c80ad9b969a05188e779e0c8822452a653ff6b6e8",
+      "path": "skills/javascript-development",
+      "files": 1,
+      "size": 5345,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/kafka-streaming",
+      "author": "michaelweissdev",
+      "name": "kafka-streaming",
+      "version": "1.0.0",
+      "description": "Architect, produce to, consume from, and operate Apache Kafka event streaming systems. Use when partitioning topics for ordered processing, configuring durability invariants (acks=all, min.insync.replicas), tuning consumer groups and cooperative rebalancing, designing offset commit strategies, tracking consumer lag, integrating Schema Registries with Avro or JSON Schema, managing poison pills with dead-letter queues (DLQs), or enabling Exactly-Once Semantics (EOS).",
+      "tags": [
+        "avro",
+        "distributed-systems",
+        "dlq",
+        "eos",
+        "event-streaming",
+        "kafka",
+        "pub-sub",
+        "schema-registry"
+      ],
+      "topics": [
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents building event-driven systems with Apache Kafka 3.0+ or Confluent Platform. Tooling is required only for executable validation.\n",
+      "sha256": "8dcf6247ee235de4ac4a8409d3e194bda0f7eeec19c5ab2c4f03e94eb25750e2",
+      "path": "skills/kafka-streaming",
+      "files": 1,
+      "size": 13520,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "f66204bf9799977e07597e7c117638427c178be5"
+    },
+    {
+      "ref": "michaelweissdev/kotlin-development",
+      "author": "michaelweissdev",
+      "name": "kotlin-development",
+      "version": "1.0.0",
+      "description": "Develop, test, and refactor idiomatic Kotlin applications across JVM and Android targets. Use when applying Kotlin null safety (?., ?:, let), data classes, sealed interfaces with when expressions, Kotlin Coroutines and Flows for async concurrency, or writing tests with Kotest and MockK.",
+      "tags": [
+        "coroutines",
+        "data-classes",
+        "flow",
+        "jvm",
+        "kotlin",
+        "null-safety",
+        "sealed-classes"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Kotlin 1.9+ / 2.0+ codebases.\n",
+      "sha256": "bdbe8722ddfff3baccd7f16f895b497211837693645b13907bd6cfd1291e0ac1",
+      "path": "skills/kotlin-development",
+      "files": 1,
+      "size": 5704,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/kubernetes-manifests",
+      "author": "michaelweissdev",
+      "name": "kubernetes-manifests",
+      "version": "1.0.0",
+      "description": "Design, author, harden, and validate production-grade Kubernetes resource manifests and Helm charts. Use when authoring or reviewing Deployments, StatefulSets, Services, Ingress, NetworkPolicies, ConfigMaps, Secrets, RBAC, PodDisruptionBudgets, container resource requests/limits, health probes, or security contexts.",
+      "tags": [
+        "devops",
+        "helm",
+        "k8s",
+        "kubernetes",
+        "manifests",
+        "networkpolicy",
+        "rbac",
+        "securitycontext"
+      ],
+      "topics": [
+        "devops"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to kubectl, kubeconform, or helm tooling. Tooling is required only for executable validation.\n",
+      "sha256": "340b59833d775c192b8d86af5b402459e44b9f9b6a7f5cb46d559fa9a9a53f5d",
+      "path": "skills/kubernetes-manifests",
+      "files": 1,
+      "size": 13832,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "5af2e20e59996fa2aa141ae79904c69fdc92692f"
+    },
+    {
+      "ref": "michaelweissdev/latex-authoring",
+      "author": "michaelweissdev",
+      "name": "latex-authoring",
+      "version": "1.0.0",
+      "description": "Draft, structure, format, and debug scientific documents, technical papers, and mathematical manuscripts using LaTeX. Use when typesetting complex equations, formatting professional multi-column tables, managing BibTeX/Biber references, resolving LaTeX compilation errors, or structuring modular book and thesis projects.",
+      "tags": [
+        "academic",
+        "bibtex",
+        "latex",
+        "math",
+        "pdf",
+        "scientific-writing",
+        "typesetting"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "office"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents authoring or debugging LaTeX documents with pdflatex, xelatex, or lualatex engines.\n",
+      "sha256": "e494354cdae4f096a540edc2ab27ae0302475bd361d0dedef7820cd9573502df",
+      "path": "skills/latex-authoring",
+      "files": 1,
+      "size": 6441,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/linux-cli",
+      "author": "michaelweissdev",
+      "name": "linux-cli",
+      "version": "1.0.0",
+      "description": "Execute commands and manipulate text, files, and processes safely in GNU/Linux environments. Use when composing shell pipelines, finding files, processing structured text with grep, sed, and awk, managing system processes, or diagnosing command failures using exit codes.",
+      "tags": [
+        "bash",
+        "cli",
+        "linux",
+        "pipes",
+        "processes",
+        "text-processing"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to a Linux terminal or shell environment.\n",
+      "sha256": "17b30428ffc6192c5bddfa3ba8ef6b977d0f54ca8d725b5357f846ff621aec21",
+      "path": "skills/linux-cli",
+      "files": 1,
+      "size": 6440,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/linux-filesystems",
+      "author": "michaelweissdev",
+      "name": "linux-filesystems",
+      "version": "1.0.0",
+      "description": "Navigate, inspect, manage, and troubleshoot Linux filesystems (ext4, XFS), mount points, inodes, and links. Use when resolving disk space or inode exhaustion, distinguishing hardlinks from symlinks, analyzing disk usage with du and df, inspecting /etc/fstab and mount options, or understanding the Linux FHS.",
+      "tags": [
+        "ext4",
+        "filesystems",
+        "fstab",
+        "inodes",
+        "linux",
+        "mounts",
+        "storage",
+        "xfs"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Linux systems with standard storage inspection utilities.\n",
+      "sha256": "799da6c6764810e5330d4bdb9cc2a14ec12a15cd0777b65148131a651ac7354d",
+      "path": "skills/linux-filesystems",
+      "files": 1,
+      "size": 5476,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/linux-hardening",
+      "author": "michaelweissdev",
+      "name": "linux-hardening",
+      "version": "1.0.0",
+      "description": "Apply defense-in-depth system hardening measures across Linux servers and services. Use when securing OpenSSH configurations (/etc/ssh/sshd_config), sandboxing systemd services with ProtectSystem/NoNewPrivileges, configuring host firewalls with ufw/nftables, enforcing auditd logging, or checking system compliance with Lynis.",
+      "tags": [
+        "auditd",
+        "hardening",
+        "linux",
+        "security",
+        "selinux",
+        "ssh",
+        "systemd-sandboxing",
+        "ufw"
+      ],
+      "topics": [
+        "devops",
+        "operating-systems",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents administering Linux servers with root/sudo access.\n",
+      "sha256": "2ad74cc2710ee68f5f6596ed7bacf09a85607f259a40b10c3fbec2c95d1f0e66",
+      "path": "skills/linux-hardening",
+      "files": 1,
+      "size": 5108,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/linux-networking",
+      "author": "michaelweissdev",
+      "name": "linux-networking",
+      "version": "1.0.0",
+      "description": "Inspect, test, and diagnose Linux network interfaces, IP routing, DNS resolution, open sockets, and firewalls using modern Linux network utilities. Use when troubleshooting connectivity issues, checking listening ports with ss, diagnosing DNS lookup failures, inspecting packet flows, or testing API endpoints.",
+      "tags": [
+        "curl",
+        "dns",
+        "firewall",
+        "ip",
+        "linux",
+        "networking",
+        "sockets"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating in Linux environments with iproute2, curl, and network diagnostic tools.\n",
+      "sha256": "f9f1e98c2b406b9197fe020acf2358cbeeb75109a9ffb5d6f130aa58eed3fc02",
+      "path": "skills/linux-networking",
+      "files": 1,
+      "size": 6900,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/linux-permissions",
+      "author": "michaelweissdev",
+      "name": "linux-permissions",
+      "version": "1.0.0",
+      "description": "Manage POSIX file permissions, ACLs, umask, special bits (SUID, SGID, Sticky), and Linux capabilities following the principle of least privilege. Use when resolving permission denied errors, securing sensitive files and keys, configuring shared group directories, or auditing system security boundaries.",
+      "tags": [
+        "acl",
+        "capabilities",
+        "chmod",
+        "chown",
+        "linux",
+        "permissions",
+        "security"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating in a Linux environment with standard coreutils and administrative tool access.\n",
+      "sha256": "56d092a89225f44765e211b3a70e0f984e1a679ad79e5455b873286587fe234b",
+      "path": "skills/linux-permissions",
+      "files": 1,
+      "size": 7288,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/linux-processes-systemd",
+      "author": "michaelweissdev",
+      "name": "linux-processes-systemd",
+      "version": "1.0.0",
+      "description": "Manage Linux processes, write systemd services and timers, inspect journald logs, configure resource limits, and debug failing daemon processes. Use when creating .service unit files, replacing cron with systemd timers, inspecting process states and signals, setting MemoryMax or CPUQuota, or diagnosing systemd crashes.",
+      "tags": [
+        "cgroups",
+        "daemons",
+        "journald",
+        "linux",
+        "processes",
+        "services",
+        "systemd",
+        "timers"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents administering Linux systems running systemd.\n",
+      "sha256": "0aa416208fedd60d00a3a71bc289406741f178be1f2e15ff55e3276e7f513822",
+      "path": "skills/linux-processes-systemd",
+      "files": 1,
+      "size": 5914,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/linux-troubleshooting",
+      "author": "michaelweissdev",
+      "name": "linux-troubleshooting",
+      "version": "1.0.0",
+      "description": "Systematically isolate, diagnose, and resolve Linux system, storage, memory, performance, and service failures. Use when diagnosing high load, out-of-memory (OOM) crashes, disk space or inode exhaustion, crashing systemd services, or intermittent system anomalies through reproducible observations.",
+      "tags": [
+        "disk",
+        "linux",
+        "logs",
+        "oom",
+        "performance",
+        "systemd",
+        "troubleshooting"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents diagnosing Linux system issues with command-line diagnostic tools.\n",
+      "sha256": "0a1082d789b12088a4cc7159bac7710edabfd490943fd97d213738915de9e9fd",
+      "path": "skills/linux-troubleshooting",
+      "files": 1,
+      "size": 5985,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/logging-observability",
+      "author": "michaelweissdev",
+      "name": "logging-observability",
+      "version": "1.0.0",
+      "description": "Implement structured JSON logging, distributed tracing context, and observability metrics across services. Use when configuring structured logging frameworks, injecting correlation/trace IDs across asynchronous boundaries, assigning appropriate log levels (DEBUG, INFO, WARN, ERROR), or redacting sensitive PII and secrets.",
+      "tags": [
+        "logging",
+        "metrics",
+        "observability",
+        "pii-redaction",
+        "structured-logging",
+        "tracing"
+      ],
+      "topics": [
+        "devops",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents implementing logging and telemetry across backend services.\n",
+      "sha256": "83e71fe876851cf1f10f4f7ca53216114308bf8ad687685f07cf491af2c523b2",
+      "path": "skills/logging-observability",
+      "files": 1,
+      "size": 6304,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/macos-cli",
+      "author": "michaelweissdev",
+      "name": "macos-cli",
+      "version": "1.0.0",
+      "description": "Navigate, script, and manage macOS terminal environments, accounting for BSD toolchain differences from GNU/Linux. Use when writing cross-platform shell scripts, diagnosing BSD sed/date/stat/find incompatibilities, managing Homebrew packages and services, configuring launchd agents, or inspecting macOS developer tools.",
+      "tags": [
+        "bsd",
+        "cross-platform",
+        "homebrew",
+        "launchd",
+        "macos",
+        "terminal",
+        "zsh"
+      ],
+      "topics": [
+        "devtools",
+        "operating-systems"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating in macOS (Darwin) terminal environments.\n",
+      "sha256": "17c3c329b5d34448dd5a0f450e1cd4fa6257647abdd9c8ad606848c3ff715b9e",
+      "path": "skills/macos-cli",
+      "files": 1,
+      "size": 5719,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/markdown-writing",
+      "author": "michaelweissdev",
+      "name": "markdown-writing",
+      "version": "1.0.0",
+      "description": "Author clean, semantically structured, and compliant Markdown documents following CommonMark and GitHub Flavored Markdown (GFM) specifications. Use when writing technical documentation, formatting tables, code blocks, relative links, task lists, and alerts, or linting with markdownlint.",
+      "tags": [
+        "commonmark",
+        "documentation",
+        "gfm",
+        "markdown",
+        "markdownlint",
+        "writing"
+      ],
+      "topics": [
+        "devtools",
+        "documentation"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents reading or authoring Markdown files.\n",
+      "sha256": "9357ea29a25d22d359c91f27e8d775de330d6ffb56e26a33b2a72c26681f82fa",
+      "path": "skills/markdown-writing",
+      "files": 1,
+      "size": 4978,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "08fe183772e1cb145aa14568d0612642a8a95f10"
+    },
+    {
+      "ref": "michaelweissdev/mcp-server-development",
+      "author": "michaelweissdev",
+      "name": "mcp-server-development",
+      "version": "1.0.0",
+      "description": "Build, test, debug, and secure Model Context Protocol (MCP) servers providing tools, resources, and prompts to AI assistants. Use when developing custom MCP servers with the TypeScript or Python SDK, implementing tool handlers with Zod/Pydantic schema validation, configuring stdio and SSE transports, managing permission boundaries, or testing with the MCP Inspector.",
+      "tags": [
+        "ai-agents",
+        "mcp",
+        "model-context-protocol",
+        "resources",
+        "sse",
+        "stdio",
+        "tools",
+        "zod"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents implementing Model Context Protocol servers in TypeScript or Python.\n",
+      "sha256": "84e402dbccb7a53163955a22911346a709259db98b35b5ceefca1d52df2677cf",
+      "path": "skills/mcp-server-development",
+      "files": 2,
+      "size": 7469,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37e28ff18a89fa98801d44a8af8b117075d77e39"
+    },
+    {
+      "ref": "michaelweissdev/mongodb-development",
+      "author": "michaelweissdev",
+      "name": "mongodb-development",
+      "version": "1.0.0",
+      "description": "Design, model, index, and query production document databases using MongoDB. Use when deciding between embedding and referencing relationships (1:1, 1:N, N:N), applying the Equality-Sort-Range (ESR) rule to compound indexes, building TTL or partial indexes, optimizing aggregation pipelines ($match, $project, $lookup, $group), enforcing JSON Schema validation, configuring replica set write and read concerns, executing multi-document ACID transactions, or diagnosing query plans with explain().",
+      "tags": [
+        "acid-transactions",
+        "aggregation",
+        "document-database",
+        "esr-rule",
+        "indexing",
+        "mongodb",
+        "nosql"
+      ],
+      "topics": [
+        "databases"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents designing or querying MongoDB 6.0+ or Atlas databases. Tooling is required only for executable validation.\n",
+      "sha256": "9d03c5298c0ec3bc63099a88a193fa55dc60a821d189a2387a6fdca3b0ee61c3",
+      "path": "skills/mongodb-development",
+      "files": 1,
+      "size": 13807,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "56db3aeea20d0fc4375f28cccbc525da79f50c9e"
+    },
+    {
+      "ref": "michaelweissdev/nodejs-development",
+      "author": "michaelweissdev",
+      "name": "nodejs-development",
+      "version": "1.0.0",
+      "description": "Develop, test, and package server-side Node.js applications and CLI utilities using modern ES Modules and runtime APIs. Use when building Node.js backend services, implementing streaming I/O with stream.pipeline, managing ESM/CommonJS compatibility, handling unhandled rejections and signals, or configuring package.json.",
+      "tags": [
+        "backend",
+        "cli",
+        "esm",
+        "event-loop",
+        "nodejs",
+        "npm",
+        "streams"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Node.js 18+ runtimes.\n",
+      "sha256": "487c97fa402861083c6f759fc1d2f80185d7b07a1ea3d7b5c2c24c50bf928579",
+      "path": "skills/nodejs-development",
+      "files": 1,
+      "size": 5722,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/oauth-jwt-auth",
+      "author": "michaelweissdev",
+      "name": "oauth-jwt-auth",
+      "version": "1.0.0",
+      "description": "Architect, implement, and audit OAuth 2.0, OpenID Connect (OIDC), and JSON Web Token (JWT) authentication and authorization systems. Use when securing API endpoints, implementing Authorization Code with PKCE, validating JWT signatures via JWKS, configuring token lifetimes, enforcing CSRF protections, or designing secure token storage and revocation strategies.",
+      "tags": [
+        "authentication",
+        "authorization",
+        "csrf",
+        "jwks",
+        "jwt",
+        "oauth2",
+        "oidc",
+        "pkce",
+        "security",
+        "tokens"
+      ],
+      "topics": [
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating across web, backend, and API gateway environments with access to cryptographic and HTTP libraries. Tooling is required only for executable validation.\n",
+      "sha256": "0085d5c8d83e98b7e72e93200de4552f647b72dd6c90ceb9ae043c583257ddfe",
+      "path": "skills/oauth-jwt-auth",
+      "files": 1,
+      "size": 15337,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "4464c1e94ec4f3663e88861e9ae22aa371875440"
+    },
+    {
+      "ref": "michaelweissdev/pdf-processing",
+      "author": "michaelweissdev",
+      "name": "pdf-processing",
+      "version": "1.0.0",
+      "description": "Extract text, parse structured tables, manipulate pages, fill form fields, and generate PDF documents programmatically. Use when extracting text or tables from PDFs with pypdf/pdfplumber, merging or rotating pages, handling scanned vs native digital documents, performing OCR with ocrmypdf/tesseract, or verifying rendered PDF visual layouts.",
+      "tags": [
+        "document-processing",
+        "ocr",
+        "pdf",
+        "pdfplumber",
+        "pypdf",
+        "reportlab"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "office"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating with Python PDF libraries (pypdf, pdfplumber, reportlab, or poppler utilities).\n",
+      "sha256": "3209e3d6b0f1d2941fc5a83b2ac0bf01c40277e954bced52bd55784d6ee829de",
+      "path": "skills/pdf-processing",
+      "files": 3,
+      "size": 10140,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "08fe183772e1cb145aa14568d0612642a8a95f10"
+    },
+    {
+      "ref": "michaelweissdev/performance-profiling",
+      "author": "michaelweissdev",
+      "name": "performance-profiling",
+      "version": "1.0.0",
+      "description": "Profile system and application CPU, memory, and I/O bottlenecks across Linux, Go, Python, Java, and Node.js environments. Use when diagnosing high CPU utilization, memory leaks, GC pressure, slow endpoint latency percentiles (p95/p99), analyzing flamegraphs, running microbenchmarks, or tracing kernel/system calls with perf, pprof, py-spy, async-profiler, and eBPF.",
+      "tags": [
+        "cpu",
+        "ebpf",
+        "flamegraphs",
+        "latency",
+        "memory",
+        "microbenchmarking",
+        "perf",
+        "performance",
+        "pprof",
+        "profiling",
+        "py-spy"
+      ],
+      "topics": [
+        "devtools"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to Linux/Unix shell, perf, pprof, eBPF, or language profiling runtimes. Tooling is required only for executable validation.\n",
+      "sha256": "16d64030ee7376393b6476125e19efcc7c8791d1fec8bb262336d5728e56da29",
+      "path": "skills/performance-profiling",
+      "files": 1,
+      "size": 13176,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "91e732eeedf381f84f2856369953bcbda11523d2"
+    },
+    {
+      "ref": "michaelweissdev/playwright-testing",
+      "author": "michaelweissdev",
+      "name": "playwright-testing",
+      "version": "1.0.0",
+      "description": "Author, execute, and maintain end-to-end (E2E) web integration tests using Playwright. Use when designing Page Object Models (POM), authoring resilient user-visible locators (getByRole, getByText), configuring auto-waiting assertions, intercepting and mocking network traffic, persisting authenticated storageState, analyzing execution traces, or configuring cross-browser CI pipelines.",
+      "tags": [
+        "auto-waiting",
+        "browser",
+        "e2e",
+        "fixtures",
+        "locators",
+        "network-mocking",
+        "playwright",
+        "pom",
+        "testing",
+        "trace-viewer"
+      ],
+      "topics": [
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to Node.js/TypeScript or Python runtimes and Playwright test runners. Tooling is required only for executable validation.\n",
+      "sha256": "d36646662f5724a62fd1c7ea5c845e6578aa1f19cba523bc56a19ac8a2a1275d",
+      "path": "skills/playwright-testing",
+      "files": 1,
+      "size": 15126,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "2fb57bec0dd3109bbc2709490699d0f45d542cfc"
+    },
+    {
+      "ref": "michaelweissdev/postgresql-development",
+      "author": "michaelweissdev",
+      "name": "postgresql-development",
+      "version": "1.0.0",
+      "description": "Design, optimize, and migrate production PostgreSQL databases using advanced PostgreSQL features. Use when indexing JSONB columns with GIN, diagnosing query plans with EXPLAIN (ANALYZE, BUFFERS), writing zero-downtime migrations with CREATE INDEX CONCURRENTLY, configuring Row-Level Security (RLS), or tuning transaction isolation levels.",
+      "tags": [
+        "explain",
+        "gin",
+        "jsonb",
+        "migrations",
+        "postgres",
+        "postgresql",
+        "rls",
+        "sql"
+      ],
+      "topics": [
+        "databases",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents administering or writing queries for PostgreSQL 14+ databases.\n",
+      "sha256": "c9615d11d23d18876e50da8c8e9a2fab6dc14e6faf90ac927c152b7bffe3b2c5",
+      "path": "skills/postgresql-development",
+      "files": 1,
+      "size": 6154,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/pptx-processing",
+      "author": "michaelweissdev",
+      "name": "pptx-processing",
+      "version": "1.0.0",
+      "description": "Generate, edit, and inspect modern PowerPoint (.pptx) presentation decks programmatically using python-pptx. Use when building executive slide decks, enforcing 16:9 widescreen layouts, adding structured tables and callout shapes, configuring speaker notes, or verifying typography and visual slide balance.",
+      "tags": [
+        "office",
+        "powerpoint",
+        "pptx",
+        "presentations",
+        "python-pptx",
+        "slides"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "office"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating with Python presentation manipulation libraries (python-pptx).\n",
+      "sha256": "833e13ce987cc0fcaba693f4f94bf3ae339bdf7f64b11f3bb17bf7b66e875f90",
+      "path": "skills/pptx-processing",
+      "files": 2,
+      "size": 7456,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/python-development",
+      "author": "michaelweissdev",
+      "name": "python-development",
+      "version": "1.0.0",
+      "description": "Develop, review, test, and refactor idiomatic Python applications following PEP 8, strict type hints, and modern ecosystem standards. Use when writing Python modules, designing clean object and functional architectures, configuring Ruff/Mypy/pytest, implementing Asyncio, or improving maintainability and performance.",
+      "tags": [
+        "asyncio",
+        "best-practices",
+        "mypy",
+        "pytest",
+        "python",
+        "ruff",
+        "typing"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents working on Python 3.10+ codebases. Python tooling (pytest, ruff, mypy) is required for executable checks.\n",
+      "sha256": "660c2038f7cf204e9381a67b027e1c56525ef6447e4bb2c95c143a2f3bcc5faf",
+      "path": "skills/python-development",
+      "files": 6,
+      "size": 16230,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/python-packaging",
+      "author": "michaelweissdev",
+      "name": "python-packaging",
+      "version": "1.0.0",
+      "description": "Package, build, distribute, and manage modern Python libraries and CLI tools. Use when writing or updating pyproject.toml, configuring build backends (hatchling, flit, setuptools), building wheels and sdists, managing dependencies with uv or pip, configuring CLI console_scripts entrypoints, or publishing to PyPI.",
+      "tags": [
+        "build",
+        "packaging",
+        "pypi",
+        "pyproject",
+        "python",
+        "uv",
+        "wheels"
+      ],
+      "topics": [
+        "devtools",
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents working on Python packaging manifests and distribution artifacts.\n",
+      "sha256": "e3b9910b3e1135b3bd40b7a8de613e8e778d96a472878db20ca5e53f9f2134ae",
+      "path": "skills/python-packaging",
+      "files": 1,
+      "size": 4972,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/readme-authoring",
+      "author": "michaelweissdev",
+      "name": "readme-authoring",
+      "version": "1.0.0",
+      "description": "Draft, structure, and refine professional repository README.md files that clearly communicate project value, quickstart steps, configuration, architecture, and contribution guidelines. Use when creating new README files, revamping outdated project documentation, adding badges, or structuring developer onboarding guides.",
+      "tags": [
+        "badges",
+        "documentation",
+        "markdown",
+        "onboarding",
+        "open-source",
+        "readme"
+      ],
+      "topics": [
+        "devtools",
+        "documentation"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents creating or reviewing repository README files.\n",
+      "sha256": "331e6578640ce44c75522038295d0c1182561412d7a377db47ce3939cd5587d7",
+      "path": "skills/readme-authoring",
+      "files": 1,
+      "size": 4689,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/redis-caching",
+      "author": "michaelweissdev",
+      "name": "redis-caching",
+      "version": "1.0.0",
+      "description": "Design, implement, and optimize high-throughput Redis caching layers and in-memory data architectures. Use when selecting data structures (Strings, Hashes, Sets, Sorted Sets, Streams, Bitmaps), tuning eviction policies and TTL jitter, implementing Cache-Aside, Write-Through, or Write-Behind patterns, preventing cache stampedes with singleflight and probabilistic early expiration, executing distributed locks with Redlock, or optimizing memory footprint, pipelining, and transactions.",
+      "tags": [
+        "caching",
+        "databases",
+        "distributed-cache",
+        "key-value",
+        "memory-optimization",
+        "redis",
+        "redlock"
+      ],
+      "topics": [
+        "databases"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents interfacing with Redis 6+ or Redis 7+ instances and clusters. Tooling is required only for executable validation.\n",
+      "sha256": "3c9ad62407bd54b6cbb713d2abbf884be9f4a88ce392503fb482550e84a4cc63",
+      "path": "skills/redis-caching",
+      "files": 1,
+      "size": 12507,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "2898c08cc088456a4cee164fb8867fd8fbd45b39"
+    },
+    {
+      "ref": "michaelweissdev/refactoring",
+      "author": "michaelweissdev",
+      "name": "refactoring",
+      "version": "1.0.0",
+      "description": "Safely improve software internal design and maintainability without altering external behavior or breaking API contracts. Use when applying Martin Fowler refactoring patterns (Extract Function, Replace Conditional with Polymorphism, Introduce Parameter Object), reducing technical debt, keeping regression tests passing continuously, or breaking monolithic functions into modular units.",
+      "tags": [
+        "clean-code",
+        "maintainability",
+        "patterns",
+        "refactoring",
+        "technical-debt",
+        "testing"
+      ],
+      "topics": [
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents refactoring codebases with an existing test suite.\n",
+      "sha256": "2c4fe919c20f2e03adc98b869560e823af689351ce47f8fc60c64fd466648d24",
+      "path": "skills/refactoring",
+      "files": 1,
+      "size": 6010,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/release-engineering",
+      "author": "michaelweissdev",
+      "name": "release-engineering",
+      "version": "1.0.0",
+      "description": "Coordinate, verify, and execute safe software release engineering workflows. Use when validating build artifacts, ensuring cross-manifest version consistency, running pre-release verification checklists, drafting release notes, planning rollbacks, or preparing distribution packages for automated CI/CD release tags.",
+      "tags": [
+        "artifacts",
+        "deployment",
+        "devops",
+        "packaging",
+        "release-engineering",
+        "semver"
+      ],
+      "topics": [
+        "devops",
+        "software-development",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents preparing and verifying software releases.\n",
+      "sha256": "133cd64aead05dda90a49e268275330181619b9e5185ed9ef3a41335fef2b8d5",
+      "path": "skills/release-engineering",
+      "files": 1,
+      "size": 5631,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
+    },
+    {
+      "ref": "michaelweissdev/rust-cargo",
+      "author": "michaelweissdev",
+      "name": "rust-cargo",
+      "version": "1.0.0",
+      "description": "Manage Rust packages, multi-crate Cargo workspaces, conditional compilation features, dependency graphs, benchmarks, and crates.io publishing. Use when structuring Cargo.toml, managing workspace dependencies with inheritance, configuring features additively, writing integration tests and benchmarks, or running cargo audit and cargo package checks.",
+      "tags": [
+        "build",
+        "cargo",
+        "crates",
+        "dependencies",
+        "packaging",
+        "rust",
+        "workspaces"
+      ],
+      "topics": [
+        "devtools",
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Cargo workspaces and Rust projects.\n",
+      "sha256": "6c9957a0f84ea8d9977d69448b09a855ecd51ae61973b77095e7dfe9f7a7fe80",
+      "path": "skills/rust-cargo",
+      "files": 1,
+      "size": 5244,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/rust-development",
+      "author": "michaelweissdev",
+      "name": "rust-development",
+      "version": "1.0.0",
+      "description": "Develop, review, and optimize idiomatic, memory-safe Rust code following the Rust API Guidelines. Use when writing Rust crates, managing ownership, borrowing, and lifetimes, designing robust traits and error hierarchies with Result/Option, configuring Clippy/rustfmt, or evaluating safe alternatives to unsafe code.",
+      "tags": [
+        "cargo",
+        "clippy",
+        "lifetimes",
+        "memory-safety",
+        "ownership",
+        "rust",
+        "traits"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Rust 2021+ codebases with Cargo tooling available for builds and checks.\n",
+      "sha256": "87a161f814bb62ca33e95e2e97fed7c3c179bbb1b0156854a8fe15f3076c442b",
+      "path": "skills/rust-development",
+      "files": 5,
+      "size": 12486,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/secrets-management",
+      "author": "michaelweissdev",
+      "name": "secrets-management",
+      "version": "1.0.0",
+      "description": "Manage, rotate, inject, and protect application secrets, API keys, certificates, and credentials throughout development and deployment lifecycles. Use when configuring environment variables, implementing secret stores (Vault, AWS Secrets Manager), enforcing .gitignore hygiene, detecting committed secrets with gitleaks, or executing credential rotation and revocation procedures.",
+      "tags": [
+        "api-keys",
+        "credentials",
+        "env-vars",
+        "gitleaks",
+        "secrets",
+        "security",
+        "vault"
+      ],
+      "topics": [
+        "devops",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents managing configurations, infrastructure, or source repositories.\n",
+      "sha256": "ce8c89dc68e56fb084f6364cfa2a5a7c53d0d3100e2a17575a6613065584f431",
+      "path": "skills/secrets-management",
+      "files": 1,
+      "size": 5599,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/secure-coding",
+      "author": "michaelweissdev",
+      "name": "secure-coding",
+      "version": "1.0.0",
+      "description": "Apply defensive programming and secure software engineering principles to prevent common vulnerabilities (OWASP Top 10, CWE Top 25). Use when validating user input, parameterizing database queries, preventing XSS/CSRF/SSRF, handling sensitive authentication tokens, or configuring secure defaults.",
+      "tags": [
+        "auth",
+        "cwe",
+        "injection",
+        "owasp",
+        "sanitization",
+        "secure-coding",
+        "security"
+      ],
+      "topics": [
+        "security",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents writing, reviewing, or securing application code across languages.\n",
+      "sha256": "2ebb6d8fbcfee44b061781cae237fa3461eb41502ec00b88cfbfe9d895453e3b",
+      "path": "skills/secure-coding",
+      "files": 1,
+      "size": 6221,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
+    },
+    {
+      "ref": "michaelweissdev/security-code-review",
+      "author": "michaelweissdev",
+      "name": "security-code-review",
+      "version": "1.0.0",
+      "description": "Perform structured, evidence-based security code reviews to identify vulnerabilities, trust boundary violations, and injection flaws. Use when auditing pull requests for security regressions, mapping findings to CWE and OWASP classifications, tracing untrusted data flows, or validating cryptographic implementations.",
+      "tags": [
+        "audit",
+        "code-review",
+        "cwe",
+        "owasp",
+        "security",
+        "trust-boundaries",
+        "vulnerabilities"
+      ],
+      "topics": [
+        "security",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents performing security analysis on source code.\n",
+      "sha256": "9d49e2abadcb53ac26aa7e05ddef31e6a999de31d710a59270db35c3a450794b",
+      "path": "skills/security-code-review",
+      "files": 1,
+      "size": 5192,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/semantic-versioning",
+      "author": "michaelweissdev",
+      "name": "semantic-versioning",
+      "version": "1.0.0",
+      "description": "Apply Semantic Versioning 2.0.0 (SemVer) principles to libraries, tools, and APIs. Use when determining version bumps (MAJOR, MINOR, PATCH), analyzing breaking changes in code or configuration, handling pre-releases and metadata, or setting dependency version ranges.",
+      "tags": [
+        "api-compatibility",
+        "dependencies",
+        "releases",
+        "semver",
+        "versioning"
+      ],
+      "topics": [
+        "devtools",
+        "software-development",
+        "version-control"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents analyzing software releases, public APIs, package manifests, or version bump requests.\n",
+      "sha256": "35ea82b405dee0aba6a19887ffe7653e945755e77a08619ef6e5e561e2ccf9ab",
+      "path": "skills/semantic-versioning",
+      "files": 1,
+      "size": 7449,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
+    },
+    {
+      "ref": "michaelweissdev/skill-security-audit",
+      "author": "michaelweissdev",
+      "name": "skill-security-audit",
+      "version": "1.0.0",
+      "description": "Audit, inspect, and evaluate third-party Agent Skills and tool definitions for security risks, prompt injection, and data exfiltration. Use when evaluating external skill repositories, detecting hidden malicious instructions or backdoors, identifying unauthorized shell script execution, auditing credential access patterns, or analyzing skill supply-chain dependencies.",
+      "tags": [
+        "ai-safety",
+        "exfiltration",
+        "prompt-injection",
+        "red-team",
+        "security",
+        "skill-audit"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents auditing untrusted skill packages and agent extensions.\n",
+      "sha256": "172b59a3d5e405c387052f8f413ba9a6e3128e411d4c42021bd3607d76bdae0b",
+      "path": "skills/skill-security-audit",
+      "files": 2,
+      "size": 8043,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37e28ff18a89fa98801d44a8af8b117075d77e39"
+    },
+    {
+      "ref": "michaelweissdev/sphinx-documentation",
+      "author": "michaelweissdev",
+      "name": "sphinx-documentation",
+      "version": "1.0.0",
+      "description": "Build, structure, and maintain technical documentation sites using Sphinx, reStructuredText (rST), MyST Markdown, and autodoc. Use when configuring conf.py, extracting API documentation from Python docstrings with sphinx-autodoc, managing toctrees and cross-references (:doc:, :ref:, :class:), applying modern themes like Furo, or hosting on Read the Docs.",
+      "tags": [
+        "autodoc",
+        "documentation",
+        "myst",
+        "python",
+        "readthedocs",
+        "rst",
+        "sphinx"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents configuring and building Sphinx documentation.\n",
+      "sha256": "75894487d6537b5b158652821fdf62991ad311ff20c5d28af61c24cb4ed4c2df",
+      "path": "skills/sphinx-documentation",
+      "files": 1,
+      "size": 5305,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/sql-development",
+      "author": "michaelweissdev",
+      "name": "sql-development",
+      "version": "1.0.0",
+      "description": "Write, format, review, and optimize relational SQL queries following standard conventions. Use when composing complex SELECT queries with JOINs and CTEs, designing normalized schemas with primary/foreign key constraints, writing ACID transaction blocks, preventing SQL injection via parameterization, or reviewing query execution bottlenecks.",
+      "tags": [
+        "acid",
+        "ctes",
+        "databases",
+        "joins",
+        "query-optimization",
+        "rdbms",
+        "sql",
+        "transactions"
+      ],
+      "topics": [
+        "databases",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents reading, writing, or optimizing SQL across relational databases (PostgreSQL, MySQL, SQLite).\n",
+      "sha256": "0ef4aa7fd55877d5e0464ca2f0b3614780c68dd1656b88f95b2bf51e2c3dbab8",
+      "path": "skills/sql-development",
+      "files": 1,
+      "size": 6349,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/swift-development",
+      "author": "michaelweissdev",
+      "name": "swift-development",
+      "version": "1.0.0",
+      "description": "Architect, implement, and test modern Swift applications (Swift 5.9 / 6.0) following the official Swift API Design Guidelines. Use when designing value types with structs, implementing protocols and extensions, applying Swift concurrency (async/await, Actors, Sendable), configuring Package.swift, or writing unit tests with XCTest or Swift Testing.",
+      "tags": [
+        "actors",
+        "concurrency",
+        "ios",
+        "macos",
+        "protocols",
+        "spm",
+        "swift",
+        "value-types"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on Swift 5.9+ / 6.0 codebases with the Swift toolchain.\n",
+      "sha256": "04948534ac7360d51557cfb79bc39e0b1fcce920dfa7c4f78bc9f4159581c1f7",
+      "path": "skills/swift-development",
+      "files": 1,
+      "size": 6183,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/system-architecture-design",
+      "author": "michaelweissdev",
+      "name": "system-architecture-design",
+      "version": "1.0.0",
+      "description": "Design, document, and evaluate distributed software architectures, domain models, and scalability patterns. Use when drafting Architecture Decision Records (ADRs), creating C4 model diagrams, evaluating modular monolith vs microservices trade-offs, defining Domain-Driven Design (DDD) bounded contexts, designing event-driven systems, or applying CQRS, sharding, and caching strategies under CAP/PACELC constraints.",
+      "tags": [
+        "adr",
+        "architecture",
+        "c4-model",
+        "cqrs",
+        "ddd",
+        "event-driven",
+        "microservices",
+        "modular-monolith",
+        "scalability",
+        "system-design"
+      ],
+      "topics": [
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents designing software architectures, authoring technical documentation, or reviewing system topologies. Tooling is required only for executable validation.\n",
+      "sha256": "ec9ca2d467ff4153e8514b6f9be0070e399ce4f9c64e098eaa07dfbbc7763b35",
+      "path": "skills/system-architecture-design",
+      "files": 1,
+      "size": 15865,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "00840c03c0781f666e36ec5cdacfb489223829ce"
+    },
+    {
+      "ref": "michaelweissdev/technical-writing",
+      "author": "michaelweissdev",
+      "name": "technical-writing",
+      "version": "1.0.0",
+      "description": "Author precise, authoritative, and user-centric technical documentation, API references, and architecture guides. Use when drafting system documentation, explaining complex engineering concepts, standardizing terminology, eliminating ambiguity and filler text, or organizing user-focused procedural tutorials.",
+      "tags": [
+        "architecture",
+        "clarity",
+        "documentation",
+        "style-guide",
+        "technical-writing",
+        "tutorials"
+      ],
+      "topics": [
+        "documentation",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents authoring or revising technical documentation.\n",
+      "sha256": "b6d4e916b4fc92c868d9cb3bb5b9610001d25f32a4b3153bd7f83231e496332c",
+      "path": "skills/technical-writing",
+      "files": 1,
+      "size": 5992,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "08fe183772e1cb145aa14568d0612642a8a95f10"
+    },
+    {
+      "ref": "michaelweissdev/terraform-iac",
+      "author": "michaelweissdev",
+      "name": "terraform-iac",
+      "version": "1.0.0",
+      "description": "Architect, author, validate, and manage Infrastructure as Code using Terraform and OpenTofu. Use when designing HCL root and reusable child modules, configuring remote state backends with S3/DynamoDB or GCS state locking, establishing plan/apply safety workflows, managing configuration drift, configuring lifecycle rules, preventing secret exposure, or running tflint and checkov security audits.",
+      "tags": [
+        "checkov",
+        "devops",
+        "hcl",
+        "iac",
+        "modules",
+        "opentofu",
+        "state-locking",
+        "terraform",
+        "tflint"
+      ],
+      "topics": [
+        "devops"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with access to terraform, opentofu, tflint, or checkov tooling. Tooling is required only for executable validation.\n",
+      "sha256": "b2b53ab861f7e2f06ff0fe6a9c86e4b424a4b8ef7e8d69f034ee745f7c507721",
+      "path": "skills/terraform-iac",
+      "files": 1,
+      "size": 11791,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "32d6d7bb1ece1a1c3f989cccbb9b7fa66c7de04d"
+    },
+    {
+      "ref": "michaelweissdev/test-driven-development",
+      "author": "michaelweissdev",
+      "name": "test-driven-development",
+      "version": "1.0.0",
+      "description": "Apply the disciplined Red-Green-Refactor Test-Driven Development (TDD) cycle to design clean, testable, and minimal code. Use when developing new features from specifications, discovering API interfaces through tests, incrementally building business logic, or preventing premature optimization and dead code.",
+      "tags": [
+        "agile",
+        "design",
+        "red-green-refactor",
+        "tdd",
+        "testing",
+        "unit-testing"
+      ],
+      "topics": [
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents developing software using test-first practices.\n",
+      "sha256": "5695312f38e85a0484f56dab5ae68224fafd2ac840cc2e793983464c21869cd9",
+      "path": "skills/test-driven-development",
+      "files": 1,
+      "size": 5620,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
+    },
+    {
+      "ref": "michaelweissdev/threat-modeling",
+      "author": "michaelweissdev",
+      "name": "threat-modeling",
+      "version": "1.0.0",
+      "description": "Identify architectural security risks, map trust boundaries, and evaluate attack paths using STRIDE and risk assessment frameworks. Use when designing new system architectures, conducting security design reviews, identifying attacker entry points, analyzing threat vectors, or prioritizing defensive mitigations.",
+      "tags": [
+        "architecture",
+        "attack-trees",
+        "risk-assessment",
+        "security",
+        "stride",
+        "threat-modeling"
+      ],
+      "topics": [
+        "architecture",
+        "security",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents analyzing software architectures and security designs.\n",
+      "sha256": "026b96b32aeb57e90d70f3de01ac2d63f85c75dbaeb07af92846cbb16e446506",
+      "path": "skills/threat-modeling",
+      "files": 1,
+      "size": 5422,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+    },
+    {
+      "ref": "michaelweissdev/typescript-development",
+      "author": "michaelweissdev",
+      "name": "typescript-development",
+      "version": "1.0.0",
+      "description": "Architect, implement, and review type-safe TypeScript applications under strict mode. Use when defining discriminated unions, writing reusable generics and type guards, configuring tsconfig.json, modeling domain types without any/unknown leaks, or validating external schemas with Zod or Typebox.",
+      "tags": [
+        "discriminated-unions",
+        "generics",
+        "strict",
+        "tsconfig",
+        "types",
+        "typescript"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating on TypeScript 5.0+ codebases.\n",
+      "sha256": "c2576e614aae1db89527b67b766ca61ac5b1b8ee5c2bca3e9c38d2929b2e648c",
+      "path": "skills/typescript-development",
+      "files": 1,
+      "size": 6288,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/unit-testing",
+      "author": "michaelweissdev",
+      "name": "unit-testing",
+      "version": "1.0.0",
+      "description": "Design, write, and maintain robust, isolated, and deterministic unit tests. Use when writing unit test suites (pytest, jest, cargo test, junit), structuring test fixtures, applying AAA (Arrange-Act-Assert) patterns, testing boundary and error conditions, or configuring test mocks and parameterization.",
+      "tags": [
+        "fixtures",
+        "jest",
+        "mocks",
+        "pytest",
+        "tdd",
+        "testing",
+        "unit-tests"
+      ],
+      "topics": [
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents implementing unit tests across modern programming languages.\n",
+      "sha256": "1443deea28fd34a741b64d8b75f10826e7b0031a0041d1415b1078284fb4bbd4",
+      "path": "skills/unit-testing",
+      "files": 1,
+      "size": 6260,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
+    },
+    {
+      "ref": "michaelweissdev/web-html-css",
+      "author": "michaelweissdev",
+      "name": "web-html-css",
+      "version": "1.0.0",
+      "description": "Build accessible, semantic, and responsive web user interfaces using modern HTML5 and CSS3. Use when structuring semantic HTML markup, designing layouts with Flexbox, CSS Grid, and Container Queries, creating themeable systems with CSS Custom Properties, ensuring WCAG 2.1 AA accessibility, or implementing responsive mobile-first designs.",
+      "tags": [
+        "accessibility",
+        "css",
+        "flexbox",
+        "grid",
+        "html",
+        "responsive",
+        "wcag",
+        "web"
+      ],
+      "topics": [
+        "programming-languages",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents creating or reviewing modern web markup and stylesheets.\n",
+      "sha256": "043f6691055d2e6d03273a794294d8de26af563e99018deebf60b811c95084ba",
+      "path": "skills/web-html-css",
+      "files": 1,
+      "size": 6408,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+    },
+    {
+      "ref": "michaelweissdev/xlsx-processing",
+      "author": "michaelweissdev",
+      "name": "xlsx-processing",
+      "version": "1.0.0",
+      "description": "Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically using openpyxl. Use when generating financial spreadsheets with calculated formulas, applying cell styles and number formats, managing multiple worksheets, building structured tables and charts, or validating formula integrity.",
+      "tags": [
+        "excel",
+        "financial-modeling",
+        "formulas",
+        "office",
+        "openpyxl",
+        "spreadsheets",
+        "xlsx"
+      ],
+      "topics": [
+        "devtools",
+        "documentation",
+        "office"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents operating with Python Excel manipulation libraries (openpyxl).\n",
+      "sha256": "bc751fd684b0b97d0c348f5eddca0b2587a932382bdae7e62fe4fc3514ef98d7",
+      "path": "skills/xlsx-processing",
+      "files": 2,
+      "size": 9155,
+      "updated_at": "2026-10-15T16:40:46+00:00",
+      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
     }
   ]
 }
