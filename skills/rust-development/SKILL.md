@@ -4,13 +4,17 @@ description: >
   Develop, review, and optimize idiomatic, memory-safe Rust code following the
   Rust API Guidelines. Use when writing Rust crates, managing ownership, borrowing,
   and lifetimes, designing robust traits and error hierarchies with Result/Option,
-  configuring Clippy/rustfmt, or evaluating safe alternatives to unsafe code.
+  configuring Clippy/rustfmt, choosing an edition or MSRV, or evaluating safe
+  alternatives to unsafe code. Do not use for C/C++ FFI binding generation details,
+  embedded no_std board bring-up, or general performance profiling unrelated to Rust
+  language choices.
 compatibility: >
-  Agent Skills-compatible coding agents operating on Rust 2021+ codebases
-  with Cargo tooling available for builds and checks.
+  Agent Skills-compatible coding agents operating on Rust 2021 or 2024 edition
+  codebases with Cargo available. Edition 2024 requires Rust 1.85+. Version facts
+  checked against the Rust release notes (stable 1.99.0, 2026-10-01) in October 2026.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "rust, cargo, clippy, ownership, lifetimes, memory-safety, traits"
   topics: "programming-languages, software-development"
 ---
@@ -24,6 +28,7 @@ Detailed reference documentation is provided in:
 - [Error Handling with Result & Option](references/error-handling.md)
 - [Trait Design & API Patterns](references/traits-api-design.md)
 - [Unsafe Rust Guidelines & Invariants](references/unsafe-guidelines.md)
+- [Editions, toolchain, and dependency hygiene](references/editions-and-toolchain.md)
 
 ---
 
@@ -127,7 +132,14 @@ pub fn load_configuration<P: AsRef<Path>>(path: P) -> Result<Config> {
 
 ---
 
-## 5. Tooling and Quality Checks
+## 5. Edition and Toolchain Decisions
+
+- New crates: `edition = "2024"` (stable since Rust 1.85) and an explicit `rust-version` (MSRV). Existing crates: migrate with `cargo fix --edition` on a clean branch, review the diff, and run tests; do not bump the edition inside an unrelated change.
+- Pin the toolchain for reproducibility with `rust-toolchain.toml`; test on MSRV and stable in CI.
+- Configure lints centrally in `Cargo.toml` under `[lints]` / `[workspace.lints]` rather than scattering `#![deny]` attributes.
+- Check dependencies: `cargo audit` (RustSec advisories) and `cargo deny` (licenses, sources, bans) are separate tools you must install; they are not part of `cargo`.
+
+## 6. Tooling and Quality Checks
 
 Run these standard verification commands:
 
@@ -147,10 +159,12 @@ cargo doc --no-deps
 
 ---
 
-## 6. Verification Checklist
+## 7. Verification Checklist
 
 - [ ] All public types and functions have `///` documentation comments with examples.
 - [ ] No unconditional `.unwrap()` or `.expect()` calls in production paths.
 - [ ] Error types implement `std::error::Error` (or derive with `thiserror`).
 - [ ] Code passes `cargo clippy -- -D warnings` with zero warnings.
 - [ ] Tests pass across all workspace crates (`cargo test`).
+- [ ] Every `unsafe` block has a `// SAFETY:` comment and a test (Miri where applicable).
+- [ ] Edition and `rust-version` are stated in `Cargo.toml` and exercised in CI.

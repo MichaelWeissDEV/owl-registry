@@ -4,14 +4,18 @@ description: >
   Extract text, parse structured tables, manipulate pages, fill form fields,
   and generate PDF documents programmatically. Use when extracting text or tables
   from PDFs with pypdf/pdfplumber, merging or rotating pages, handling scanned
-  vs native digital documents, performing OCR with ocrmypdf/tesseract, or verifying
-  rendered PDF visual layouts.
+  vs native digital documents, performing OCR with ocrmypdf/tesseract, handling
+  encrypted or untrusted PDFs safely, or verifying rendered PDF visual layouts.
+  Do not use for Word or Excel files, for true redaction of sensitive content withou
+  following the redaction rules below, or for legal e-signature workflows.
 compatibility: >
   Agent Skills-compatible coding agents operating with Python PDF libraries
-  (pypdf, pdfplumber, reportlab, or poppler utilities).
+  (pypdf 6.x, pdfplumber, reportlab 4/5, pypdfium2) or poppler utilities. API names
+  checked against PyPI releases in October 2026; run `pip show <lib>` to confirm
+  the installed version.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "pdf, pdfplumber, pypdf, ocr, reportlab, document-processing"
   topics: "office, documentation, devtools"
 ---
@@ -23,6 +27,7 @@ PDF (Portable Document Format) is a fixed-layout presentation format. Because PD
 Detailed reference guides:
 - [PDF Tools & Libraries Comparison](references/pdf-tools-guide.md)
 - [PDF Quality & Extraction Verification Checklist](references/verification-checklist.md)
+- [Untrusted PDFs, redaction, encryption, forms, licensing](references/untrusted-and-sensitive-pdfs.md)
 
 ---
 
@@ -32,7 +37,9 @@ Detailed reference guides:
 2. **Never treat PDFs as plain text streams**: Text extraction must account for reading order, multi-column layouts, font encodings, and ligatures.
 3. **Use specialized table extraction tools**: Do not rely on plain regex on extracted strings to parse tables. Use coordinate-aware libraries like `pdfplumber`.
 4. **Preserve original documents**: Always write modified or merged PDFs to new destination files; never overwrite source inputs in place.
-5. **Verify visual rendering**: When generating PDFs (e.g. invoices or reports), convert the first page to PNG via `pdftoppm` or `pypdfium2` and verify margins, text wrapping, and alignment.
+5. **Treat input PDFs as untrusted**: parsers have had denial-of-service bugs (huge or malformed objects, deep recursion). Cap file size and page count, set a timeout, run batch jobs in a sandbox or separate process, and keep libraries updated.
+6. **Covering text is not redacting it**: a black rectangle drawn over text leaves the text in the file. Use a tool that removes the underlying content and verify by extracting text afterward (see reference).
+7. **Verify visual rendering**: When generating PDFs (e.g. invoices or reports), convert the first page to PNG via `pdftoppm` or `pypdfium2` and verify margins, text wrapping, and alignment.
 
 ---
 
@@ -49,7 +56,7 @@ def is_scanned_pdf(file_path: str) -> bool:
     # Sample up to first 3 pages
     for page in reader.pages[:3]:
         total_text += (page.extract_text() or "").strip()
-    
+
     # If fewer than 50 characters extracted across 3 pages, document is likely scanned
     return len(total_text) < 50
 ```
@@ -74,7 +81,7 @@ if meta:
 
 # Extract text with line preservation
 for page_num, page in enumerate(reader.pages, start=1):
-    text = page.extract_text(extraction_mode="layout") # Preserves visual layout
+    text = page.extract_text(extraction_mode="layout") # Preserves visual layou
     print(f"--- Page {page_num} ---")
     print(text[:300]) # Print first 300 chars
 ```
@@ -91,7 +98,7 @@ import csv
 
 with pdfplumber.open("financial_statement.pdf") as pdf:
     first_page = pdf.pages[0]
-    
+
     # Extract table using visual borders
     table = first_page.extract_table(table_settings={
         "vertical_strategy": "lines",
@@ -143,7 +150,7 @@ When generating pixel-perfect invoices, tickets, or reports from scratch:
 ```python
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.styles import getSampleStyleShee
 from reportlab.lib import colors
 
 def generate_invoice(dest_path: str):
@@ -186,10 +193,27 @@ def generate_invoice(dest_path: str):
 | Parsing tables with naive line regex | Breaks when columns wrap or table has empty cells | Use `pdfplumber.extract_table()` |
 | Overwriting source PDF file directly | Corrupts source file if writing process is interrupted | Write to temp file, then atomically replace |
 | Ignoring page rotation flags | Extracted text or rendered pages display upside down or sideways | Check `page.rotation` or orientation metadata |
+| Using the old `PyPDF2` package | Unmaintained; merged back into `pypdf` | `pip install pypdf` and use `PdfReader`/`PdfWriter` |
+| Drawing a black box to "redact" | Underlying text remains extractable | True redaction tool, then extract text to prove removal |
+| Trusting `extract_text()` order for multi-column pages | Columns interleaved | Try `extraction_mode="layout"`, `pdfplumber` crop boxes per column, or render and read visually |
+| Treating an empty extraction as "no content" | Could be scanned pages or text drawn as vector outlines | Render the page to PNG and look; use OCR if needed |
+| Assuming OCR output is exact | Digits and similar glyphs misread | Spot check numbers against the rendered page; keep the confidence in mind |
+| Shipping a PDF with hidden metadata | Author, software, and XMP leak | Inspect and clear metadata before sharing |
 
 ---
 
-## 7. Verification Checklist
+## 7. Troubleshooting Extraction
+
+| Symptom | Likely cause | Action |
+| :--- | :--- | :--- |
+| `PdfReadError` / "EOF marker not found" | Truncated or corrupt file | Try `pdftotext`/`qpdf --check` if installed; ask for a fresh copy; do not guess content |
+| `FileNotDecryptedError` or empty text | Encrypted PDF | `reader.is_encrypted`; decrypt only with a password the user supplied |
+| Encrypted AES PDF fails to open | Missing crypto backend | Install `cryptography` (needed by pypdf for AES) |
+| Garbled characters or `(cid:123)` | Font lacks a Unicode map | Try another extractor (`pdftotext`, `pdfplumber`) or OCR the rendered page |
+| Table cells merged or shifted | No ruling lines | Switch `pdfplumber` strategies to `"text"`, tune tolerances, or define explicit column lines |
+| Slow or out-of-memory on large file | Whole-document processing | Process page by page, close pages (`page.flush_cache()` in pdfplumber), set limits |
+
+## 8. Verification Checklis
 
 - [ ] Evaluated whether input PDF is scanned or digital.
 - [ ] Table extraction preserves all column headers and numeric alignments.

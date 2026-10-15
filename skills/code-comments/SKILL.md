@@ -5,13 +5,15 @@ description: >
   across major programming languages. Use when deciding whether to add or remove
   comments, writing public API documentation (docstrings, rustdoc, Javadoc, JSDoc,
   GoDoc), explaining non-obvious algorithms, documenting security invariants,
-  or refactoring noisy, redundant comments.
+  or refactoring noisy, redundant comments. Do not use for README or architecture
+  documents, commit messages (use conventional-commits), changelogs, or when asked
+  to leave comments untouched in a mechanical refactor.
 compatibility: >
   Agent Skills-compatible coding agents reading, writing, or reviewing code comments
   across Python, Rust, C/C++, Go, Java, Kotlin, TS/JS, Swift, Bash, and SQL.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "comments, documentation, docstrings, javadoc, rustdoc, jsdoc, godoc, best-practices"
   topics: "documentation, software-development"
 ---
@@ -104,7 +106,33 @@ let slot = self.write_index & self.mask;
 
 ---
 
-## 5. Verification Checklist
+## 5. Comments You Must Not Remove or Reword
+
+Some comments are machine-read. Treat them as code and keep them unless you understand and change the behavior on purpose:
+
+- Linter and type-checker directives: `# noqa`, `# type: ignore[code]`, `# pragma: no cover`, `// eslint-disable-next-line`, `// @ts-expect-error`, `#[allow(...)]` attributes with their justification, `// nolint`.
+- Tool and build directives: `//go:generate`, `//go:build`, `// +build`, `#!shebang`, `# -*- coding -*-`, `/// <reference>`, `<!-- prettier-ignore -->`.
+- Legal and provenance: license headers, `SPDX-License-Identifier`, copyright lines, required attribution.
+- Safety documentation: Rust `// SAFETY:` comments and `# Safety`, `# Errors`, `# Panics` rustdoc sections; documented lock ordering.
+
+Rule for suppressions: every suppression carries a reason and, when it is a workaround, a link to the issue (`# type: ignore[arg-type]  # upstream stubs miss Optional, see #123`). A bare suppression is a defect to flag, not noise to delete.
+
+## 6. Pitfalls and Judgment Calls
+
+| Situation | Wrong move | Better move |
+| :--- | :--- | :--- |
+| Docstring repeats types already in annotations | Maintain types in two places and let them drift | Keep types in the signature; describe meaning, units, and constraints in prose |
+| `TODO` with no owner or reference | Permanent clutter | `TODO(#412): remove after API v2 rollout` or file an issue and delete the note |
+| Comment states a guarantee the code does not enforce | Reader trusts a lie | Make the code enforce it (assert, type) or soften the comment |
+| Mass-deleting comments during an unrelated change | Noisy diff, lost context | Touch only comments next to the lines you change |
+| Documenting secrets, internal hostnames, or customer data in comments | Leak via source distribution | Reference the configuration source instead |
+| Translating code into prose on AI-generated patches | Redundant comments that nobody maintains | Delete restating comments; keep rationale only |
+| Public API docs without error behavior | Callers cannot handle failure | Add errors/panics/side effects and thread-safety notes |
+| Example in a doc comment that no longer compiles | Misleads and breaks doc tests | Use runnable doc tests where the language supports them (`cargo test --doc`, Python `doctest`, Go `Example` functions) |
+
+Diagnose a suspect comment by asking: could a reader derive this from the code in under ten seconds (delete it), is it true today (fix or delete), and does it tell the reader something the code cannot, such as why, a constraint, or a consequence (keep it).
+
+## 7. Verification Checklist
 
 - [ ] All public APIs have standard doc comments matching language conventions.
 - [ ] No comments merely rephrase the syntax in natural language.

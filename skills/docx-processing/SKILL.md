@@ -4,13 +4,17 @@ description: >
   Generate, parse, modify, and format Microsoft Word (.docx) documents
   programmatically. Use when creating styled corporate reports, extracting text
   and tables from Word documents with python-docx, manipulating document sections,
-  headers, footers, and page breaks, or inspecting OpenXML document structures.
+  headers, footers, and page breaks, replacing placeholders without losing formatting,
+  or inspecting OpenXML structures and untrusted Word files. Do not use for legacy
+  binary .doc files, PDFs, Google Docs, or for tracked-changes editing workflows that
+  need Word's revision model (python-docx does not write tracked changes).
 compatibility: >
-  Agent Skills-compatible coding agents operating with Python docx manipulation
-  libraries (python-docx).
+  Agent Skills-compatible coding agents operating with python-docx (1.2.x checked in
+  October 2026; Python 3.9+). LibreOffice (`soffice`) is optional for rendering a
+  visual check.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "docx, word, office, python-docx, document-processing, formatting"
   topics: "office, documentation, devtools"
 ---
@@ -124,6 +128,27 @@ if __name__ == "__main__":
 ```python
 from docx import Document
 
+def replace_in_paragraph(paragraph, placeholder: str, value: str) -> bool:
+    """Replace placeholder text across runs, keeping the first touched run's formatting."""
+    runs = paragraph.runs
+    start = "".join(r.text for r in runs).find(placeholder)
+    if start == -1:
+        return False
+    end = start + len(placeholder)
+    pos = 0
+    first = True
+    for run in runs:
+        r_start, r_end = pos, pos + len(run.text)
+        pos = r_end
+        if r_end <= start or r_start >= end:
+            continue
+        before = run.text[: max(start - r_start, 0)]
+        after = run.text[min(end - r_start, len(run.text)):]
+        run.text = before + (value if first else "") + after
+        first = False
+    return True
+
+
 def inspect_and_update_docx(file_path: str, target_author: str):
     doc = Document(file_path)
 
@@ -131,10 +156,9 @@ def inspect_and_update_docx(file_path: str, target_author: str):
     full_text = [p.text for p in doc.paragraphs if p.text.strip()]
     print(f"Total paragraphs: {len(full_text)}")
 
-    # Modify specific placeholder text in place
+    # Modify placeholder text in place, keeping run formatting (see helper below)
     for p in doc.paragraphs:
-        if "{{AUTHOR}}" in p.text:
-            p.text = p.text.replace("{{AUTHOR}}", target_author)
+        replace_in_paragraph(p, "{{AUTHOR}}", target_author)
 
     # Read tables
     for t_idx, table in enumerate(doc.tables):
@@ -146,18 +170,46 @@ def inspect_and_update_docx(file_path: str, target_author: str):
 
 ---
 
-## 3. Common Mistakes and Anti-Patterns
+Word often splits a placeholder such as `{{AUTHOR}}` across several runs, so `paragraph.text = ...` or a naive per-run search either misses it or flattens the formatting. The helper above handles that case. Placeholders can also live in tables (`table.cell(r, c).paragraphs`), headers/footers (`section.header.paragraphs`), text boxes, and content controls, which `doc.paragraphs` does not reach; check each location you expect.
+
+## 3. Untrusted Word Files and Sensitive Content
+
+- A `.docx` is a ZIP: cap size and the number/size of entries before opening to avoid zip bombs, and process in a sandbox for files from strangers.
+- `.docm` and `.dotm` can contain macros. Do not convert, enable, or run macros; reject them unless the task explicitly requires them.
+- Inspect `word/_rels/document.xml.rels` and `settings.xml` for external targets (`TargetMode="External"`, remote templates via `attachedTemplate`): these can make Word fetch remote content on open. Do not fetch them on your own initiative.
+- Documents carry metadata (author, last-modified-by, comments, revision history, hidden text, embedded files). Inspect `doc.core_properties` and the package before sharing outside the organization.
+- Never place secrets in templates; generated documents are easily forwarded.
+
+## 4. Common Mistakes and Anti-Patterns
 
 | Anti-Pattern | Bug / Risk | Correct Practice |
 | :--- | :--- | :--- |
 | Writing HTML and saving with `.docx` extension | Microsoft Word reports corrupt file error on open | Generate genuine OpenXML zip package via `python-docx` |
 | Overwriting source file while open in Word | Permission denied crash (`EBUSY` / `PermissionError`) | Write to separate destination file |
 | Manual spacing with multiple empty paragraphs | Inconsistent layout across different page sizes and printers | Use `paragraph.paragraph_format.space_after = Pt(12)` |
-| Hardcoding non-standard fonts | Missing font falls back to Times New Roman on recipient machine | Use standard cross-platform fonts (Calibri, Arial, Georgia) |
+| Hardcoding non-standard fonts | Missing font falls back to a substitute on the recipient machine | Use widely available fonts or state the dependency |
+| `paragraph.text = new` on formatted text | Removes all run formatting in that paragraph | Edit runs, or use the run-aware helper |
+| Expecting a table of contents to fill itself | python-docx cannot compute page numbers; TOC fields update only in Word | Insert a TOC field and tell the user to update fields, or generate it with Word/LibreOffice |
+| Relying on `doc.paragraphs` for all text | Misses tables, headers, footers, text boxes | Iterate each container explicitly |
+| Treating "no exception on save" as correct | Layout problems appear only on render | Convert to PDF and look at pages |
 
 ---
 
-## 4. Verification Checklist
+## 5. Troubleshooting
+
+| Symptom | Likely cause | Action |
+| :--- | :--- | :--- |
+| `KeyError: "no style with name 'X'"` | Style absent in the template | Use built-in names (`Normal`, `Heading 1`, `Table Grid` exist in the default template) or define the style |
+| `BadZipFile` / "File is not a zip file" | Legacy `.doc`, HTML renamed, or truncated file | Check magic bytes (`PK`); convert legacy files with LibreOffice first |
+| Word shows "unreadable content" | Invalid XML edits via lxml, duplicate ids, or a mislabeled file | Reopen with python-docx; rebuild from a known-good template; avoid manual XML unless necessary |
+| Images missing or wrong size | Width not set or image blocked | `add_picture(path, width=Inches(5))` and check the file type |
+| Spacing differs between Word and LibreOffice | Style defaults and font substitution | Set explicit paragraph formats and fonts, then compare renders |
+
+Visual check (optional, requires LibreOffice): `soffice --headless --convert-to pdf --outdir out_dir report.docx`, then rasterize a page with `pdftoppm -png -r 80 -f 1 -l 1 out_dir/report.pdf out_dir/page`.
+
+Comments are supported in python-docx 1.2 (`doc.add_comment(runs, text=..., author=...)`); tracked insertions and deletions are not, so edit those with raw XML only when required and say so.
+
+## 6. Verification Checklist
 
 - [ ] Output is a genuine `.docx` zip package (verified via `zipfile.is_zipfile(path)`).
 - [ ] Heading hierarchy follows H1 -> H2 -> H3 without skipping.

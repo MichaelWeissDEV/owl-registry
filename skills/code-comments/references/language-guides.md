@@ -31,7 +31,7 @@ def calculate_compound_interest(principal: float, rate: float, periods: int) -> 
 
 Rust documentation comments support full Markdown and run automatically as **doc-tests** during `cargo test`:
 
-```rust
+```rus
 //! Module-level documentation explaining crate subsystem.
 
 /// Validates and parses a cryptographic token.
@@ -61,7 +61,7 @@ pub fn validate_token(raw_token: &str) -> Result<Claims, AuthError> { ... }
 ```cpp
 /**
  * @brief Thread-safe circular queue for inter-thread messaging.
- * 
+ *
  * @tparam T Type of elements stored in the queue. Must be MoveConstructible.
  * @param capacity Maximum number of elements before push operations block.
  * @note Allocates buffer on heap during construction; subsequent operations are non-allocating.
@@ -86,11 +86,11 @@ public class BillingManager {
     /**
      * Charges customer credit card on file.
      *
-     * @param customerId unique UUID of the account
+     * @param customerId unique UUID of the accoun
      * @param amountInCents transaction amount in integer cents
      * @return PaymentConfirmation with processor transaction ID
-     * @throws InsufficientFundsException if card balance is insufficient
-     * @throws PaymentGatewayException if external gateway times out
+     * @throws InsufficientFundsException if card balance is insufficien
+     * @throws PaymentGatewayException if external gateway times ou
      */
     public PaymentConfirmation charge(UUID customerId, long amountInCents) throws PaymentGatewayException { ... }
 }
@@ -117,7 +117,7 @@ suspend fun fetchProfile(userId: String): UserProfile? { ... }
 
 ## 6. TypeScript / JavaScript: TSDoc / JSDoc
 
-```typescript
+```typescrip
 /**
  * Transforms an array of raw sensor readings into smoothed moving averages.
  *
@@ -155,7 +155,7 @@ func (c *Cache) Get(key string) (any, bool) { ... }
 
 ## 8. Swift: DocC
 
-```swift
+```swif
 /// Calculates the geodesic distance between two GPS coordinates.
 ///
 /// - Parameters:

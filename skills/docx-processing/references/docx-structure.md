@@ -36,3 +36,18 @@ p.add_run("bold").bold = True
 p.add_run(" and this is ")
 p.add_run("italic.").italic = True
 ```
+
+---
+
+## 3. Parts worth inspecting (read-only)
+
+| Part | Why look |
+| :--- | :--- |
+| `word/document.xml` | Body text; `<w:ins>`/`<w:del>` mark tracked changes (python-docx ignores them when reading text in some cases; verify) |
+| `word/comments.xml` | Review comments with author names |
+| `word/_rels/document.xml.rels` | External hyperlinks, images, remote templates (`TargetMode="External"`) |
+| `word/settings.xml` | `attachedTemplate`, compatibility mode, track-revisions flag |
+| `docProps/core.xml`, `docProps/app.xml` | Author, last modified by, timestamps, application |
+| `word/vbaProject.bin` | Macros (should not exist in a `.docx`; present in `.docm`) |
+
+List parts without extracting: `python3 -I -c "import zipfile,sys; print(*zipfile.ZipFile(sys.argv[1]).namelist(), sep='\n')" file.docx`. Do not extract archives from untrusted sources into a directory that contains scripts; extract into a fresh empty directory and cap sizes.

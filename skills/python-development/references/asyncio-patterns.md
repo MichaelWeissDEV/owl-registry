@@ -4,7 +4,7 @@ Asynchronous Python allows high-concurrency I/O operations on a single thread. M
 
 ## 1. Structured Concurrency: `asyncio.TaskGroup` (Python 3.11+)
 
-Avoid legacy `asyncio.gather(*tasks)` when possible. Use `TaskGroup`, which guarantees that if one task fails, all other concurrent tasks in the group are promptly cancelled and errors are bundled into an `ExceptionGroup`:
+Prefer `TaskGroup` over `asyncio.gather(*tasks)` when one failure should cancel its siblings (`gather(..., return_exceptions=True)` remains right when you want every result). `TaskGroup` guarantees that if one task fails, all other concurrent tasks in the group are promptly cancelled and errors are bundled into an `ExceptionGroup`:
 
 ```python
 import asyncio
@@ -30,7 +30,7 @@ async def load_dashboard(user_id: int):
 Any synchronous CPU-heavy work or synchronous I/O (such as `time.sleep`, `requests.get`, or standard file I/O) freezes the event loop, stalling all other concurrent tasks.
 
 ### Delegating to Worker Threads
-Use `asyncio.to_thread` to run blocking calls without freezing the event loop:
+Use `asyncio.to_thread` to run blocking I/O without freezing the event loop. For CPU-bound work, threads do not help on standard (GIL) builds: use `concurrent.futures.ProcessPoolExecutor` via `loop.run_in_executor`, or a free-threaded build after testing your dependencies:
 
 ```python
 import asyncio

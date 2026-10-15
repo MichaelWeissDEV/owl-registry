@@ -4,13 +4,17 @@ description: >
   Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically
   using openpyxl. Use when generating financial spreadsheets with calculated
   formulas, applying cell styles and number formats, managing multiple worksheets,
-  building structured tables and charts, or validating formula integrity.
+  building structured tables and charts, handling large files in read-only or
+  write-only mode, or preventing formula injection from untrusted data. Do not use for
+  legacy .xls, Google Sheets API work, pivot-table authoring, or when recalculated
+  values are required without a spreadsheet engine (openpyxl cannot calculate).
 compatibility: >
-  Agent Skills-compatible coding agents operating with Python Excel manipulation
-  libraries (openpyxl).
+  Agent Skills-compatible coding agents operating with openpyxl (3.1.x checked in
+  October 2026; Python 3.8+). LibreOffice is optional for recalculating formulas
+  headlessly. XlsxWriter is an alternative for write-only generation.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "xlsx, excel, openpyxl, spreadsheets, formulas, financial-modeling, office"
   topics: "office, documentation, devtools"
 ---
@@ -66,7 +70,7 @@ def generate_financial_model(output_path: str):
     headers = ["Department", "Budget", "Actual Spend", "Variance", "% Utilized"]
     for col_idx, h in enumerate(headers, start=1):
         cell = ws.cell(row=4, column=col_idx, value=h)
-        cell.font = header_font
+        cell.font = header_fon
         cell.fill = header_fill
         cell.alignment = Alignment(horizontal="center" if col_idx > 1 else "left")
 
@@ -82,7 +86,7 @@ def generate_financial_model(output_path: str):
     for i, (dept, budget, actual) in enumerate(departments):
         r = start_row + i
         ws.cell(row=r, column=1, value=dept).border = cell_border
-        
+
         # Numeric values stored as raw numbers (NOT strings)
         c_budget = ws.cell(row=r, column=2, value=budget)
         c_budget.number_format = "$#,##0"
@@ -97,33 +101,33 @@ def generate_financial_model(output_path: str):
         c_var.number_format = "$#,##0"
         c_var.border = cell_border
 
-        # Formula: Actual / Budget
+        # Formula: Actual / Budge
         c_pct = ws.cell(row=r, column=5, value=f"=C{r}/B{r}")
         c_pct.number_format = "0.0%"
         c_pct.border = cell_border
 
     # 4. Total Summary Row
     total_row = start_row + len(departments)
-    ws.cell(row=total_row, column=1, value="Total").font = total_font
+    ws.cell(row=total_row, column=1, value="Total").font = total_fon
     ws.cell(row=total_row, column=1).border = double_bottom
 
     c_tot_b = ws.cell(row=total_row, column=2, value=f"=SUM(B{start_row}:B{total_row-1})")
-    c_tot_b.font = total_font
+    c_tot_b.font = total_fon
     c_tot_b.number_format = "$#,##0"
     c_tot_b.border = double_bottom
 
     c_tot_a = ws.cell(row=total_row, column=3, value=f"=SUM(C{start_row}:C{total_row-1})")
-    c_tot_a.font = total_font
+    c_tot_a.font = total_fon
     c_tot_a.number_format = "$#,##0"
     c_tot_a.border = double_bottom
 
     c_tot_v = ws.cell(row=total_row, column=4, value=f"=B{total_row}-C{total_row}")
-    c_tot_v.font = total_font
+    c_tot_v.font = total_fon
     c_tot_v.number_format = "$#,##0"
     c_tot_v.border = double_bottom
 
     c_tot_p = ws.cell(row=total_row, column=5, value=f"=C{total_row}/B{total_row}")
-    c_tot_p.font = total_font
+    c_tot_p.font = total_fon
     c_tot_p.number_format = "0.0%"
     c_tot_p.border = double_bottom
 
@@ -152,7 +156,7 @@ When opening workbooks created by third parties:
 ```python
 from openpyxl import load_workbook
 
-# Read formula text
+# Read formula tex
 wb_formulas = load_workbook("q4_financials.xlsx", data_only=False)
 print("Formula:", wb_formulas["Q4 Financials"]["B9"].value) # Output: =SUM(B5:B8)
 
@@ -168,13 +172,38 @@ print("Cached Value:", wb_values["Q4 Financials"]["B9"].value)
 | Anti-Pattern | Bug / Risk | Correct Practice |
 | :--- | :--- | :--- |
 | Writing numbers formatted as strings: `"$500"` | Breaks Excel mathematical formulas (`#VALUE!`) | Store raw number `500`, set `number_format = "$#,##0"` |
-| Lowercase formula names: `=sum(a1:a5)` | Compatibility errors in non-English Excel versions | Always use uppercase: `=SUM(A1:A5)` |
+| Lowercase or localized formula names: `=sum(a1:a5)`, `=SOMME(...)` | Stored text is not guaranteed to parse; localized names fail in the file format | Write English, uppercase function names with comma argument separators: `=SUM(A1:A5)` |
+| Writing untrusted strings that start with `=`, `+`, `-`, `@` | openpyxl stores a string beginning with `=` as a formula (formula injection); exported CSV is risky too | Force text: `cell.value = text; cell.data_type = "s"`, or validate/escape input |
+| Load, edit, save a workbook with charts, images, or pivots | openpyxl does not preserve everything (charts, pivots, some shapes and conditional-format features can be lost) | Test on a copy, diff visually, or edit the XML/use a different tool |
+| `load_workbook(data_only=True)` then `save()` | Formulas are replaced by cached values permanently | Keep a separate formulas workbook; never save a data_only copy over the source |
+| Opening `.xlsm` without `keep_vba=True` then saving | Macros dropped | `load_workbook(path, keep_vba=True)` and save as `.xlsm`; never run macros |
+| Floating-point money in cells | Rounding surprises (Excel keeps about 15 significant digits) | Store cents as integers or use `ROUND` in formulas |
+| Dates as strings | Sorting and arithmetic break | Write `datetime.date`/`datetime` objects and set `number_format` |
 | Overwriting open workbooks | File lock crash on Windows (`PermissionError`) | Save to new file or ensure workbook is closed |
 | Relying on `data_only=True` for newly created files | Returns `None` because openpyxl has no calculation engine | Open in Excel/LibreOffice to calculate caches |
 
 ---
 
-## 4. Verification Checklist
+## 4. Large Files, Recalculation, and Untrusted Workbooks
+
+- **Large files**: `load_workbook(path, read_only=True)` streams rows (close the workbook; no random cell access, formatting limited). `Workbook(write_only=True)` plus `ws.append(row)` writes with low memory but cannot revisit cells. Both fit exports of tens of thousands of rows or more.
+- **Recalculation**: openpyxl never computes formulas, so a script-written workbook has no cached values until a spreadsheet engine opens and saves it. If a downstream reader needs values, recalculate with LibreOffice headless (for example `soffice --headless --convert-to xlsx --outdir out_dir in.xlsx`) and inspect `data_only=True` output; or compute values in Python and write them as numbers when formulas are not required. Verify results independently, because engine differences exist.
+- **Error values**: after recalculation, scan for `#REF!`, `#NAME?`, `#DIV/0!`, `#VALUE!`, `#N/A` in cached values.
+- **Untrusted workbooks**: `.xlsx` is a ZIP of XML. Cap size, avoid external links (`xl/externalLinks`) and data connections, never enable macros (`.xlsm`), and consider installing `defusedxml` so openpyxl parses XML defensively. openpyxl does not execute formulas or macros, but Excel will when a person opens the file.
+- **Sharing**: remove hidden sheets, comments, and personal properties (`wb.properties`) you do not intend to disclose.
+
+## 5. Troubleshooting
+
+| Symptom | Cause | Action |
+| :--- | :--- | :--- |
+| Cell shows formula text instead of result | Cell stored as text, or number format `@` | Remove text format; ensure value starts with `=` and is not forced to string |
+| `#NAME?` in Excel | Misspelled or non-English function name, or a function the app lacks | Use English names; avoid newer functions if recipients use older Excel |
+| `data_only=True` returns `None` | No cached value (never calculated) | Recalculate via a spreadsheet engine |
+| `InvalidFileException` | Wrong extension or format | Use `.xlsx`/`.xlsm`/`.xltx`; convert `.xls` first |
+| Memory blow-up | Full load of a huge file | Use `read_only=True` / `write_only=True` |
+| Column shows `####` | Column too narrow for number or date | Increase width or shorten format |
+
+## 6. Verification Checklis
 
 - [ ] All numeric and financial cells contain raw numeric types (not pre-formatted strings).
 - [ ] Number formats explicitly set (`$#,##0`, `0.0%`, `YYYY-MM-DD`).
