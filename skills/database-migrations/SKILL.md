@@ -48,7 +48,7 @@ From the manual (PG 18 ALTER TABLE page): unless stated, `ALTER TABLE` takes `AC
 - `ALTER COLUMN TYPE`: normally rewrites table and indexes and may need up to double the disk space; no rewrite only for binary-coercible changes without `USING` (the manual's example is `text` to `varchar`; narrowing a length limit still scans). Run `ANALYZE` afterwards. Rewriting forms are not MVCC-safe for old snapshots.
 - `ADD CONSTRAINT ... NOT VALID` (CHECK): takes `ACCESS EXCLUSIVE` briefly but skips the scan. `ADD FOREIGN KEY ... NOT VALID`: `SHARE ROW EXCLUSIVE` on both tables. `VALIDATE CONSTRAINT`: `SHARE UPDATE EXCLUSIVE` (plus `ROW SHARE` on the referenced table for FKs), so reads and writes continue while it scans.
 - `SET NOT NULL` scans the table unless a valid `CHECK (col IS NOT NULL)` exists; use the check-then-set trick (below). PG 18 also accepts `NOT NULL ... NOT VALID`.
-- `CREATE INDEX` (non-concurrent): `SHARE` lock, blocks writes. `CREATE INDEX CONCURRENTLY`: does not block writes; two table scans; cannot run inside a transaction block; one concurrent build per table; unsupported directly on partitioned tables (build per partition, then create the parent index, which is metadata-only). On failure it leaves an `INVALID` index that still costs writes: drop it and retry, or `REINDEX INDEX CONCURRENTLY`.
+- `CREATE INDEX` (non-concurrent): `SHARE` lock, blocks writes. `CREATE INDEX CONCURRENTLY`: does not block writes; two table scans; cannot run inside a transaction block; one concurrent build per table; unsupported directly on partitioned tables. Recipe: `CREATE INDEX parent_idx ON ONLY parent (col);` (creates an invalid parent index, no build), then `CREATE INDEX CONCURRENTLY part_idx ON part1 (col);` on each partition, then `ALTER INDEX parent_idx ATTACH PARTITION part_idx;` for each; the parent index becomes valid once every partition has one attached. On failure it leaves an `INVALID` index that still costs writes: drop it and retry, or `REINDEX INDEX CONCURRENTLY`.
 - `DETACH PARTITION ... CONCURRENTLY`: two transactions, cannot run in a transaction block, not allowed with a default partition; finish an interrupted one with `FINALIZE`.
 - `DROP COLUMN` is fast (marks dropped) but takes `ACCESS EXCLUSIVE` and breaks any reader still selecting it.
 - `NOT ENFORCED` constraints (PG 18) skip verification and cannot be validated; do not use as a substitute for a real constraint.
@@ -65,18 +65,24 @@ Full table, with MySQL notes: [references/lock-cheatsheet.md](references/lock-ch
 Rename example: add `full_name`, dual-write, backfill, switch reads, later drop `name`. A direct `RENAME COLUMN` is only safe when no running code version references the old name.
 
 ### 4. Write the migration defensively (PostgreSQL)
+Most migration tools wrap each file in one transaction, and locks are held until commit. If `ADD CONSTRAINT ... NOT VALID` and `VALIDATE CONSTRAINT` run in the same transaction, the brief `ACCESS EXCLUSIVE` lock from the first statement is still held during the scan of the second, which defeats the pattern. Put each step in its own transaction (separate migration files, or one file with transaction wrapping disabled and autocommit between statements).
 ```sql
--- 20261015_add_orders_status_check.sql  (illustrative)
+-- File 1: 20261015_01_add_orders_status_check.sql  (illustrative)
 SET lock_timeout = '3s';          -- fail fast rather than queue
-SET statement_timeout = '15min';  -- bound validation/scan time deliberately
-
--- Step A: brief lock, no scan
+-- Brief ACCESS EXCLUSIVE, no scan; commits immediately
 ALTER TABLE orders ADD CONSTRAINT orders_status_nn CHECK (status IS NOT NULL) NOT VALID;
--- Step B: scan under SHARE UPDATE EXCLUSIVE; writes continue
+
+-- File 2: 20261015_02_validate_orders_status_check.sql
+SET lock_timeout = '3s';
+SET statement_timeout = '15min';  -- bound the scan deliberately
+-- Scan under SHARE UPDATE EXCLUSIVE; writes continue
 ALTER TABLE orders VALIDATE CONSTRAINT orders_status_nn;
--- Step C: no full scan because a valid CHECK proves it
+
+-- File 3: 20261015_03_orders_status_set_not_null.sql
+SET lock_timeout = '3s';
+-- ACCESS EXCLUSIVE but no full scan, because the valid CHECK proves it
 ALTER TABLE orders ALTER COLUMN status SET NOT NULL;
--- optional cleanup of the redundant CHECK afterwards
+-- optional cleanup of the redundant CHECK (same file is fine)
 ALTER TABLE orders DROP CONSTRAINT orders_status_nn;
 ```
 Index in its own file/transaction-free migration (many tools need a flag to disable the wrapping transaction, for example `-- +goose NO TRANSACTION`, Flyway `executeInTransaction=false`, Alembic `autocommit_block()`; check your tool's current docs):
@@ -94,10 +100,12 @@ Requirements: idempotent, resumable, bounded batch size, sleeps/throttles on rep
 -- repeat until 0 rows updated; run from a job, not one giant statement
 UPDATE orders SET status_v2 = status
 WHERE id IN (
-  SELECT id FROM orders WHERE status_v2 IS NULL ORDER BY id LIMIT 5000 FOR UPDATE SKIP LOCKED
+  SELECT id FROM orders
+  WHERE status_v2 IS NULL AND status IS NOT NULL   -- rows with a NULL source never match, so the loop can end
+  ORDER BY id LIMIT 5000 FOR UPDATE SKIP LOCKED
 );
 ```
-Notes: one massive UPDATE bloats the table (dead tuples, needs vacuum), holds locks, and can lag replicas. Keep the predicate (`status_v2 IS NULL`) indexed or iterate by primary-key ranges. Autovacuum may need tuning for the duration. Verify with counts and checksums before switching reads.
+Notes: one massive UPDATE bloats the table (dead tuples, needs vacuum), holds locks, and can lag replicas. Keep the predicate (`status_v2 IS NULL`) indexed or iterate by primary-key ranges. Without the `status IS NOT NULL` guard, rows whose source is NULL would be selected forever (the update leaves `status_v2` NULL), so the loop would never reach 0 rows. Autovacuum may need tuning for the duration. Verify with counts and checksums before switching reads.
 
 ### 6. Plan rollback honestly
 - Additive changes: rollback is dropping them (still safe only before code depends on them).
@@ -117,7 +125,7 @@ Notes: one massive UPDATE bloats the table (dead tuples, needs vacuum), holds lo
 3. Backfill in 5,000-row batches by id range; log progress.
 4. Detect conflicts before the unique index: `SELECT email_norm, count(*) FROM users GROUP BY 1 HAVING count(*) > 1;` Resolve duplicates with the product owner (merging users is a data decision, not a migration decision).
 5. `CREATE UNIQUE INDEX CONCURRENTLY users_email_norm_key ON users (email_norm);` (a uniqueness violation makes the build fail and leave an INVALID index: drop and retry after fixing data).
-6. Add the NOT NULL via CHECK NOT VALID, VALIDATE, SET NOT NULL.
+6. Add the NOT NULL via CHECK NOT VALID, VALIDATE, SET NOT NULL, each in its own transaction (separate files; see step 4 of the workflow).
 7. Switch lookups to `email_norm`. Later release: drop old index/column if superseded.
 
 ## Anti-patterns
@@ -138,7 +146,7 @@ Notes: one massive UPDATE bloats the table (dead tuples, needs vacuum), holds lo
 - [ ] `lock_timeout` set (PostgreSQL) and retry plan documented
 - [ ] Old and new application versions both work at every intermediate state
 - [ ] Index builds concurrent, outside transaction wrappers, validity checked afterwards
-- [ ] Constraints added NOT VALID then validated, or justified otherwise
+- [ ] Constraints added NOT VALID then validated, with ADD, VALIDATE and SET NOT NULL in separate transactions, or justified otherwise
 - [ ] Backfill batched, idempotent, resumable, throttled, verified
 - [ ] Destructive steps deferred to a later release with backup/restore noted
 - [ ] Tested from scratch and on production-shaped data; timings recorded

@@ -13,6 +13,8 @@ At k=3:
 - MRR: q1 = 1/2 (d1 at rank 2); q2 = 1; macro = 0.75.
 - nDCG@3 (linear gain): q1 DCG = 1/log2(3) = 0.6309; ideal order gains [2, 1] gives 2/log2(2) + 1/log2(3) = 2.6309; nDCG = 0.2398. q2 = 1. Macro = 0.6199.
 
+Duplicate case (run as its own file): relevant = [a, b]; retrieved = [a, a, b]; at k=3 recall = 1.0 and precision = 2/3 = 0.6667 (the repeated `a` counts once; a naive count would give 1.0).
+
 Run: `python3 -I scripts/retrieval_metrics.py runs.jsonl --k 1 3`.
 
 ## Variants to state explicitly

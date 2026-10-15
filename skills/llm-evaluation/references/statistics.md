@@ -13,7 +13,7 @@ For n independent items with observed rate p, the normal approximation half-widt
 ## Comparing two systems on the same items
 - Use the **paired** structure. Unpaired comparisons waste power because item difficulty varies far more than system quality.
 - Binary outcomes: McNemar's test on the discordant pairs (b = A right/B wrong, c = A wrong/B right). Only discordant pairs carry information; if b + c is small, you cannot resolve a difference.
-- Continuous or ordinal scores: paired bootstrap (bundled script) or a paired permutation / sign-flip test.
+- Continuous or ordinal scores: paired bootstrap (bundled script; its `frac_resamples_b_gt_a` output is not a p-value, use the CI) or a paired permutation / sign-flip test.
 - Report the effect size with its interval, not just a p-value.
 
 ## Stochastic systems

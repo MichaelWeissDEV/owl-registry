@@ -5,9 +5,13 @@ Usage:
   python3 -I audit_jsonl.py DATA.jsonl --text-field text [--label-field label]
       [--require id,text,label] [--compare OTHER.jsonl]
 
-Reports: parse errors, missing/empty required fields, exact duplicates after
+Reports: unparseable_or_non_object lines (invalid JSON, or valid JSON that is not
+an object), missing/empty required fields, exact duplicates after
 normalisation (lowercase, collapsed whitespace), label distribution, text length
 outliers, and exact-duplicate overlap with a second file (e.g. train vs test).
+--compare row numbers refer to the PRIMARY file (the rows that also appear in OTHER).
+The length-outlier check flags |len - mean| > 4 population sd. With n rows the largest
+possible z-score is sqrt(n - 1), so this check can never fire for n <= 17.
 It never modifies files and prints counts and row numbers, not full texts.
 """
 import argparse
@@ -54,8 +58,12 @@ def main(argv=None):
     ap.add_argument("--compare")
     a = ap.parse_args(argv)
 
-    rows, errors = load(a.path)
-    print(f"rows={len(rows)} parse_errors={len(errors)} first_error_lines={errors[:5]}")
+    try:
+        rows, errors = load(a.path)
+    except OSError as e:
+        print(f"error: cannot read {a.path}: {e.strerror}", file=sys.stderr)
+        return 2
+    print(f"rows={len(rows)} unparseable_or_non_object={len(errors)} first_error_lines={errors[:5]}")
 
     required = [f for f in a.require.split(",") if f] or [a.text_field]
     for f in required:
@@ -90,14 +98,19 @@ def main(argv=None):
                     if isinstance(o.get(a.text_field), str)
                     and sd > 0 and abs(len(o[a.text_field]) - mean) > 4 * sd]
         print(f"text length mean={mean:.1f} sd={sd:.1f} min={min(lengths)} max={max(lengths)} "
-              f"outliers_4sd={len(outliers)} first_rows={outliers[:5]}")
+              f"outliers_4sd={len(outliers)} first_rows={outliers[:5]}"
+              + (" (4sd check cannot fire for n<=17)" if len(lengths) <= 17 else ""))
 
     if a.compare:
-        other, other_err = load(a.compare)
+        try:
+            other, other_err = load(a.compare)
+        except OSError as e:
+            print(f"error: cannot read {a.compare}: {e.strerror}", file=sys.stderr)
+            return 2
         other_hashes = {digest(o[a.text_field]) for _, o in other
                         if isinstance(o.get(a.text_field), str) and o[a.text_field].strip()}
         leaked = sorted({n for h, ns in seen.items() if h in other_hashes for n in ns})
-        print(f"compare parse_errors={len(other_err)} exact_overlap_rows={len(leaked)} first_rows={leaked[:5]}")
+        print(f"compare unparseable_or_non_object={len(other_err)} exact_overlap_rows={len(leaked)} first_rows={leaked[:5]}")
     return 0
 
 

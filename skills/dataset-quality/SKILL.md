@@ -42,7 +42,7 @@ Bundled stdlib script for JSONL (read-only):
 python3 -I scripts/audit_jsonl.py train.jsonl --text-field text --label-field label \
         --require id,text,label --compare test.jsonl
 ```
-It reports parse errors, missing fields, exact duplicates after case/whitespace normalisation, label distribution, identical texts with conflicting labels, length outliers, and exact overlap with another file. See [scripts/audit_jsonl.py](scripts/audit_jsonl.py).
+It reports unparseable or non-object lines (`unparseable_or_non_object`), missing fields, exact duplicates after case/whitespace normalisation, label distribution, identical texts with conflicting labels, length outliers (4 sd rule; it cannot fire for 17 or fewer rows), and exact overlap with another file; `--compare` row numbers refer to the primary file. See [scripts/audit_jsonl.py](scripts/audit_jsonl.py).
 
 Equivalent with Hugging Face `datasets` (5.x):
 ```python
@@ -93,7 +93,7 @@ Write a dataset card: purpose, sources and licences, collection and filtering st
 
 Task: a support-ticket classifier shows 99% test accuracy.
 
-1. `audit_jsonl.py train.jsonl ... --compare test.jsonl` reports `exact_overlap_rows=412` of 3,000 test rows and `identical texts with conflicting labels=37`.
+1. `audit_jsonl.py train.jsonl ... --compare test.jsonl` reports `exact_overlap_rows=412` (counted in the primary train file: 412 train rows also appear in test) and `identical texts with conflicting labels=37`.
 2. Decision: remove overlapping rows from **train** (test is the frozen artefact), log row ids, rebuild a deduplicated train set, re-train/re-evaluate. Accuracy drops to 91%, which is the credible number.
 3. The 37 conflicts go to a reviewer with the labelling guideline; resolved labels are written to a new file version.
 4. Remaining check: tickets from the same customer span both splits; re-split by `customer_id` and report the grouped result (88%) as the headline.
@@ -113,7 +113,7 @@ Task: a support-ticket classifier shows 99% test accuracy.
 ## Verification checklist
 
 - [ ] Source untouched; cleaned output versioned; removal log kept
-- [ ] Structure checks run with counts; parse errors explained
+- [ ] Structure checks run with counts; unparseable/non-object lines explained
 - [ ] Exact and (if relevant) near duplicates handled within and across splits
 - [ ] Conflicting labels and class balance reported; annotation quality measured where humans labelled
 - [ ] Leakage paths considered (duplicate, temporal, group, feature, benchmark)

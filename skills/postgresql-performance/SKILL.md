@@ -61,7 +61,7 @@ Column names above are PostgreSQL 13+ (`total_time` became `total_exec_time` in 
 EXPLAIN (ANALYZE, BUFFERS, SETTINGS) SELECT ...;           -- PG 12+ for SETTINGS
 EXPLAIN (ANALYZE, BUFFERS, WAL, VERBOSE) ...;              -- WAL: PG 13+, for writes
 EXPLAIN (ANALYZE, SERIALIZE) SELECT ...;                   -- PG 17+: includes result conversion/transfer cost
-EXPLAIN (ANALYZE, MEMORY) ...;                             -- PG 18+: planner memory
+EXPLAIN (ANALYZE, MEMORY) ...;                             -- PG 17+: planner memory
 EXPLAIN (GENERIC_PLAN) SELECT * FROM t WHERE id = $1;      -- PG 16+: parameterised plan, no ANALYZE
 ```
 Version notes (checked against the PostgreSQL 18 manual): in PG 18 `BUFFERS` is included automatically with `ANALYZE` (use `BUFFERS OFF` to suppress); on 17 and earlier you must ask for it. `SERIALIZE`, `WAL` and `TIMING` require `ANALYZE`; `GENERIC_PLAN` cannot be combined with `ANALYZE`. Use `FORMAT JSON` only for tools; text is easier to read.

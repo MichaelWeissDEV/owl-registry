@@ -30,7 +30,8 @@ def recall_at_k(grades, retrieved, k):
 
 
 def precision_at_k(grades, retrieved, k):
-    return len([d for d in retrieved[:k] if d in grades]) / k
+    # distinct relevant ids in the top k (duplicates count once), divided by k
+    return len({d for d in retrieved[:k] if d in grades}) / k
 
 
 def hit_at_k(grades, retrieved, k):

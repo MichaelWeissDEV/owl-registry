@@ -6,10 +6,10 @@ Confirm flag and variable names against the installed version (`ollama --help`, 
 |---|---|---|
 | Very slow generation, CPU busy | Model not (fully) offloaded to GPU | `ollama ps` PROCESSOR column; llama.cpp `-ngl` / startup log of offloaded layers; smaller quant or context |
 | Slow first response on long prompt | Prompt processing is compute-bound | Reduce context/prompt, enable flash attention, cache prompt prefixes where the server supports it |
-| Out of memory on load or on long chats | Weights + KV cache exceed memory | Lower `num_ctx`/`-c`, lower `-np` / `OLLAMA_NUM_PARALLEL`, `OLLAMA_KV_CACHE_TYPE=q8_0` or `-ctk q8_0`, smaller quant |
+| Out of memory on load or on long chats | Weights + KV cache exceed memory | Lower `num_ctx`/`-c`, lower `-np` / `OLLAMA_NUM_PARALLEL`, `OLLAMA_KV_CACHE_TYPE=q8_0` (needs `OLLAMA_FLASH_ATTENTION=1`) or `-ctk q8_0`, smaller quant |
 | Model ignores start of a long document | Context shorter than the prompt (Ollama default 4096 per FAQ) | Raise `OLLAMA_CONTEXT_LENGTH` or request `options.num_ctx`; verify the model supports that length |
 | Gibberish or role-confused output | Wrong chat template or a base (non-instruct) model | `ollama show <model> --template`; llama.cpp `--jinja` / `--chat-template-file`; use an instruct variant |
-| Tool calling not working in llama-server | `--jinja` off, or template lacks tool support | Enable `--jinja`; supply a tool-capable template per the server README |
+| Tool calling not working in llama-server | `--jinja` off (default-on on current master; older builds need the flag) or template lacks tool support | Pass `--jinja` explicitly on older builds; supply a tool-capable template per the server README |
 | `/v1/embeddings` errors in llama-server | Server not run with an embedding model/pooling | Use `--embedding` with an embedding model and pooling type other than none |
 | Connection refused | Server not running, wrong port (llama.cpp default port differs between builds) | Pass `--port` explicitly; `curl http://127.0.0.1:<port>/health` (llama-server) or `/api/version` (Ollama) |
 | Reachable from other machines unexpectedly | Bound to 0.0.0.0 | Rebind to 127.0.0.1, add firewall rules and authentication |

@@ -63,7 +63,7 @@ An evaluation answers a decision question: "Is B better than A for **our** task,
 Record: model id and version/date, prompt template hash, decoding params (temperature, top_p, max tokens, seed if supported), dataset version, tool/harness versions, commands. Remember that hosted models change silently and sampling is stochastic: run multiple samples per item when temperature > 0 and report variance. Cache outputs to separate generation from scoring so scoring can be rerun.
 
 ### 6. Analyse
-- Paired comparison on the same items. Bundled helper: `python3 -I scripts/paired_bootstrap.py scores.jsonl` gives the mean difference and a 95% bootstrap CI (items resampled jointly). See [references/statistics.md](references/statistics.md) for when to prefer McNemar or a permutation test and for multiple-comparison warnings.
+- Paired comparison on the same items. Bundled helper: `python3 -I scripts/paired_bootstrap.py scores.jsonl` gives the mean difference and a 95% bootstrap CI (items resampled jointly); it also prints `frac_resamples_b_gt_a`, which is not a p-value (ties count as not better), so report the CI. Runtime is O(iters x n) in pure Python; lower `--iters` for very large sets. See [references/statistics.md](references/statistics.md) for when to prefer McNemar or a permutation test and for multiple-comparison warnings.
 - Slice by category, difficulty, length and language. An overall gain can hide a regression on a critical slice.
 - Read the failures. Metrics tell you how many; failure reading tells you why. Sample 20-50 losses of the new system.
 - Check cost and latency alongside quality.
@@ -93,7 +93,7 @@ Hugging Face `evaluate` (0.4.6, last release 2025-09) offers metric wrappers; it
 
 1. Criterion (written first): helpfulness rating pass-rate must improve by at least 3 points with the 95% CI above 0; JSON schema validity must stay at 100%.
 2. Set: 300 tickets sampled from last quarter's traffic, redacted, deduplicated; 100 held back as frozen test. Reference summaries not available, so score by rubric (accuracy of key facts, omissions, tone; each 0/1) plus programmatic JSON validity.
-3. Judge calibration: two humans label 60 outputs; the judge agrees with the human majority on 52 of 60 (87%); disagreements concentrate on "tone", so tone is scored by humans on a 50-item sample only.
+3. Judge calibration: two humans label 60 outputs and disagreements are adjudicated into one label; the judge agrees with the adjudicated label on 52 of 60 (87%); disagreements concentrate on "tone", so tone is scored by humans on a 50-item sample only.
 4. Run both prompts on the same 200 dev tickets with temperature 0 and a recorded model version; store outputs.
 5. Paired bootstrap on the "key facts" pass flags: diff +0.045, CI [0.005, 0.085]. Schema validity 100% for both. Slice check: no regression on long tickets (n=40, CI wide - reported as inconclusive).
 6. Frozen test run once with the chosen prompt: confirms. Decision: ship B; keep the 200-item set as a CI regression with a floor per slice.

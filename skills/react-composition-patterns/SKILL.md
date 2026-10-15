@@ -125,9 +125,15 @@ Disclosure.Panel = DisclosurePanel;
 Accept `value` + `onChange` (controlled) or `defaultValue` (uncontrolled). Decide the mode once at mount; warn in development if it flips.
 
 ```tsx
+// needs: import { useRef, useState } from "react"
 function useControllable<T>(value: T | undefined, defaultValue: T, onChange?: (v: T) => void) {
   const [inner, setInner] = useState(defaultValue);
   const controlled = value !== undefined;
+  const wasControlled = useRef(controlled);
+  if (process.env.NODE_ENV !== "production" && wasControlled.current !== controlled) {
+    console.warn("Component switched between controlled and uncontrolled; decide once at mount.");
+    wasControlled.current = controlled; // warn once per flip
+  }
   const current = controlled ? value : inner;
   const set = (next: T) => {
     if (!controlled) setInner(next);

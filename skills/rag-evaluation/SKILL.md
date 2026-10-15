@@ -44,11 +44,11 @@ Compute per query, then macro-average (queries with no relevant document are exc
 | Metric | Definition (k = cutoff) | Reads as |
 |---|---|---|
 | Recall@k | relevant docs in top k / all relevant docs | Did we get what is needed into the context? Primary for RAG, since the generator can ignore extras but cannot invent missing evidence |
-| Precision@k | relevant in top k / k | Noise in the context |
+| Precision@k | distinct relevant in top k / k | Noise in the context |
 | Hit rate@k | 1 if any relevant in top k | Coarse success |
 | MRR | mean of 1/rank of the first relevant doc | How early the first good hit appears |
 | nDCG@k | DCG@k / ideal DCG@k with DCG = sum rel_i / log2(i+1) | Graded relevance and rank order; bounded 0..1 |
-| MAP | mean over queries of average precision | Whole-ranking quality for multi-relevant queries |
+| MAP | mean over queries of average precision | Whole-ranking quality for multi-relevant queries (not in bundled script) |
 
 nDCG has gain-formula variants (linear rel_i versus 2^rel_i - 1); state which one, since scores differ between libraries. The bundled script uses linear gain with log2(i+1) discounts and 1-based positions. For RAG choose k to match what you will actually pass to the generator (context budget), and also report recall at the retrieval stage before reranking to locate the loss.
 

@@ -4,7 +4,11 @@
 Input: JSONL with {"id": ..., "a": 0/1 or float score, "b": 0/1 or float score}.
 Usage: python3 -I paired_bootstrap.py scores.jsonl [--iters 10000] [--seed 0]
 Prints mean(a), mean(b), mean difference (b - a), a 95% percentile bootstrap CI
-of the difference, and the share of resamples where b > a.
+of the difference, and frac_resamples_b_gt_a: the fraction of resamples whose mean
+difference is strictly > 0. This is NOT a p-value; resamples with a mean difference
+of exactly 0 (ties) count as not better. Read the CI, not this fraction.
+Cost is O(iters * n) in pure Python: 10,000 iterations on 10,000 items is 10^8
+steps and takes minutes; lower --iters for large n.
 Pairing matters: both systems are scored on identical items, so resample items,
 not scores independently.
 """
@@ -22,13 +26,23 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     diffs, sa, sb = [], 0.0, 0.0
-    with open(a.path, encoding="utf-8") as fh:
-        for line in fh:
-            if line.strip():
-                o = json.loads(line)
-                diffs.append(float(o["b"]) - float(o["a"]))
-                sa += float(o["a"])
-                sb += float(o["b"])
+    try:
+        with open(a.path, encoding="utf-8") as fh:
+            for ln, line in enumerate(fh, 1):
+                if line.strip():
+                    try:
+                        o = json.loads(line)
+                        va, vb = float(o["a"]), float(o["b"])
+                    except (json.JSONDecodeError, KeyError, TypeError, ValueError) as e:
+                        print(f"error: line {ln}: need JSON object with numeric 'a' and 'b' ({type(e).__name__}: {e})",
+                              file=sys.stderr)
+                        return 2
+                    diffs.append(vb - va)
+                    sa += va
+                    sb += vb
+    except OSError as e:
+        print(f"error: cannot read {a.path}: {e.strerror}", file=sys.stderr)
+        return 2
     n = len(diffs)
     if n < 2:
         print("need at least 2 items")
@@ -41,7 +55,7 @@ def main(argv=None):
     lo, hi = means[int(0.025 * a.iters)], means[int(0.975 * a.iters) - 1]
     better = sum(1 for m in means if m > 0) / a.iters
     print(f"n={n} mean_a={sa / n:.4f} mean_b={sb / n:.4f} diff={sum(diffs) / n:.4f} "
-          f"ci95=[{lo:.4f}, {hi:.4f}] p(b>a)={better:.3f}")
+          f"ci95=[{lo:.4f}, {hi:.4f}] frac_resamples_b_gt_a={better:.3f}")
     return 0
 
 

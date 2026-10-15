@@ -3,7 +3,7 @@ name: react-performance
 description: >
   Diagnose and fix React rendering, bundle, and data-loading performance using
   measurement first (React DevTools Profiler, Chrome Performance panel, bundle analysis)
-  and React 19 idioms (React Compiler, Suspense, transitions, use(), Actions). Use when
+  and modern React idioms (Suspense, transitions; React Compiler; and the React 19 features use(), Actions, useActionState, useOptimistic). Use when
   a React UI feels slow, INP/LCP regress, re-renders are excessive, lists lag, bundles
   are large, or someone proposes useMemo/useCallback/React.memo without evidence. Do not
   use for generic JS profiling outside React (use performance-profiling), CSS layout
@@ -91,13 +91,13 @@ function Page() {
 
 **D. Derived data.** Compute during render if cheap. Do not mirror props into state with an effect (`useEffect` + `setState` forces an extra render). If a calculation is measurably expensive and the compiler is not handling it, use `useMemo` with correct deps.
 
-**E. Memoization and React Compiler.** React Compiler is a build-time plugin (`babel-plugin-react-compiler`) that auto-memoizes components and hooks that follow the Rules of React. Adopt incrementally: `compilationMode: 'annotation'` with `"use memo"` per function, or `infer`. Keep components pure. Use `"use no memo"` only as a temporary, commented escape hatch. Keep existing `useMemo`/`useCallback` where they define effect-dependency identity. Use the React Hooks lint rules to find code the compiler will skip, and confirm in React DevTools that components are compiled. Check the installed compiler version and its docs; behavior evolves.
+**E. Memoization and React Compiler.** React Compiler is a build-time plugin (`babel-plugin-react-compiler`) that auto-memoizes components and hooks that follow the Rules of React. Adopt incrementally: `compilationMode: 'annotation'` with `"use memo"` per function, or `infer`. Keep components pure. Use `"use no memo"` only as a temporary, commented escape hatch. Keep existing `useMemo`/`useCallback` where they define effect-dependency identity. Use the React Hooks lint rules to find code the compiler will skip (which compiler-related rules exist depends on the installed `eslint-plugin-react-hooks` version, so check its docs), and confirm in React DevTools that components are compiled. Check the installed compiler version and its docs; behavior evolves.
 
-**F. Data loading waterfalls.** Fetch in parallel at the route/loader level instead of in nested components after render. In React 19, `use(promise)` reads a promise during render and suspends, but the promise must come from a cache or framework: a promise created inside render is unsupported. Prefer your framework's data APIs or a query library with caching. Wrap slow sections in `<Suspense fallback>` so the shell paints first.
+**F. Data loading waterfalls.** Fetch in parallel at the route/loader level instead of in nested components after render. In React 19 (not available in 18), `use(promise)` reads a promise during render and suspends, but the promise must come from a cache or framework: a promise created inside render is unsupported. Prefer your framework's data APIs or a query library with caching. Wrap slow sections in `<Suspense fallback>` so the shell paints first.
 
 **G. Bundle size.** Run a bundle visualizer (Vite: `rollup-plugin-visualizer`; webpack: `webpack-bundle-analyzer`; Next.js: `@next/bundle-analyzer`). Fix in order: remove unused dependencies; import specific modules when tree-shaking fails on barrels; `React.lazy` + `<Suspense>` for routes and rarely used heavy widgets (editors, charts, maps); replace heavy libraries with lighter ones.
 
-**H. Forms and mutations (React 19).** Use Actions with `useActionState` and `useOptimistic` for pending and optimistic UI instead of hand-rolled loading state plus effect chains. Optimistic state reverts automatically when the action fails.
+**H. Forms and mutations (React 19).** Use Actions with `useActionState` (React 19) and `useOptimistic` (React 19) for pending and optimistic UI instead of hand-rolled loading state plus effect chains. Optimistic state reverts automatically when the action fails.
 
 **I. Effects.** Effects that fetch, subscribe, or derive state cause extra renders and races. Remove effects that only transform data; clean up subscriptions and abort fetches with `AbortController`.
 
