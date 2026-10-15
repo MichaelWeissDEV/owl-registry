@@ -37,7 +37,7 @@ Use for PostgreSQL schema, query, index, migration, and RLS decisions. For appli
 
 1. **Read-only first.** Diagnose with `EXPLAIN`, `pg_stat_activity`, and catalog views before changing anything. Never run DDL, `VACUUM FULL`, or `REINDEX` on a production system without the user's explicit approval.
 2. **`EXPLAIN ANALYZE` executes the statement.** For `INSERT/UPDATE/DELETE`, wrap it: `BEGIN; EXPLAIN (ANALYZE, BUFFERS) ...; ROLLBACK;`.
-3. **Know the lock before you run DDL.** Plain `CREATE INDEX` takes a `SHARE` lock: reads continue, writes block until it finishes. `CREATE INDEX CONCURRENTLY` avoids blocking writes but is slower, cannot run inside a transaction block, and can fail leaving an `INVALID` index that you must drop and retry.
+3. **Know the lock before you run DDL.** Plain `CREATE INDEX` takes a `SHARE` lock: reads continue, writes block until it finishes. `CREATE INDEX CONCURRENTLY` (SHARE UPDATE EXCLUSIVE) avoids blocking writes but is slower, cannot run inside a transaction block, and can fail leaving an `INVALID` index that you must drop and retry.
 4. **Always set `lock_timeout` for migrations** (for example `SET lock_timeout = '3s'`) and retry. A DDL statement waiting for a lock queues every later query behind it, so a "fast" migration behind one long transaction becomes an outage.
 5. **Use `JSONB`, not `json` or `text`, when you query inside the document.** Use plain columns for fields you filter or join on constantly.
 6. **Parameterize all queries.** Never build SQL by string concatenation with user data; identifiers need `format('%I')` or an allow-list.
