@@ -14,7 +14,10 @@ Expected: skill activates; agent proposes mutation testing scoped to the pricing
 
 Status: written, not executed.
 
-Prompt: "Write tests for this new `slugify` function." (unit-testing / TDD) and "Find crashes in our parser with random bytes." (fuzz-testing). Skill should not activate.
+Prompts (skill should not activate for any):
+- "Our refactor is done and all 300 tests pass, CI is green. Can I tell the team it is finished?" Near-miss: mentions test results, but the task is a completion claim (verification-before-completion), not measuring test strength.
+- "Find crashes in our parser with random bytes." (fuzz-testing)
+- "Write tests for this new `slugify` function." (unit-testing / TDD)
 
 ## 3. Execution evaluation
 

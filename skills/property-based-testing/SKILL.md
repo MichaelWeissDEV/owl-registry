@@ -92,13 +92,13 @@ For objects with history, use `RuleBasedStateMachine` (Hypothesis) with `@initia
 
 ```python
 # conftest.py
-from hypothesis import settings, HealthCheck
+from hypothesis import settings
 settings.register_profile("ci", max_examples=500, deadline=None, derandomize=True)
 settings.register_profile("dev", max_examples=50)
 settings.load_profile("ci")   # or choose via an env var in your own conftest
 ```
 
-Facts from the Hypothesis docs: `max_examples` defaults to 100; `deadline` defaults to 200 ms; Hypothesis ships a built-in `ci` profile (derandomized, no deadline, no example database, `print_blob=True`) that you can load explicitly, and `.hypothesis/examples` is the local example database. Commit regression `@example`s, not the database directory (add `.hypothesis/` to `.gitignore`). Raise `max_examples` for nightly jobs and keep PR runs small.
+Facts from the Hypothesis docs: `max_examples` defaults to 100; `deadline` defaults to 200 ms; Hypothesis ships a built-in `ci` profile (derandomized, no deadline, no example database, `print_blob=True`, and `HealthCheck.too_slow` suppressed; verified against Hypothesis 6.168.5) that you can load explicitly, and `.hypothesis/examples` is the local example database. Commit regression `@example`s, not the database directory (add `.hypothesis/` to `.gitignore`). Raise `max_examples` for nightly jobs and keep PR runs small.
 
 Rust:
 
@@ -127,7 +127,7 @@ Function: `normalize_path("a//b/../c") -> "a/c"`.
 
 - Asserting properties that are true of any output (`isinstance(result, str)`) and calling it done.
 - Generators so permissive the code under test rejects 99% of inputs early, so deep logic is never reached. Check coverage of the target function.
-- `assume(x != 0)` instead of `st.integers().filter(...)` or better a constrained strategy; both hide a missing precondition. Ask whether the function should reject 0 with a documented error and test that.
+- Using `assume(x != 0)` or `st.integers().filter(lambda x: x != 0)` to dodge a failing input. Both silently discard cases and hide a missing precondition; a strategy that cannot produce the bad value (`st.integers(min_value=1)`) is better. First ask whether the function should reject 0 with a documented error, and if so test that error path explicitly.
 - Re-seeding `random` or using `time.time()` inside a property.
 - Huge `max_examples` as a substitute for a better generator.
 - Treating one green run as proof. Pair with [mutation-testing](../mutation-testing/SKILL.md) to confirm the properties can fail.

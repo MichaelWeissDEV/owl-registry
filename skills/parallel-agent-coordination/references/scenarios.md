@@ -12,9 +12,9 @@ Status: written, not executed.
 
 ## 2. Negative activation
 
-Prompt: "Rename the variable `tmp` to `buffer` in utils.py."
-
-Expected: skill does not activate; single-file trivial change.
+Prompts (skill should not activate for either):
+- "Rename the variable `tmp` to `buffer` in utils.py." (single-file trivial change)
+- "Do these three steps in order: add the column, backfill it, then switch the reader to it." Near-miss: multi-part work, but each step depends on the previous, so it is sequential and parallel agents would conflict or race; the agent should proceed serially (implementation-planning at most).
 
 Status: written, not executed.
 

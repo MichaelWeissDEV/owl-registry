@@ -23,6 +23,8 @@ metadata:
 
 Agent behavior is stochastic and context-dependent, so "I tried it once and it worked" is weak evidence. This skill gives a lightweight, rigorous method: define expected behavior as checkable rubrics, run against a baseline, repeat, and report exactly what was and was not tested.
 
+Scope split with [llm-evaluation](../llm-evaluation/SKILL.md): this skill evaluates agent *process* (did it verify, did it trigger, did it follow the skill) with small hand-built rubric scenarios; `llm-evaluation` covers model/prompt output quality at scale (golden sets, judge calibration, confidence intervals, paired tests). When a decision needs a statistically defensible comparison, hand off to it.
+
 Related skills: [agent-skill-authoring](../agent-skill-authoring/SKILL.md) (writing the skill under test), [verification-before-completion](../verification-before-completion/SKILL.md) (evidence standards), [unit-testing](../unit-testing/SKILL.md) (deterministic code tests), [skill-security-audit](../skill-security-audit/SKILL.md) (safety review of skills). Depth: [rubric patterns](references/rubric-patterns.md), [scenarios](references/scenarios.md), [sources](references/sources.md).
 
 ## When to use
@@ -44,7 +46,7 @@ Related skills: [agent-skill-authoring](../agent-skill-authoring/SKILL.md) (writ
 2. **Define pass/fail before looking at output.** Rubrics written after seeing results bend to fit them.
 3. **Always have a baseline.** Run the same task without the skill (or with the previous version). Improvement is a difference, not an absolute.
 4. **Run in isolation.** Fresh sessions, no leaked context, no files from a previous attempt. State the setup.
-5. **One run is an anecdote.** Repeat where variance matters and report counts ("4 of 5"), not impressions.
+5. **One run is an anecdote.** Repeat where variance matters and report counts ("4 of 5"), not impressions. Be aware that k-of-n at n=5 is weak evidence: 4/5 versus 1/5 looks large but the intervals are wide and overlap-prone, and a single scenario can mislead. Treat small-n counts as a screening signal; for a claim you will act on, increase n or use the paired test in `llm-evaluation`.
 6. **Evaluations are safe by construction.** Use scratch directories and fixtures; no real credentials, production systems, or destructive commands. Do not give the agent real secrets to see if it leaks them; use obvious dummy values.
 7. **Report limits.** State sample size, what the rubric cannot detect, and known confounds.
 
@@ -80,7 +82,7 @@ Score against the rubric, ideally by someone who did not write the skill, or by 
 
 ### 7. Diagnose and iterate
 
-For each failure, locate the cause: description did not trigger, instruction ambiguous, instruction buried, conflicting guidance, or the task exceeded the agent. Change one thing, rerun the affected scenarios plus a few unchanged ones to catch regressions.
+For each failure, locate the cause: description did not trigger, instruction ambiguous, instruction buried, conflicting guidance, or the task exceeded the agent. Change one thing, then rerun the changed scenario, a few unchanged scenarios (to catch regressions), and at least one held-out scenario you did not tune on (different fixture or phrasing), so you do not overfit the instruction to the test prompt.
 
 ### 8. Report honestly
 
@@ -95,7 +97,7 @@ Skill under test: `verification-before-completion`. Behavior: agent reruns tests
 - Rubric (binary): ran tests after final edit; quoted pass and skip counts; mentioned skips as a gap; did not edit test assertions.
 - Runs: 5 baseline, 5 with skill, fresh sessions.
 - Result recorded: baseline 1/5 passed all four items; treatment 4/5. The one treatment failure never mentioned skips.
-- Diagnosis: the skip-reporting instruction was in a paragraph, not in the checklist. Moved it to the report format and reran only that scenario (5/5).
+- Diagnosis: the skip-reporting instruction was in a paragraph, not in the checklist. Moved it to the report format and reran the tuned scenario (5/5), two unchanged scenarios (no regression), and a held-out variant with a different fixture and prompt wording (4/5, not tuned on). Improvement on the tuned fixture alone would not have counted.
 - Limits stated: one fixture, one model, graded by the author; the numbers are illustrative of method, not a benchmark.
 
 (The numbers above are an illustrative example of reporting format, not results of a real run.)

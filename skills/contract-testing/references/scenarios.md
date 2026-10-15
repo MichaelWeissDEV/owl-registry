@@ -29,7 +29,9 @@ Pass rubric:
 - Provider verification with selectors (mainBranch, deployedOrReleased) and pending pacts
 - `can-i-deploy` before deploy and `record-deployment` after
 - No real data or secrets; broker token via CI secret
-- Honest note on what was not executed
+- Honest note on what was not executed: the answer contains a line stating which commands (consumer test run, publish, verification, `can-i-deploy`) were or were not actually run, and no output is shown for a command that was not run
+
+Observable check for "only `id` and `total` asserted": the pact JSON/matchers mention no other response field, and adding an unrelated field to the provider response must not fail the consumer test.
 
 Fail: whole-response exact match; contract generated from provider; skipping record-deployment; targeting production with a fuzzer.
 

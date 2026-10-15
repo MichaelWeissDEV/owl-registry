@@ -45,7 +45,7 @@ Good targets: pure logic with branching (pricing, validation, parsers, state tra
 | Language | Tool | Scoping / speed levers |
 |---|---|---|
 | Python | mutmut (3.x), cosmic-ray | mutmut: set source paths in `[tool.mutmut]` of `pyproject.toml` (or `setup.cfg`), `also_copy` for needed files, `do_not_mutate`; `# pragma: no mutate` per line. Commands include `mutmut run`, `mutmut browse`, `mutmut apply` (check `mutmut --help` for result viewing on your version). cosmic-ray: `cosmic-ray init <config.toml> <session.sqlite>`, then `cosmic-ray exec ...`, report with `cr-report` |
-| Rust | cargo-mutants | `cargo mutants`; `--list` shows mutants without running; `--in-diff changes.diff` mutates only code touched by a diff (generate with `git diff`); `--package`, `--file`, `--regex`; `--shard k/n` splits across CI jobs (all shards need identical args); `--baseline=skip` after a known-good run; `--timeout`. Results in `mutants.out`. Skip code with the `#[mutants::skip]` attribute (add the `mutants` crate) |
+| Rust | cargo-mutants | `cargo mutants`; `--list` shows mutants without running; `--in-diff changes.diff` mutates only code touched by a diff (generate with `git diff`); `--package`, `--file`, `--re` / `--exclude-re` (regex filters on mutant names; run `cargo mutants --help` for your version); `--shard k/n` splits across CI jobs (all shards need identical args); `--baseline=skip` after a known-good run; `--timeout`. Results in `mutants.out`. Skip code with the `#[mutants::skip]` attribute (add the `mutants` crate) |
 | JS/TS | Stryker | `stryker.config.json`: `mutate` globs (or `file:lines` ranges), `testRunner`, `coverageAnalysis` (`perTest` is the default in recent versions), `thresholds` (`high` 80 / `low` 60 / `break` null by default; set `break` to fail the build), `incremental: true` to reuse results, `ignoreStatic`, `concurrency`, `reporters` |
 | Java | PIT (pitest) | Maven: `mvn test-compile org.pitest:pitest-maven:mutationCoverage`; `targetClasses`, `targetTests`, `mutationThreshold` (percent), `withHistory`, `mutators`, `timeoutConstant` (default 4000 ms) and `timeoutFactor` (default 1.25). HTML report in `target/pit-reports/` |
 
@@ -71,7 +71,7 @@ def test_exactly_at_limit_is_allowed():
     assert check_limit(amount=100, limit=100) is True   # boundary pinned
 ```
 
-Rerun only that mutant (mutmut: run for that name; cargo-mutants: `--file`/`--regex`; Stryker: `mutate` line range). Confirm killed, and confirm the new test passes on the original code.
+Rerun only that mutant (mutmut: run for that name; cargo-mutants: `--file` or `--re`; Stryker: `mutate` line range). Confirm killed, and confirm the new test passes on the original code.
 
 ### 5. CI strategy
 
@@ -82,7 +82,7 @@ Rerun only that mutant (mutmut: run for that name; cargo-mutants: `--file`/`--re
 
 ### 6. Report with evidence
 
-Report: tool+version, scope, mutants generated, killed/survived/timeout/no-coverage counts, score = killed (plus timeouts) divided by valid mutants, list of survivors with disposition (killed by new test X, equivalent because Y, deferred). A score alone is not evidence.
+Report: tool+version, scope, mutants generated, killed/survived/timeout/no-coverage counts, score = (killed + timeouts) / (generated minus unviable and minus mutants you have justified as equivalent); timeouts count as detected, no-coverage mutants count as not detected (state this convention, since tools differ), list of survivors with disposition (killed by new test X, equivalent because Y, deferred). A score alone is not evidence.
 
 ## Worked example (Python)
 
@@ -95,7 +95,7 @@ def apply_discount(price: int, pct: int) -> int:
 
 Existing test: `assert apply_discount(200, 50) == 100`. Typical survivors: `pct > 100` to `pct >= 100` (no test at 100), `pct < 0` to `pct <= 0` (no test at 0), error-path message change (no test of exception), `//` to `/` (200*50 is exactly divisible; integer-vs-float result still `==` in Python, so only a type assertion or an indivisible case such as `apply_discount(99, 33)` exposes it).
 
-Add tests at 0, 100, -1, 101 with `pytest.raises(ValueError)`, and `apply_discount(99, 33) == 67` (checking exact integer arithmetic: 99 - 32 = 67). Survivors now killed, except mutating the `ValueError("pct")` message, which is an acceptable equivalent-by-intent unless the message is part of the API; record that.
+Add tests at 0, 100, -1, 101 with `pytest.raises(ValueError)`, and `apply_discount(99, 33) == 67` (checking exact integer arithmetic: 99 - 32 = 67). Survivors now killed, except mutating the `ValueError("pct")` message. That survivor is not equivalent (behavior does change); label it an accepted survivor / unspecified behaviour, unless the message is part of the API, in which case assert it with `match=`. Record the decision either way.
 
 ## Anti-patterns
 

@@ -12,9 +12,9 @@ Status: written, not executed.
 
 ## 2. Negative activation
 
-Prompt: "Write unit tests for my `calculate_tax` function."
+Prompt: "I wrote a new skill description for my agent. Can you write me a better one that is clearer and under 1024 characters?"
 
-Expected: skill does not activate; deterministic code testing applies (unit-testing).
+Expected: skill does not activate for pure authoring (agent-skill-authoring applies); it is a near-miss because it concerns a skill description but asks for no evaluation. A second near-miss: "Write unit tests for my `calculate_tax` function." (unit-testing). If the user then asks "does it trigger correctly?", activation is appropriate.
 
 Status: written, not executed.
 

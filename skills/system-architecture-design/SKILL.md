@@ -51,6 +51,8 @@ This skill equips agents with methods and templates to:
 
 ### Workflow 1: Authoring an Architecture Decision Record (ADR)
 
+This workflow is a quick reference. For full ADR authoring (templates such as MADR, status lifecycle, superseding decisions, what not to record, auditing a decision log), defer to [architecture-decision-records](../architecture-decision-records/SKILL.md).
+
 Use the Michael Nygard ADR format to capture decisions:
 
 ```markdown

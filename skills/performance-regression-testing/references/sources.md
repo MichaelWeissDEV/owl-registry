@@ -7,6 +7,6 @@ Consulted 2026-10-15 (read-only):
 - Criterion.rs CLI options, https://bheisler.github.io/criterion.rs/book/user_guide/command_line_options.html : `--save-baseline`, `--baseline`, `--noplot`. Significance level, noise threshold, sample-size flags were not on the page; the skill defers to `cargo bench -- --help`.
 - GitHub Actions workflow syntax is covered by the sibling skill and cross-platform-testing sources.
 
-Local experiments: pytest-benchmark on a sorted() micro-benchmark showed max about 15x the mean while median and mean agreed closely, used as an illustration of tail outliers.
+Local experiments: pytest-benchmark 5.3.0 save/compare/compare-fail flow was exercised on a micro-benchmark (see SKILL.md section 4).
 
 Provenance: all text is original; no external skill repositories were consulted, so no license decision was needed.

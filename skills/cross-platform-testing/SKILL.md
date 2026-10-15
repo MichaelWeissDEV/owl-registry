@@ -40,7 +40,7 @@ Boundaries: general workflow writing is `ci-github-actions`; supply-chain harden
 |---|---|---|
 | Paths | `/` vs `\`, drive letters, UNC, 260-char legacy limit, case-insensitive default FS on macOS/Windows vs case-sensitive Linux | `pathlib`/`Path`/`path.join`; never string-concatenate; test with names differing only by case; avoid reserved Windows names (`CON`, `NUL`) |
 | Line endings | CRLF checkouts; golden files differ | `.gitattributes` (`* text=auto`, `eol=lf` for fixtures); open files with explicit newline handling; compare normalized text |
-| Encoding | default text encoding varies; console codepage | explicit `encoding="utf-8"`; test non-ASCII filenames and content; NFC vs NFD on macOS |
+| Encoding | default text encoding varies; console codepage | explicit `encoding="utf-8"`; test non-ASCII filenames and content; names may arrive as NFD from some macOS filesystems (HFS+ normalized; APFS preserves bytes), so compare normalized forms |
 | Permissions & symlinks | exec bit and chmod meaningless on Windows; symlinks need privilege on Windows | gate tests by capability, not by OS name where possible |
 | File locking | Windows refuses to delete/rename open files | close handles; retry-aware cleanup; avoid deleting a cwd or open temp file |
 | Processes & shell | `bash` vs `cmd`/PowerShell quoting; `python` vs `python3`; signals unsupported on Windows | spawn with argument lists, `shell=False`; `sys.executable` for Python subprocesses |
@@ -54,7 +54,7 @@ Boundaries: general workflow writing is `ci-github-actions`; supply-chain harden
 
 ### 1. Write the support statement first
 
-Example: "Linux x64 and arm64, macOS (current and previous major, arm64), Windows x64; Python 3.10 to 3.13." Anything beyond is untested. Derive the matrix from this sentence, not from habit.
+Example: "Linux x64 and arm64, macOS (current and previous major, arm64), Windows x64; Python 3.11 to 3.14." Anything beyond is untested. Derive the matrix from this sentence, not from habit.
 
 ### 2. Design the matrix
 
@@ -82,22 +82,23 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, ubuntu-24.04-arm, windows-2025, macos-26]
-        python: ["3.10", "3.13"]
+        python: ["3.11", "3.14"]
         experimental: [false]
         include:
-          - { os: ubuntu-24.04, python: "3.11", experimental: false }
           - { os: ubuntu-24.04, python: "3.12", experimental: false }
-          - { os: ubuntu-24.04, python: "3.14", experimental: true }
+          - { os: ubuntu-24.04, python: "3.13", experimental: false }
+          - { os: ubuntu-24.04, python: "3.15", experimental: true }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4   # pin to a full SHA (or at least the current major) per your policy
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
+          allow-prereleases: ${{ matrix.experimental }}
       - run: python -m pip install -e ".[test]"
       - run: python -m pytest -ra
 ```
 
-Notes grounded in docs: the `include`/`exclude`/`fail-fast`/`continue-on-error: ${{ matrix.experimental }}` pattern is the documented way to run experimental legs without failing the workflow; `actions/setup-python` takes `python-version` (and an `architecture` input defaulting to the host); its README currently shows `@v7`. Pin third-party actions to a full commit SHA if your policy requires it. This YAML was not executed in a real repository; validate it with your CI before relying on it.
+Notes grounded in docs: the `include`/`exclude`/`fail-fast`/`continue-on-error: ${{ matrix.experimental }}` pattern is the documented way to run experimental legs without failing the workflow; `actions/setup-python` takes `python-version` (and an `architecture` input defaulting to the host); its README currently shows `@v7`. Pin third-party actions to a full commit SHA if your policy requires it (the `@v4`/`@v7` tags here are illustrative; use the current major or a SHA, consistently across all workflows). The version list is dated: the supported set moves each October, so re-check python.org release status when editing (here 3.14 gates, 3.15 is the pre-release experimental leg, and 3.10 is end-of-life). This YAML was not executed in a real repository; validate it with your CI before relying on it.
 
 ### 3. Pin runner labels deliberately
 
@@ -115,7 +116,22 @@ def test_roundtrip_unicode_filename(tmp_path: Path):
     assert [x.name for x in sorted(tmp_path.iterdir())] == [p.name]
 ```
 
-Principles: temp dirs from the framework; explicit encodings and newline handling; sorted directory listings; capability-based skips (`pytest.mark.skipif(not hasattr(os, "symlink"), ...)`, or a try/except probe) over OS-name skips; assertions on normalized values (`Path` equality, `os.path.normcase` only when comparing for case-insensitive FS semantics).
+Principles: temp dirs from the framework; explicit encodings and newline handling; sorted directory listings; capability-based skips over OS-name skips (for symlinks, `hasattr(os, "symlink")` is true on Windows even when creation is not permitted, so probe by actually trying, as below); assertions on normalized values (`Path` equality, `os.path.normcase` only when comparing for case-insensitive FS semantics).
+
+```python
+import functools, os, tempfile
+
+@functools.lru_cache(maxsize=None)
+def can_symlink() -> bool:
+    with tempfile.TemporaryDirectory() as d:
+        try:
+            os.symlink(os.path.join(d, "target"), os.path.join(d, "link"))
+            return True
+        except (OSError, NotImplementedError):
+            return False
+
+# @pytest.mark.skipif(not can_symlink(), reason="symlink creation not permitted; see issue #123")
+```
 
 Add targeted tests for each platform-conditional branch in your code: if code says `if sys.platform == "win32"`, a Windows leg must run it. Check with coverage per leg (combine reports) to find platform branches never executed.
 
@@ -137,7 +153,7 @@ Add targeted tests for each platform-conditional branch in your code: if code sa
 
 ## Worked example: "passes on Linux, fails on Windows"
 
-Symptom: `test_export_writes_report` fails on `windows-2025` with `PermissionError` during `tmp_path` cleanup, and a golden-file comparison differs by `\r\n`.
+Symptom: `test_export_writes_report` fails on `windows-2025` with `PermissionError` when the test itself removes its output (an explicit `rmtree`/`unlink` in the test body; pytest does not delete `tmp_path` at teardown, it keeps recent base dirs), and a golden-file comparison differs by `\r\n`.
 
 - Diagnosis 1: the code under test opens the report with `open(path)` and never closes it; Windows cannot delete open files. Fix: use a context manager.
 - Diagnosis 2: the golden file was checked out with CRLF by autocrlf and the code writes with the platform newline. Fix: write explicit `newline="\n"` in the code (a real product decision: stable output across platforms) and add `*.golden text eol=lf` to `.gitattributes`.

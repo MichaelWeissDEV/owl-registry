@@ -54,7 +54,7 @@ Boundaries: finding hotspots and fixing them is `performance-profiling`; CI plum
 
 ### 3. Compare statistically
 
-- Report median, min (best-case, least noisy for CPU-bound code), spread (IQR or stddev), and sample count. Outliers are common (scheduler, GC): examine, don't silently drop. In a local pytest-benchmark run the max was 15x the mean, while median and mean agreed within 2%; only min/median would have told the truth.
+- Report median, min (best-case, least noisy for CPU-bound code), spread (IQR or stddev), and sample count. Outliers are common (scheduler, GC): examine, don't silently drop. The max is a poor statistic (one scheduler hiccup sets it), and mean and median can still agree while the tail is ugly, so look at the spread, not just the center.
 - Prefer a significance test plus an effect-size threshold: change is "real" only if statistically distinguishable *and* larger than a minimum relevant effect (e.g. 5%). Criterion does this: compares to the saved baseline with a significance level and a noise threshold, and reports "regressed/improved/no change"; hyperfine prints mean ± sigma and relative speed between commands; pytest-benchmark compares to saved runs.
 - For A/B decisions, interleave runs (A B A B ...) or run both in the same job; sequential blocks confound with drift (thermal throttling, noisy neighbors).
 - Repeat a suspicious regression 2 to 3 times and on a second machine before blocking a merge.
@@ -79,27 +79,44 @@ Where do baselines live? Best: measure the base commit and the PR commit in the 
 - Output: post a PR comment or job summary table (before, after, % change, samples); store raw JSON as an artifact.
 - Failing policy: warn at ~5%, fail at ~10% (tune to your measured noise: threshold should exceed 2 to 3 times the run-to-run variation of the unchanged code; measure that by benchmarking main against itself 20 times).
 
-Minimal GitHub Actions sketch (same-job A/B for a CLI):
+Minimal GitHub Actions sketch (same-job A/B for a CLI; unexecuted, adapt before use):
 
 ```yaml
+on:
+  pull_request:
+    paths: ["src/**", "Makefile"]
 jobs:
   bench:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4   # pin to a commit SHA per your policy
         with: { fetch-depth: 0 }
+      - name: install hyperfine
+        run: sudo apt-get update && sudo apt-get install -y hyperfine jq
       - name: build base and head
         run: |
           git worktree add ../base ${{ github.event.pull_request.base.sha }}
           (cd ../base && make release && cp target/release/tool /tmp/tool-base)
           make release && cp target/release/tool /tmp/tool-head
-      - name: compare
+      - name: benchmark
         run: hyperfine --warmup 3 --runs 30 --export-json bench.json '/tmp/tool-base data.bin' '/tmp/tool-head data.bin'
+      - name: gate on median ratio
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          r = json.load(open("bench.json"))["results"]
+          base, head = r[0]["median"], r[1]["median"]
+          ratio = head / base
+          print(f"median base={base:.4f}s head={head:.4f}s ratio={ratio:.3f}")
+          if ratio > 1.10:
+              sys.exit(1)
+          PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with: { name: bench, path: bench.json }
 ```
 
-(Illustrative; adapt build commands and pin action versions per your policy; see `github-actions-security`.)
+(Illustrative and not executed here; the hyperfine JSON `median` field is per its export format, but check it against your installed version. Adapt build commands and pin action versions per your policy; see `github-actions-security`.)
 
 ### 6. When a regression is flagged
 
@@ -110,7 +127,7 @@ jobs:
 
 ## Worked example: Python parser
 
-`bench_parse.py` with pytest-benchmark: `def test_parse_1mb(benchmark, sample_1mb): benchmark(parse, sample_1mb)`; fixed seeded `sample_1mb`. On main: `pytest bench_parse.py --benchmark-only --benchmark-save=main`. On the PR branch: `pytest bench_parse.py --benchmark-only --benchmark-compare --benchmark-compare-fail=min:10%`. The `min` statistic is used because the run showed heavy upper-tail outliers. Add a 10 MB variant to detect scaling regressions; if time ratio between 1 MB and 10 MB grows from 10x to 40x, the change introduced super-linear behavior even if the 1 MB number is within noise.
+`bench_parse.py` with pytest-benchmark: `def test_parse_1mb(benchmark, sample_1mb): benchmark(parse, sample_1mb)`; fixed seeded `sample_1mb`. On main: `pytest bench_parse.py --benchmark-only --benchmark-save=main`. On the PR branch: `pytest bench_parse.py --benchmark-only --benchmark-compare --benchmark-compare-fail=median:10%`. Gate on the median (robust to a few outliers, still sensitive to typical-case slowdowns) and, where you can, on a deterministic proxy such as instruction or allocation counts. `min` is less noisy but has a blind spot: a regression that only affects typical or tail runs (extra allocation, cache misses, occasional slow path) can leave the best run unchanged, so treat `min` as advisory, not as the gate. Add a 10 MB variant to detect scaling regressions; if time ratio between 1 MB and 10 MB grows from 10x to 40x, the change introduced super-linear behavior even if the 1 MB number is within noise.
 
 ## Anti-patterns
 

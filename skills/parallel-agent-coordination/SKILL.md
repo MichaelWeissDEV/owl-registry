@@ -10,7 +10,7 @@ description: >
   or worktree command mechanics (see git-branching-worktrees).
 compatibility: >
   Agent runtimes that can launch subagents or multiple sessions. Git worktree
-  examples require git 2.5 or newer.
+  examples require git 2.17 or newer (`git worktree add` exists since 2.5, but `git worktree remove` arrived in 2.17).
 metadata:
   author: michaelweissdev
   version: "1.0.0"

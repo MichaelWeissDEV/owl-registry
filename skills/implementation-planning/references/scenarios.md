@@ -12,9 +12,9 @@ Status: written, not executed.
 
 ## 2. Negative activation
 
-Prompt: "Fix the typo 'recieve' in README.md."
-
-Expected: skill does not activate; the agent makes the one-line edit directly.
+Prompts (skill should not activate for either):
+- "Fix the typo 'recieve' in README.md." (one-line edit, made directly)
+- "Add a `--verbose` flag to `cli.py`; it just sets the log level to DEBUG, the argparse setup is right there." Near-miss: a feature, but small, single-file, with a clear spec and trivially reversible; the agent implements it directly instead of writing a multi-step plan.
 
 Status: written, not executed.
 
@@ -25,7 +25,7 @@ Task: In a small repo with a CLI `report` command, plan (do not implement) addin
 Pass rubric (all required):
 - Opens at least the CLI entry point and existing tests before writing steps.
 - States goal, acceptance criteria, and out-of-scope items.
-- Every step lists files and a verification; at least the schema or format assumption is called out.
+- Every step lists files and a verification; the output schema (JSON shape, field names, behavior for empty results and errors) is explicitly stated as an assumption to confirm, or confirmed from existing code or docs.
 - A refactor-only step precedes the behavior change, or a reason is given for not separating.
 - Names no file or function that does not exist in the repo.
 

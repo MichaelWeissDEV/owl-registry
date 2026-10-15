@@ -30,7 +30,7 @@ Use probes (capability checks) in skip conditions rather than `sys.platform` whe
 
 ## macOS specifics
 
-- Default filesystem is case-insensitive but case-preserving; filenames may be normalized to NFD.
+- Default filesystem is case-insensitive but case-preserving; names may arrive as NFD (HFS+ normalized to NFD; APFS preserves the bytes it is given, but APIs and tools such as older volumes, archives or Finder can still produce NFD), so compare normalized forms.
 - Apple silicon is arm64; Intel legs use `-intel` labels. Universal binaries and Rosetta change which code path runs.
 - Sandbox/privacy prompts can block tests that touch Documents, camera, etc.; keep such tests out of CI.
 

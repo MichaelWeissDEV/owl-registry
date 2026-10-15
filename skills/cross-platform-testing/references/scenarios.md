@@ -20,7 +20,7 @@ Prompt: "Write a GitHub Actions workflow that builds a Docker image and pushes i
 
 Status: written, not executed.
 
-Task: Given a library supporting Python 3.10 to 3.13 on Linux, macOS, Windows, produce a CI matrix and fix a test that hardcodes `"/tmp/out.txt"` and compares CRLF-sensitive output.
+Task: Given a library supporting Python 3.11 to 3.14 on Linux, macOS, Windows, produce a CI matrix and fix a test that hardcodes `"/tmp/out.txt"` and compares CRLF-sensitive output.
 
 Pass rubric:
 - Matrix derived from stated support policy; not a blind full cross-product (or cost justified)

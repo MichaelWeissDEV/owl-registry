@@ -31,7 +31,7 @@ Weak assertion smells: `assert result`, `assert result is not None`, `len(x) > 0
 
 ## Score arithmetic
 
-Score = killed / (generated minus equivalent minus unviable/compile-error). Tools differ on whether timeouts count as killed and how no-coverage mutants are scored: read the tool's definition before comparing numbers across tools or versions.
+Score = (killed + timeouts) / (generated minus unviable/compile-error minus justified-equivalent). This matches SKILL.md section 6: timeouts count as detected and no-coverage mutants count as not detected. Tools differ on both choices: read the tool's definition before comparing numbers across tools or versions.
 
 ## Cost control
 

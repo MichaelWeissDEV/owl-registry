@@ -23,7 +23,7 @@ metadata:
 
 Coverage-guided fuzzing mutates inputs, keeps the ones that reach new code, and watches for crashes, sanitizer reports, hangs, and failed assertions. Quality depends on three things you control: the harness (what is called, with what, how deterministically), the corpus (where the search starts), and the oracle (what counts as a bug).
 
-Boundaries: typed-value properties with shrinking are [property-based-testing](../property-based-testing/SKILL.md); to prove tests catch seeded faults see [mutation-testing](../mutation-testing/SKILL.md); reviewing code for vulnerability classes is `security-code-review`; profiling slow inputs is `performance-profiling`.
+Boundaries: sanitizer selection, combinations and report interpretation are [memory-sanitizers](../memory-sanitizers/SKILL.md); typed-value properties with shrinking are [property-based-testing](../property-based-testing/SKILL.md); to prove tests catch seeded faults see [mutation-testing](../mutation-testing/SKILL.md); reviewing code for vulnerability classes is `security-code-review`; profiling slow inputs is `performance-profiling`.
 
 ## Non-negotiable rules
 
@@ -111,7 +111,7 @@ If a checksum, length field, or magic header rejects 99% of mutations, fuzz *aft
 ### 5. Sanitizers and oracles
 
 Decide the bug oracle explicitly:
-- Memory safety (C/C++): AddressSanitizer, UBSan, optionally MSan (needs fully instrumented deps).
+- Memory safety (C/C++): AddressSanitizer, UBSan, optionally MSan (needs fully instrumented deps). Which sanitizers can be combined and how to read their reports is in [memory-sanitizers](../memory-sanitizers/SKILL.md); this skill only needs them switched on in the fuzz build.
 - Rust: panics, arithmetic overflow in debug-style builds, and `unsafe` code under ASan; `assert!` for logic invariants.
 - Differential: compare two implementations (`parse_a(x)` vs `parse_b(x)`); mismatch is the finding.
 - Round trip: `parse(print(parse(x))) == parse(x)`. This is where fuzzing overlaps property-based testing, with coverage guidance replacing random generation.
