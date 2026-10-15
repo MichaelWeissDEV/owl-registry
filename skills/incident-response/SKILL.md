@@ -86,7 +86,7 @@ Blameless review within days: timeline, root cause, detection gap, what slowed r
 1. Intake: user reports logins for `deploy` from an unfamiliar country at 02:10 UTC. Confirm authorization; ask whether the host is production and whether data theft is suspected.
 2. Preserve: ask the cloud owner to take a volume snapshot and, if available, a memory-inclusive snapshot; export authentication logs and cloud audit logs off-host; hash exports. No login to the host yet.
 3. Hypotheses: (a) stolen key for `deploy`, (b) password guessing success, (c) legitimate VPN egress. Evidence for (c): matches the user's travel or VPN provider IP. Evidence for (a): same key fingerprint used earlier from known IPs. Compare with the exported logs; do not read key files on the host.
-4. Containment options offered: remove that key from `authorized_keys` (narrow, reversible), network-quarantine the host (broader), or leave monitoring in place while collecting. User chooses; the action and time are logged.
+4. Containment options offered: remove that key from `authorized_keys` (narrow, reversible; requires approved host access or the cloud console), network-quarantine the host (broader), or leave monitoring in place while collecting. User chooses; the action and time are logged.
 5. Scope: search estate-wide for the same key fingerprint and source IPs; check for new keys/cron/systemd units on the host from the snapshot mounted read-only elsewhere.
 6. Recover: rebuild or rotate as approved; rotate the exposed key and any credentials available to `deploy`. Review.
 

@@ -28,7 +28,7 @@ Boundaries: everyday branching is `git-workflow` / `git-branching-worktrees`; co
 ## Non-negotiable rules
 
 1. **Read-only first.** `log`, `show`, `reflog`, `cat-file`, `blame`, `rev-list`, `fsck` (without `--lost-found`) change nothing. Use them until you know what happened.
-2. **Preserve before you act on a damaged repo.** If something may be lost, make a byte-level copy of the repository directory (`cp -a` of the `.git` directory or the whole worktree) before any command that can prune: `gc`, `prune`, `reflog expire`, `repack -d`, `clone --mirror` over it. Setting `git config gc.auto 0` in the copy or original prevents an automatic gc from running mid-investigation.
+2. **Preserve before you act on a damaged repo.** If something may be lost, make a byte-level copy of the repository directory (`cp -a` of the `.git` directory or the whole worktree) before any command that can prune: `gc`, `prune`, `reflog expire`, `repack -d`. Setting `git config gc.auto 0` in the copy or original prevents an automatic gc from running mid-investigation.
 3. **Never rewrite or destroy history without explicit user authorization**: `reset --hard`, `clean -fdx`, `push --force`, `filter-repo`, `filter-branch`, `reflog expire --expire=now`, `gc --prune=now`, deleting branches or tags. Describe the effect and the undo path, then wait for a clear yes.
 4. **Recover by creating a ref, not by moving one.** `git branch recovered/<what> <sha>` is non-destructive; `git reset --hard <sha>` on a dirty tree is not.
 5. **Treat history contents as sensitive.** Do not print or paste suspected secrets into chat or tickets; report the commit, path and line, then follow `secrets-management`. Rotation comes before any purge.
@@ -50,7 +50,7 @@ git reflog show <branch>                  # one ref's history
 git for-each-ref --sort=-committerdate    # all refs incl. remotes, tags, stash
 ```
 
-The reflog is **local, per-ref and per-worktree**; it records where refs *pointed*, including before a reset or rebase (`HEAD@{n}`, `<branch>@{2.hours.ago}`). It does not exist in a fresh clone, on a server bare repo (usually), or for another person's machine. Entries expire (see step 5).
+The reflog is **local and per-ref (the HEAD reflog is per-worktree; branch reflogs are shared)**; it records where refs *pointed*, including before a reset or rebase (`HEAD@{n}`, `<branch>@{2.hours.ago}`). It does not exist in a fresh clone, on a server bare repo (usually), or for another person's machine. Entries expire (see step 5).
 
 ### 3. Pick the technique that matches the question
 

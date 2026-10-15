@@ -30,7 +30,7 @@ Effective troubleshooting is driven by evidence, hypothesis testing, and systema
 3. **Check the basics first**: Disk space, inode exhaustion, memory pressure (OOM), permissions, time, DNS, and a recent change are the most common causes; rule them out before exotic hypotheses.
 4. **Preserve crash evidence**: Copy relevant log excerpts, core dumps, or kernel messages before clearing caches or restarting services.
 5. **Never run destructive or state-changing commands blindly**: Avoid `rm -rf`, `reboot`, `kill -9` on unknown processes, `chmod -R`, dropping caches, or editing production config without identifying the target, stating the effect, and getting the user's approval on a production host.
-6. **Diagnose read-only first; escalate privilege only when a command needs it.** Prefer `journalctl`, `ss`, `df`, `/proc` reads. Use `sudo` for a specific command, not a root shell.
+6. **Diagnose read-only first; escalate privilege only when a command needs it.** Prefer `journalctl`, `ss`, `df`, `/proc` reads. Use `sudo` for a specific command, not a root shell; show the exact sudo command and get approval before running it.
 7. **Logs hold secrets and personal data.** Redact tokens, passwords, hostnames, and IPs before pasting output into tickets or chats, and do not `cat` credential files while looking for "the config".
 8. **State the environment.** Record distro, kernel (`uname -r`), whether it is a VM or container, and systemd vs another init before interpreting output; cgroup, OOM, and journald behavior differ.
 

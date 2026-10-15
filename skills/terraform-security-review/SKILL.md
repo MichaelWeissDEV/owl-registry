@@ -82,7 +82,7 @@ Plan scanning sees resolved values and `count`/`for_each` expansions, but Trivy 
 | Lifecycle | `prevent_destroy` missing on stateful resources, `ignore_changes` hiding security drift | Reliability and drift |
 | CI | Pipeline can apply from forks/PRs, long-lived admin keys instead of OIDC, plan output posted publicly | Pipeline compromise |
 
-Sensitive-data features (official docs): `sensitive` (Terraform 0.15+) only masks output; ephemeral values (1.10+) and write-only arguments (1.11+, provider-supported `_wo` attributes) keep values out of state and plan files. Recommending them is valid when the provider supports it; check the provider docs and the Terraform version in use.
+Sensitive-data features (official docs): sensitive variables and outputs (Terraform 0.14+; the `sensitive()` function is 0.15+) only mask output in CLI display, not in state; ephemeral values (1.10+) and write-only arguments (1.11+, provider-supported `_wo` attributes) keep values out of state and plan files. Recommending them is valid when the provider supports it; check the provider docs and the Terraform version in use.
 
 ### 5. Triage each finding
 

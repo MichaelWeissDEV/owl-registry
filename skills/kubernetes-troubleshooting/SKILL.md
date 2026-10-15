@@ -75,7 +75,7 @@ kubectl -n NS get pod POD -o yaml                   # spec + status (beware: may
 | `Running`, not Ready | Readiness probe failing | Event `Unhealthy`, probe config | Wrong port/path, slow start (consider startupProbe), dependency down |
 | Restarts with healthy-looking app | Liveness probe too strict | `Liveness probe failed` events | Aggressive timeouts, GC pauses |
 | `Evicted` | Node pressure | Pod status message, node conditions (`DiskPressure`, `MemoryPressure`) | Node resource exhaustion, ephemeral-storage |
-| Service has no traffic | Selector/endpoint mismatch | `kubectl get endpoints SVC` or EndpointSlices empty | Labels do not match, pods not Ready, wrong `targetPort` |
+| Service has no traffic | Selector/endpoint mismatch | EndpointSlices (`kubectl get endpointslices -l kubernetes.io/service-name=<svc>`) empty; `kubectl get endpoints` is deprecated | Labels do not match, pods not Ready, wrong `targetPort` |
 | In-cluster name resolution fails | DNS | CoreDNS pods/logs, a test lookup from a debug pod | CoreDNS down, NetworkPolicy blocking port 53, search-domain `ndots` effects |
 
 Write the hypothesis as a prediction ("if the service has no endpoints, `get endpoints` is empty and selector labels differ from pod labels"), run the single command that tests it, and discard the hypothesis if the output disagrees.

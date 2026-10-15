@@ -30,7 +30,7 @@ Boundaries: start with `linux-troubleshooting` (load, memory, disk, logs) and `l
 ## Non-negotiable rules
 
 1. **Authorization first.** Loading BPF programs on a host needs privileges and affects a live system. Get the user's explicit go-ahead for each host, especially production. Never use `sudo` implicitly; show the exact command.
-2. **Read-only observation only.** Do not use state-changing facilities: `system()` and `--unsafe`, `signal()`, `override()`/return-value overriding, or `-c` with a command that mutates anything. They are off by default for a reason. Do not attach with `--unsafe` unless the user requested it and understands it relaxes kprobe safety checks.
+2. **Read-only observation only.** Do not use state-changing facilities: `system()`, `signal()`, `override()`/return-value overriding, or `-c` with a command that mutates anything. They are off by default for a reason. Do not attach with `--unsafe` unless the user requested it and understands it relaxes kprobe safety checks and enables state-changing helpers such as `system()` and `signal()`.
 3. **Bound every probe.** Always filter (`/pid == X/`, `/comm == "name"/`, a cgroup) and always bound duration (`interval:s:N { exit(); }` or an outer `timeout`). Unbounded tracing of `sys_enter` on a busy host is the classic way to cause the incident you are chasing.
 4. **Prefer stable probes.** Tracepoints and USDT are stable ABI-like interfaces; kprobes attach to internal functions that can be renamed, inlined or removed between kernel versions. Use kprobes only when no tracepoint answers the question and state that assumption.
 5. **Output is sensitive.** Strings such as file paths, `comm`, command-line arguments and user data may contain secrets or personal data. Aggregate (`count()`, `hist()`) in preference to dumping raw events, and do not paste raw output containing credentials into tickets.
@@ -67,7 +67,7 @@ bpftrace -l 'kprobe:vfs_*' | head
 ### 4. Dry-run, then run bounded
 
 ```bash
-bpftrace --dry-run -e 'tracepoint:syscalls:sys_enter_openat { @[comm] = count(); }'   # parses/attaches without running
+bpftrace --dry-run -e 'tracepoint:syscalls:sys_enter_openat { @[comm] = count(); }'   # check `bpftrace --help` for exact --dry-run semantics
 timeout 30 bpftrace -e 'tracepoint:syscalls:sys_enter_openat { @[comm] = count(); }'
 ```
 
@@ -94,7 +94,7 @@ bpftrace -e 'tracepoint:syscalls:sys_enter_openat { @[comm] = count(); } interva
 
 # read() latency histogram per process name (kprobe: version-fragile), 10 seconds
 bpftrace -e 'kprobe:vfs_read { @start[tid] = nsecs; }
-  kretprobe:vfs_read /@start[tid]/ { @ns[comm] = hist(nsecs - @start[tid]); delete(@start, tid); }
+  kretprobe:vfs_read /@start[tid]/ { @ns[comm] = hist(nsecs - @start[tid]); delete(@start[tid]); }
   interval:s:10 { exit(); }'
 
 # Block I/O size distribution, 10 seconds

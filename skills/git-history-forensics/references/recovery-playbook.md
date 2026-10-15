@@ -10,7 +10,7 @@ Decision tables for common "I lost it" incidents. Every row starts read-only. Co
 | Commits gone after rebase | `git reflog show <branch>`; `ORIG_HEAD` right after the rebase | Branch from the pre-rebase entry; `git range-diff` old vs new | Assuming `ORIG_HEAD` survives (next rebase/merge overwrites it) |
 | Deleted branch (local) | `git reflog` for `checkout: moving from <branch>`; `git fsck --no-reflogs --unreachable` | `git branch <name> <sha>` | `gc --prune=now` |
 | Deleted branch (remote, force-push) | `git reflog show origin/<branch>`; teammates' clones | Push recovered branch under a new name | Force-pushing over what others based work on |
-| Dropped stash | `git fsck --unreachable --no-reflogs` and look for `WIP on` | `git stash apply <sha>` | `stash pop` (drops again on conflict-free apply) |
+| Dropped stash | `git fsck --unreachable --no-reflogs` and look for `WIP on` | `git stash apply <sha>` | `stash pop` (drops the stash entry after a clean apply; use `stash apply` instead) |
 | Merge went wrong, not yet pushed | `git reflog`; `git log --merges -n 3` | `git reset --merge ORIG_HEAD` **(mutates, only if tree clean or user agrees)** | Resetting with uncommitted changes you need |
 | Bad merge already pushed | `git log --first-parent` | `git revert -m 1 <merge>` (new commit, preserves history) | Rewriting shared history |
 | File deleted in some past commit | `git log --diff-filter=D -- <path>` | `git show <sha>^:<path> > recovered_file` | Overwriting an existing file |

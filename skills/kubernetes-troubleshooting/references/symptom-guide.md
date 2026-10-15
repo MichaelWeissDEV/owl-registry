@@ -6,7 +6,7 @@ All commands here are read-only. Always add `-n NAMESPACE` and confirm `kubectl 
 
 1. **Pods Ready?** `kubectl get pods -l app=NAME -o wide`. Not Ready pods are removed from endpoints.
 2. **Selector matches?** Compare `kubectl get svc SVC -o jsonpath='{.spec.selector}'` with `kubectl get pods --show-labels`.
-3. **Endpoints populated?** `kubectl get endpoints SVC` and `kubectl get endpointslices -l kubernetes.io/service-name=SVC`.
+3. **Endpoints populated?** `kubectl get endpointslices -l kubernetes.io/service-name=<svc>` (`kubectl get endpoints` still works but is deprecated).
 4. **Port mapping:** `port` (Service) -> `targetPort` (container port or name). A mismatch yields connection refused.
 5. **DNS:** from a debug pod (approved), resolve `SVC.NS.svc.cluster.local`. Check `kubectl -n kube-system get pods -l k8s-app=kube-dns` and CoreDNS logs.
 6. **NetworkPolicy:** `kubectl get networkpolicy`; policies are additive allow rules per selected pod; a pod selected by any ingress policy denies unlisted traffic. Egress policies must also allow DNS (UDP/TCP 53).

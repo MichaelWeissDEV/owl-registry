@@ -75,7 +75,7 @@ cc -g -O1 -fno-omit-frame-pointer -fsanitize=address,undefined \
 
 ### 3. Run and read the report
 
-Runtime options are environment variables: `ASAN_OPTIONS`, `UBSAN_OPTIONS`, `LSAN_OPTIONS`, `TSAN_OPTIONS`, `MSAN_OPTIONS`. The Clang docs state ASan parses LSan/UBSan options from their own variables, not `ASAN_OPTIONS`. Useful: `UBSAN_OPTIONS=print_stacktrace=1`, `ASAN_OPTIONS=detect_stack_use_after_return=1` (already default on Linux with runtime mode), `help=1` to list flags for your runtime version.
+Runtime options are environment variables: `ASAN_OPTIONS`, `UBSAN_OPTIONS`, `LSAN_OPTIONS`, `TSAN_OPTIONS`, `MSAN_OPTIONS`. The Clang docs state ASan parses LSan/UBSan options from their own variables, not `ASAN_OPTIONS`. Useful: `UBSAN_OPTIONS=print_stacktrace=1`, `ASAN_OPTIONS=detect_stack_use_after_return=1` (already the default on Linux with Clang 15+ via runtime mode), `help=1` to list flags for your runtime version.
 
 Read an ASan report in this order:
 1. **Error type and access** (`heap-buffer-overflow ... READ of size 4`): classifies the bug.
