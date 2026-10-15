@@ -3,14 +3,18 @@ name: linux-troubleshooting
 description: >
   Systematically isolate, diagnose, and resolve Linux system, storage, memory,
   performance, and service failures. Use when diagnosing high load, out-of-memory
-  (OOM) crashes, disk space or inode exhaustion, crashing systemd services, or
-  intermittent system anomalies through reproducible observations.
+  (OOM) crashes, disk space or inode exhaustion, crashing systemd services, network
+  or DNS failures, or intermittent anomalies through reproducible observations.
+  Do not use for Kubernetes or container-orchestrator incidents (cluster-level),
+  application logic bugs, macOS or Windows hosts, or for security incident response
+  and forensics on a possibly compromised host.
 compatibility: >
-  Agent Skills-compatible coding agents diagnosing Linux system issues
-  with command-line diagnostic tools.
+  Agent Skills-compatible coding agents diagnosing Linux hosts with command-line
+  tools. Commands assume a systemd-based distribution with procps, util-linux, and
+  iproute2; some need root and output varies by distribution and kernel version.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "linux, troubleshooting, performance, oom, disk, systemd, logs"
   topics: "operating-systems, devtools"
 ---
@@ -23,9 +27,12 @@ Effective troubleshooting is driven by evidence, hypothesis testing, and systema
 
 1. **Observe before modifying**: Gather logs, metrics, and error codes before changing files, restarting services, or executing remediation commands.
 2. **One change at a time**: Test a single isolated variable. If a modification does not resolve the issue, revert it before attempting another.
-3. **Check the basics first**: Disk space, inode exhaustion, memory exhaustion (OOM), and permissions account for >70% of common system failures.
+3. **Check the basics first**: Disk space, inode exhaustion, memory pressure (OOM), permissions, time, DNS, and a recent change are the most common causes; rule them out before exotic hypotheses.
 4. **Preserve crash evidence**: Copy relevant log excerpts, core dumps, or kernel messages before clearing caches or restarting services.
-5. **Never run destructive commands blindly**: Avoid `rm -rf`, `sync && reboot`, or killing unknown processes without identifying their role.
+5. **Never run destructive or state-changing commands blindly**: Avoid `rm -rf`, `reboot`, `kill -9` on unknown processes, `chmod -R`, dropping caches, or editing production config without identifying the target, stating the effect, and getting the user's approval on a production host.
+6. **Diagnose read-only first; escalate privilege only when a command needs it.** Prefer `journalctl`, `ss`, `df`, `/proc` reads. Use `sudo` for a specific command, not a root shell.
+7. **Logs hold secrets and personal data.** Redact tokens, passwords, hostnames, and IPs before pasting output into tickets or chats, and do not `cat` credential files while looking for "the config".
+8. **State the environment.** Record distro, kernel (`uname -r`), whether it is a VM or container, and systemd vs another init before interpreting output; cgroup, OOM, and journald behavior differ.
 
 ---
 
@@ -47,7 +54,9 @@ df -h
 df -i
 
 # 5. Kernel errors & Out-Of-Memory (OOM) killer events
+# (dmesg may need root when kernel.dmesg_restrict=1; journalctl -k works for journal readers)
 sudo dmesg -T --level=alert,crit,err | tail -n 25
+journalctl -k -b -p err --no-pager | tail -n 25
 
 # 6. Failed systemd services
 systemctl --failed
@@ -73,10 +82,11 @@ cat /proc/meminfo | head -n 15
 
 ### Category B: Disk Full and Inode Exhaustion
 - **Symptom 1**: `No space left on device` despite `df -h` showing free gigabytes.
-  - **Cause**: Inode exhaustion (too many tiny files).
-  - **Check**: `df -i`. Find directory with excessive files:
+  - **Cause**: Inode exhaustion (too many tiny files), a quota, or a full filesystem different from the one you checked (`df -h /path` for the failing path).
+  - **Check**: `df -i`. Count files per top-level directory (read-only):
     ```bash
-    find / -xdev -type d -size +100k 2>/dev/null
+    for d in /var /tmp /home; do printf '%s %s\n' "$d" "$(find "$d" -xdev -type f 2>/dev/null | wc -l)"; done
+    du -xh --max-depth=1 /var 2>/dev/null | sort -h | tail -n 10
     ```
 - **Symptom 2**: Disk space not freed after `rm large_file.log`.
   - **Cause**: Deleted file is still held open by a running process.
@@ -98,8 +108,13 @@ When load average is high:
 vmstat 1 5
 
 # Check processes in uninterruptible sleep (D state)
-ps -eo state,pid,user,cmd | grep "^D"
+ps -eo state,pid,user,wchan:20,cmd | awk '$1 ~ /^D/'
+
+# Pressure stall information (kernel 4.20+ with PSI enabled): is CPU, memory or I/O the bottleneck?
+cat /proc/pressure/cpu /proc/pressure/memory /proc/pressure/io
 ```
+
+Load average counts runnable tasks plus tasks in uninterruptible sleep, so a high number alone does not mean CPU saturation. Compare against core count (`nproc`) and look at `vmstat` columns `r`, `b`, `wa`, `st` (steal time indicates a noisy virtual host).
 
 ### Category D: Failing systemd Services
 When a service fails to start or crashes repeatedly:
@@ -111,9 +126,14 @@ systemctl status <service-name>
 # View full journal logs for the specific unit since current boot
 journalctl -u <service-name> -b --no-pager -n 50
 
+# Exit reason and restart loop evidence (Result=, ExecMainStatus=, NRestarts=)
+systemctl show <service-name> -p Result,ExecMainStatus,NRestarts,ActiveEnterTimestamp
+
 # Check service configuration syntax without starting it
 systemd-analyze verify /lib/systemd/system/<service-name>.service
 ```
+
+More categories (network and DNS, permissions and SELinux, boot problems, containers on a single host, time sync) with decision tables: [Triage playbook](references/triage-playbook.md).
 
 ---
 
@@ -142,7 +162,10 @@ systemd-analyze verify /lib/systemd/system/<service-name>.service
 | Anti-Pattern | Risk | Correct Practice |
 | :--- | :--- | :--- |
 | Blindly rebooting a failing server | Loses transient logs in memory, does not resolve root cause | Collect `journalctl` and `dmesg` before any restart |
-| `rm -rf /var/log/*` | Deletes active log descriptors, fails to release disk space | Truncate specific large log files: `: > /var/log/app/huge.log` |
+| `rm -rf /var/log/*` | Deletes active log descriptors, fails to release disk space, loses evidence | After saving evidence and with approval, truncate one identified file (`: > /var/log/app/huge.log`) or use `journalctl --vacuum-size=` / logrotate |
+| `echo 3 > /proc/sys/vm/drop_caches` to "fix" memory | Only hides cache effects and hurts performance | Read `free -h` "available", check `ps` RSS and PSI |
+| `chmod -R 777` to fix permission errors | Opens the data to every user | Identify the process user (`ps -o user`), then fix ownership or ACL narrowly |
+| `kill -9` first | Skips cleanup, corrupts state | `systemctl stop` / SIGTERM, then escalate with cause known |
 | Changing 5 configuration settings at once | Impossible to know which change fixed or exacerbated the bug | Change one setting, test, and document |
 | Disabling SELinux/AppArmor permanently | Leaves system insecure | Check audit logs (`ausearch -m avc -ts recent`) and generate targeted policy rules |
 
