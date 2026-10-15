@@ -42,6 +42,12 @@ For the auto-generated, machine-readable index with exact commit revisions, hash
 - [`swift-development`](../skills/swift-development/SKILL.md) — Swift API Design Guidelines, value types, actors, Swift Concurrency, and SPM.
 - [`sql-development`](../skills/sql-development/SKILL.md) — Relational SQL, JOIN semantics, CTEs, constraints, and ACID transactions.
 - [`postgresql-development`](../skills/postgresql-development/SKILL.md) — JSONB, GIN indexes, EXPLAIN ANALYZE, zero-downtime migrations, and RLS.
+- [`mongodb-development`](../skills/mongodb-development/SKILL.md) — Document modeling, compound indexes (ESR rule), aggregations, and ACID transactions.
+- [`redis-caching`](../skills/redis-caching/SKILL.md) — In-memory caching, TTL strategies, Redlock distributed locking, and stampede mitigation.
+- [`elasticsearch-search`](../skills/elasticsearch-search/SKILL.md) — Search indices, mappings, text analyzers, Query DSL, aggregations, and ILM.
+- [`kafka-streaming`](../skills/kafka-streaming/SKILL.md) — Distributed event streaming, partition ordering, consumer groups, and exact-once semantics.
+- [`graphql-development`](../skills/graphql-development/SKILL.md) — GraphQL SDL schemas, resolvers, DataLoader N+1 mitigation, and cursor pagination.
+- [`grpc-protobuf`](../skills/grpc-protobuf/SKILL.md) — Protocol Buffers v3, streaming RPCs, deadlines, backward compatibility, and buf linting.
 - [`web-html-css`](../skills/web-html-css/SKILL.md) — Semantic HTML5, CSS Grid, Flexbox, custom properties, and WCAG AA accessibility.
 
 ## Category D — Code Quality & Engineering Methods
@@ -54,6 +60,9 @@ For the auto-generated, machine-readable index with exact commit revisions, hash
 - [`refactoring`](../skills/refactoring/SKILL.md) — Safe structural refactorings preserving behavior and API contracts.
 - [`error-handling`](../skills/error-handling/SKILL.md) — Transient vs permanent faults, exponential backoff with jitter, and error boundaries.
 - [`api-design`](../skills/api-design/SKILL.md) — RESTful conventions, resource modeling, OpenAPI, and backward compatibility.
+- [`system-architecture-design`](../skills/system-architecture-design/SKILL.md) — Architecture Decision Records (ADRs), C4 models, DDD bounded contexts, and scalability.
+- [`performance-profiling`](../skills/performance-profiling/SKILL.md) — CPU profiling, flamegraphs, memory heap analysis, pprof, py-spy, and latency percentiles.
+- [`playwright-testing`](../skills/playwright-testing/SKILL.md) — Page Object Model, resilient locators, auto-waiting, trace viewers, and end-to-end tests.
 - [`logging-observability`](../skills/logging-observability/SKILL.md) — Structured JSON logging, correlation IDs, log levels, and PII redaction.
 
 ## Category E — Documentation & Document Formats
@@ -74,9 +83,15 @@ For the auto-generated, machine-readable index with exact commit revisions, hash
 - [`security-code-review`](../skills/security-code-review/SKILL.md) — Source-to-sink vulnerability auditing, trust boundaries, and CWE mapping.
 - [`threat-modeling`](../skills/threat-modeling/SKILL.md) — Architectural STRIDE threat modeling and mitigation prioritization.
 - [`secrets-management`](../skills/secrets-management/SKILL.md) — Zero-knowledge repository hygiene, Gitleaks, and secret rotation.
+- [`oauth-jwt-auth`](../skills/oauth-jwt-auth/SKILL.md) — OAuth 2.0 / OIDC flows, PKCE, JWKS signature validation, and secure cookie storage.
 - [`docker-development`](../skills/docker-development/SKILL.md) — Multi-stage Dockerfiles, layer caching, non-root users, and Docker Compose.
 - [`container-security`](../skills/container-security/SKILL.md) — Distroless images, capability dropping, read-only roots, and Trivy scanning.
+- [`kubernetes-manifests`](../skills/kubernetes-manifests/SKILL.md) — Hardened Kubernetes resource manifests, NetworkPolicies, Helm charts, and kubeconform.
+- [`terraform-iac`](../skills/terraform-iac/SKILL.md) — Reusable modules, remote state locking with S3/DynamoDB, two-phase plan/apply, and tflint.
+- [`ansible-automation`](../skills/ansible-automation/SKILL.md) — Idempotent playbooks, roles, handlers, Ansible Vault encryption, and error recovery.
+- [`aws-cloud-architecture`](../skills/aws-cloud-architecture/SKILL.md) — Multi-AZ 3-tier VPC architecture, IAM least privilege, S3 hardening, and Well-Architected baselines.
 - [`ci-github-actions`](../skills/ci-github-actions/SKILL.md) — Least-privilege workflows, action commit pinning, and OIDC authentication.
+- [`github-actions-security`](../skills/github-actions-security/SKILL.md) — Action SHA pinning, script injection defense, OIDC token minting, and zizmor auditing.
 - [`dependency-management`](../skills/dependency-management/SKILL.md) — Lockfiles, SBOM generation, dependency audits, and automated updates.
 - [`linux-hardening`](../skills/linux-hardening/SKILL.md) — SSH hardening, UFW firewall, systemd sandboxing, and CIS baselines.
 

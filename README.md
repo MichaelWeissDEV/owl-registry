@@ -20,7 +20,7 @@
 
 ## What is the OWL Registry?
 
-The **OWL Registry** provides a comprehensive, production-grade foundation library of **65 curated Agent Skills** designed for AI coding assistants—including Claude Code, OpenCode, Codex, Gemini CLI, Cursor, and any system compatible with the [Agent Skills standard](https://agentskills.io/specification).
+The **OWL Registry** provides a comprehensive, production-grade foundation library of **80 curated Agent Skills** designed for AI coding assistants—including Claude Code, OpenCode, Codex, Gemini CLI, Cursor, and any system compatible with the [Agent Skills standard](https://agentskills.io/specification).
 
 Rather than generic prompt snippets, each skill in this registry provides:
 - **Strict technical guardrails** that prevent improvisation and hallucinated flags.
@@ -38,10 +38,10 @@ Browse the editorial [Skill Catalog](docs/skill-catalog.md) for domain overviews
 | :--- | :---: | :--- |
 | **Git & Releases** | 8 | Conventional Commits, branch workflows, worktrees, merge conflicts, SemVer, changelogs, release engineering, GitHub PRs |
 | **Operating Systems & Shell** | 8 | Linux CLI, defensive Bash scripting, filesystems, permissions & ACLs, systemd & journald, networking, troubleshooting, macOS/BSD |
-| **Languages & Web** | 16 | Python, Rust, C, C++, Go, JavaScript, TypeScript, Node.js, Java, Kotlin, Swift, SQL, PostgreSQL, HTML5/CSS3 |
-| **Quality & Methods** | 10 | Cross-language code comments, code reviews, debugging workflows, unit testing, integration testing, TDD, refactoring, error handling, API design, observability |
+| **Languages & Web** | 22 | Python, Rust, C, C++, Go, JavaScript, TypeScript, Node.js, Java, Kotlin, Swift, SQL, PostgreSQL, MongoDB, Redis, Elasticsearch, Kafka, GraphQL, gRPC, HTML5/CSS3 |
+| **Quality & Methods** | 13 | Cross-language code comments, code reviews, debugging workflows, unit testing, integration testing, TDD, refactoring, error handling, API design, system architecture, profiling, Playwright, observability |
 | **Document Formats** | 11 | Markdown, technical writing, READMEs, PDF, Word (.docx), Excel (.xlsx), PowerPoint (.pptx), LaTeX, CSV, Sphinx, Mermaid diagrams |
-| **Security & DevOps** | 9 | Secure coding (OWASP), security code reviews, STRIDE threat modeling, secrets management, Docker, container security, GitHub Actions, dependency management, Linux hardening |
+| **Security & DevOps** | 15 | Secure coding (OWASP), security code reviews, threat modeling, secrets, OAuth/JWT, Docker, container security, Kubernetes, Terraform, Ansible, AWS, GitHub Actions, dependency management, Linux hardening |
 | **AI Agents & Tools** | 3 | Agent skill authoring (meta-skill), skill security auditing, Model Context Protocol (MCP) server development |
 
 ---
