@@ -2,7 +2,7 @@
   "format": 2,
   "name": "owl-registry",
   "description": "The default OWL skill registry - curated skills that 'owl install' can fetch.",
-  "generated_at": "2026-10-15T11:49:37+00:00",
+  "generated_at": "2026-10-15T12:48:15+00:00",
   "count": 1,
   "skills": [
     {
@@ -27,8 +27,8 @@
       "path": "skills/conventional-commits",
       "files": 1,
       "size": 19597,
-      "updated_at": "2026-10-15T11:49:37+00:00",
-      "revision": null
+      "updated_at": "2026-10-15T12:48:15+00:00",
+      "revision": "37ad26f0c60ca918ee20b83e94f1d0bf11faf4fa"
     }
   ]
 }

@@ -3,7 +3,7 @@
 
 The default OWL skill registry - curated skills that 'owl install' can fetch.
 
-**1 skill** · last update: `2026-10-15T11:49:37+00:00` · [statistics](STATS.md)
+**1 skill** · last update: `2026-10-15T12:48:15+00:00` · [statistics](STATS.md)
 
 Machine readable: [`index.json`](index.json). Install with `owl install <name> -r <registry>` (see `owl registry add`).
 
