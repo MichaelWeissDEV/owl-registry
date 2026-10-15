@@ -203,7 +203,7 @@ print("Cached Value:", wb_values["Q4 Financials"]["B9"].value)
 | Memory blow-up | Full load of a huge file | Use `read_only=True` / `write_only=True` |
 | Column shows `####` | Column too narrow for number or date | Increase width or shorten format |
 
-## 6. Verification Checklis
+## 6. Verification Checklist
 
 - [ ] All numeric and financial cells contain raw numeric types (not pre-formatted strings).
 - [ ] Number formats explicitly set (`$#,##0`, `0.0%`, `YYYY-MM-DD`).
