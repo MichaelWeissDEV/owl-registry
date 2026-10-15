@@ -1,5 +1,5 @@
 {
-  "format": 1,
+  "format": 2,
   "name": "owl-registry",
   "description": "The default OWL skill registry - curated skills that 'owl install' can fetch.",
   "generated_at": "2026-10-15T11:49:37+00:00",
@@ -21,10 +21,14 @@
         "devtools",
         "version-control"
       ],
+      "license": null,
+      "compatibility": "Works with Claude Code and other Agent Skills-compatible coding agents. Git is helpful for repository inspection but not required when a diff is provided.",
       "sha256": "f43b7b4eb553f2b532c343c289f05a74bd04d47f57c5a358def786eb575c06ab",
-      "path": "skills/michaelweissdev/conventional-commits",
+      "path": "skills/conventional-commits",
       "files": 1,
-      "updated_at": "2026-10-15T11:49:37+00:00"
+      "size": 19597,
+      "updated_at": "2026-10-15T11:49:37+00:00",
+      "revision": null
     }
   ]
 }

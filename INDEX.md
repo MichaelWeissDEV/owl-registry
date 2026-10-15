@@ -3,24 +3,24 @@
 
 The default OWL skill registry - curated skills that 'owl install' can fetch.
 
-**1 skill** · last update: `2026-10-15T11:49:37+00:00`
+**1 skill** · last update: `2026-10-15T11:49:37+00:00` · [statistics](STATS.md)
 
-Machine readable: [`index.json`](index.json). Install with `owl install <author>/<name> -r <registry>` (see `owl registry add`).
+Machine readable: [`index.json`](index.json). Install with `owl install <name> -r <registry>` (see `owl registry add`).
 
 ## All skills
 
-| Skill | Version | Description | Tags | Updated |
-| --- | --- | --- | --- | --- |
-| [`michaelweissdev/conventional-commits`](skills/michaelweissdev/conventional-commits/SKILL.md) | 1.0.0 | Write, review, validate, and organize precise Conventional Commits 1.0.0 messages from actual code changes. Use when the user asks for a ... | commits, conventional-commits, git, release | 2026-10-15 |
+| Skill | Author | Version | Description | Tags | Updated |
+| --- | --- | --- | --- | --- | --- |
+| [`conventional-commits`](skills/conventional-commits/SKILL.md) | michaelweissdev | 1.0.0 | Write, review, validate, and organize precise Conventional Commits 1.0.0 messages from actual code changes. Use when the user asks for a ... | commits, conventional-commits, git, release | 2026-10-15 |
 
 ## By topic
 
-- **devtools** (1): `michaelweissdev/conventional-commits`
-- **version-control** (1): `michaelweissdev/conventional-commits`
+- **devtools** (1): `conventional-commits`
+- **version-control** (1): `conventional-commits`
 
 ## By tag
 
-- **commits** (1): `michaelweissdev/conventional-commits`
-- **conventional-commits** (1): `michaelweissdev/conventional-commits`
-- **git** (1): `michaelweissdev/conventional-commits`
-- **release** (1): `michaelweissdev/conventional-commits`
+- **commits** (1): `conventional-commits`
+- **conventional-commits** (1): `conventional-commits`
+- **git** (1): `conventional-commits`
+- **release** (1): `conventional-commits`
