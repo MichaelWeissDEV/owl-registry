@@ -28,7 +28,7 @@ Rather than generic prompt snippets, each skill in this registry provides:
 - **Reproducible, safe workflows** prioritizing read-only inspection before state mutation.
 - **Verification checklists** to ensure software changes are proven correct before task completion.
 
-Browse the editorial [Skill Catalog](docs/skill-catalog.md) for domain overviews, [`INDEX.md`](INDEX.md) for the generated index, [`STATS.md`](STATS.md) for metrics, or read [`index.json`](index.json) directly from automated tooling.
+Documentation: **<https://owl-registry.readthedocs.io>** (sources in [`docs/`](docs/index.md)). Browse the editorial [Skill Catalog](docs/guide/skill-catalog.md) for domain overviews, [`INDEX.md`](INDEX.md) for the generated index, [`STATS.md`](STATS.md) for metrics, or read [`index.json`](index.json) directly from automated tooling.
 
 ---
 
@@ -95,7 +95,7 @@ $ owl install rust-development -r owl-registry --project
 
 ## Contributing New Skills
 
-We welcome community contributions! Please review [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/skill-authoring.md`](docs/skill-authoring.md) before submitting a pull request.
+We welcome community contributions! Please review [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/skill-authoring.md`](docs/guide/skill-authoring.md) before submitting a pull request.
 
 1. Create a branch: `git checkout -b feat/add-my-skill`.
 2. Add your skill directory: `skills/<my-skill>/SKILL.md`.
@@ -121,4 +121,5 @@ Agent skills operate within the local environment of the user. To maintain trust
 
 ## License
 
-This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
+No license has been chosen yet. Until the owner decides, all rights remain with the author. Skills may
+carry their own `license` in their metadata. See the [documentation](docs/index.md).
