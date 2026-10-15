@@ -6,7 +6,7 @@ description: >
   from PDFs with pypdf/pdfplumber, merging or rotating pages, handling scanned
   vs native digital documents, performing OCR with ocrmypdf/tesseract, handling
   encrypted or untrusted PDFs safely, or verifying rendered PDF visual layouts.
-  Do not use for Word or Excel files, for true redaction of sensitive content withou
+  Do not use for Word or Excel files, for true redaction of sensitive content without
   following the redaction rules below, or for legal e-signature workflows.
 compatibility: >
   Agent Skills-compatible coding agents operating with Python PDF libraries
@@ -81,7 +81,7 @@ if meta:
 
 # Extract text with line preservation
 for page_num, page in enumerate(reader.pages, start=1):
-    text = page.extract_text(extraction_mode="layout") # Preserves visual layou
+    text = page.extract_text(extraction_mode="layout") # Preserves visual layout
     print(f"--- Page {page_num} ---")
     print(text[:300]) # Print first 300 chars
 ```
@@ -150,7 +150,7 @@ When generating pixel-perfect invoices, tickets, or reports from scratch:
 ```python
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleShee
+from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
 def generate_invoice(dest_path: str):
@@ -213,7 +213,7 @@ def generate_invoice(dest_path: str):
 | Table cells merged or shifted | No ruling lines | Switch `pdfplumber` strategies to `"text"`, tune tolerances, or define explicit column lines |
 | Slow or out-of-memory on large file | Whole-document processing | Process page by page, close pages (`page.flush_cache()` in pdfplumber), set limits |
 
-## 8. Verification Checklis
+## 8. Verification Checklist
 
 - [ ] Evaluated whether input PDF is scanned or digital.
 - [ ] Table extraction preserves all column headers and numeric alignments.

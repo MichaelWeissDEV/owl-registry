@@ -31,7 +31,7 @@ def calculate_compound_interest(principal: float, rate: float, periods: int) -> 
 
 Rust documentation comments support full Markdown and run automatically as **doc-tests** during `cargo test`:
 
-```rus
+```rust
 //! Module-level documentation explaining crate subsystem.
 
 /// Validates and parses a cryptographic token.
@@ -86,11 +86,11 @@ public class BillingManager {
     /**
      * Charges customer credit card on file.
      *
-     * @param customerId unique UUID of the accoun
+     * @param customerId unique UUID of the account
      * @param amountInCents transaction amount in integer cents
      * @return PaymentConfirmation with processor transaction ID
-     * @throws InsufficientFundsException if card balance is insufficien
-     * @throws PaymentGatewayException if external gateway times ou
+     * @throws InsufficientFundsException if card balance is insufficient
+     * @throws PaymentGatewayException if external gateway times out
      */
     public PaymentConfirmation charge(UUID customerId, long amountInCents) throws PaymentGatewayException { ... }
 }
@@ -117,7 +117,7 @@ suspend fun fetchProfile(userId: String): UserProfile? { ... }
 
 ## 6. TypeScript / JavaScript: TSDoc / JSDoc
 
-```typescrip
+```typescript
 /**
  * Transforms an array of raw sensor readings into smoothed moving averages.
  *
@@ -155,7 +155,7 @@ func (c *Cache) Get(key string) (any, bool) { ... }
 
 ## 8. Swift: DocC
 
-```swif
+```swift
 /// Calculates the geodesic distance between two GPS coordinates.
 ///
 /// - Parameters:

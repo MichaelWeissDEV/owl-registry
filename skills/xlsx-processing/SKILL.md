@@ -70,7 +70,7 @@ def generate_financial_model(output_path: str):
     headers = ["Department", "Budget", "Actual Spend", "Variance", "% Utilized"]
     for col_idx, h in enumerate(headers, start=1):
         cell = ws.cell(row=4, column=col_idx, value=h)
-        cell.font = header_fon
+        cell.font = header_font
         cell.fill = header_fill
         cell.alignment = Alignment(horizontal="center" if col_idx > 1 else "left")
 
@@ -101,33 +101,33 @@ def generate_financial_model(output_path: str):
         c_var.number_format = "$#,##0"
         c_var.border = cell_border
 
-        # Formula: Actual / Budge
+        # Formula: Actual / Budget
         c_pct = ws.cell(row=r, column=5, value=f"=C{r}/B{r}")
         c_pct.number_format = "0.0%"
         c_pct.border = cell_border
 
     # 4. Total Summary Row
     total_row = start_row + len(departments)
-    ws.cell(row=total_row, column=1, value="Total").font = total_fon
+    ws.cell(row=total_row, column=1, value="Total").font = total_font
     ws.cell(row=total_row, column=1).border = double_bottom
 
     c_tot_b = ws.cell(row=total_row, column=2, value=f"=SUM(B{start_row}:B{total_row-1})")
-    c_tot_b.font = total_fon
+    c_tot_b.font = total_font
     c_tot_b.number_format = "$#,##0"
     c_tot_b.border = double_bottom
 
     c_tot_a = ws.cell(row=total_row, column=3, value=f"=SUM(C{start_row}:C{total_row-1})")
-    c_tot_a.font = total_fon
+    c_tot_a.font = total_font
     c_tot_a.number_format = "$#,##0"
     c_tot_a.border = double_bottom
 
     c_tot_v = ws.cell(row=total_row, column=4, value=f"=B{total_row}-C{total_row}")
-    c_tot_v.font = total_fon
+    c_tot_v.font = total_font
     c_tot_v.number_format = "$#,##0"
     c_tot_v.border = double_bottom
 
     c_tot_p = ws.cell(row=total_row, column=5, value=f"=C{total_row}/B{total_row}")
-    c_tot_p.font = total_fon
+    c_tot_p.font = total_font
     c_tot_p.number_format = "0.0%"
     c_tot_p.border = double_bottom
 
@@ -156,7 +156,7 @@ When opening workbooks created by third parties:
 ```python
 from openpyxl import load_workbook
 
-# Read formula tex
+# Read formula text
 wb_formulas = load_workbook("q4_financials.xlsx", data_only=False)
 print("Formula:", wb_formulas["Q4 Financials"]["B9"].value) # Output: =SUM(B5:B8)
 
