@@ -1,4 +1,4 @@
-# Modern Python Type Annotations (Python 3.10+)
+# Modern Python Type Annotations (Python 3.10+; 3.11+ recommended)
 
 Modern Python features clean, first-class type expressions without needing verbose legacy imports from `typing`.
 
@@ -77,3 +77,9 @@ from typing import TypeGuard
 def is_string_list(val: list[object]) -> TypeGuard[list[str]]:
     return all(isinstance(x, str) for x in val)
 ```
+
+## Version notes
+
+- 3.12: `type X = ...` statement and `def f[T](x: T)` generics (PEP 695); 3.13: TypeVar defaults (PEP 696), `warnings.deprecated` (PEP 702).
+- 3.14: annotations are evaluated lazily (PEP 649/749), so forward references usually need no quotes or `from __future__ import annotations`; use `annotationlib` to inspect them. Libraries that read `__annotations__` directly (Pydantic, dataclass tools) should be on versions that support this.
+- 3.15: `TypedDict` extra items (PEP 728) and TypeForm (PEP 747) are listed in the release notes; check your type checker supports them before use.

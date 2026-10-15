@@ -35,10 +35,11 @@ for u in expired:
 Python caches small integers and interned short strings in CPython, creating deceptive passes that fail in production:
 
 ```python
-# BUG:
-a = 1000
-b = 1000
-a is b # False!
+# BUG: the result depends on interpreter details (constant folding, caching),
+# so `a is b` may be True in one context and False in another
+a = int("1000")
+b = int("1000")
+a is b # False in CPython
 
 # FIX:
 a == b # True!

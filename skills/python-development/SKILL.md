@@ -4,26 +4,32 @@ description: >
   Develop, review, test, and refactor idiomatic Python applications following
   PEP 8, strict type hints, and modern ecosystem standards. Use when writing
   Python modules, designing clean object and functional architectures, configuring
-  Ruff/Mypy/pytest, implementing Asyncio, or improving maintainability and performance.
+  Ruff/Mypy/pytest, implementing Asyncio, structuring pyproject.toml and uv projects,
+  or improving maintainability and performance. Do not use for data-science notebooks
+  workflows, Django/Flask framework specifics, or packaging/publishing to PyPI release
+  operations that need account credentials.
 compatibility: >
-  Agent Skills-compatible coding agents working on Python 3.10+ codebases.
-  Python tooling (pytest, ruff, mypy) is required for executable checks.
+  Agent Skills-compatible coding agents working on Python 3.11+ codebases (3.10
+  reached end of life on 2026-10-01; 3.9 earlier). Ruff, mypy (or another type
+  checker), and pytest are needed for executable checks. Version facts checked on
+  devguide.python.org and docs.python.org in October 2026.
 metadata:
   author: michaelweissdev
-  version: "1.0.0"
+  version: "1.1.0"
   tags: "python, ruff, mypy, pytest, typing, asyncio, best-practices"
   topics: "programming-languages, software-development"
 ---
 
 # Idiomatic Python Development
 
-Write maintainable, robust, and performant Python code following modern standards (Python 3.10+). Emphasize explicit typing, structured error handling, composition over complex inheritance, and clean boundary separation.
+Write maintainable, robust, and performant Python code following modern standards (Python 3.11+; check the supported-versions table before choosing a floor). Emphasize explicit typing, structured error handling, composition over complex inheritance, and clean boundary separation.
 
 Detailed technical guidelines and deep dives are available in the bundled references:
 - [Code Conventions & Tooling](references/conventions.md)
 - [Modern Type Annotations](references/typing.md)
 - [Asyncio Patterns & Pitfalls](references/asyncio-patterns.md)
 - [Common Anti-Patterns](references/common-mistakes.md)
+- [Versions, pyproject.toml, uv, and dependency groups](references/versions-and-packaging.md)
 - [Canonical Module Template](assets/module_template.py)
 
 ---
@@ -146,7 +152,7 @@ def fetch_data(url: str, timeout: float = 5.0) -> bytes:
 | Anti-Pattern | Bug / Risk | Correct Idiom |
 | :--- | :--- | :--- |
 | `def append(item, seq=[])` | Sequence is shared across all function calls | `def append(item, seq=None): if seq is None: seq = []` |
-| `except Exception: pass` | Swallows keyboard interrupts, memory errors, syntax bugs | Catch specific errors: `except (KeyError, ValueError):` |
+| `except Exception: pass` | Hides real bugs and failures (bare `except:` additionally catches `KeyboardInterrupt` and `SystemExit`) | Catch specific errors: `except (KeyError, ValueError):` |
 | `type(x) == int` | Breaks with subclasses | Use `isinstance(x, int)` |
 | `open('file.txt').read()` | File descriptor leak on uncollected garbage | Use `with open('file.txt', 'r', encoding='utf-8') as f:` |
 | String concatenation in loops | O(N^2) memory allocation | Use `''.join(chunks)` or `io.StringIO` |
@@ -169,7 +175,15 @@ pytest --cov=my_project tests/
 
 ---
 
-## 6. Verification Checklist
+## 6. Security Defaults
+
+- Never `eval`/`exec` untrusted text; never `pickle.load` or `yaml.load` untrusted data (use `yaml.safe_load`, JSON).
+- `subprocess.run([...], check=True)` with an argument list; avoid `shell=True` with interpolated input.
+- Give every network call a timeout (`httpx`/`requests` do not time out by default in requests).
+- Use `secrets` for tokens, `hmac.compare_digest` for secret comparison, `pathlib` plus containment checks for user paths, parameterized SQL.
+- Pin and hash dependencies for deployable apps (lock file); install from trusted indexes only.
+
+## 7. Verification Checklist
 
 - [ ] All public functions, arguments, and return types are annotated.
 - [ ] No bare `except:` or broad `except Exception:` without re-raise/logging.

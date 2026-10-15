@@ -39,7 +39,7 @@ Ruff combines formatting and high-performance linting:
 ```toml
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = [
@@ -61,7 +61,7 @@ indent-style = "space"
 ### Mypy Configuration (`pyproject.toml`)
 ```toml
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 strict = true
 warn_unused_configs = true
 warn_redundant_casts = true
