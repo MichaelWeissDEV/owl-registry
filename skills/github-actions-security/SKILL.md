@@ -135,11 +135,11 @@ concurrency:
 jobs:
   deploy:
     name: Build & Deploy via OIDC
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lates
     environment: production
     timeout-minutes: 20
     permissions:
-      contents: read     # To check out commit
+      contents: read     # To check out commi
       id-token: write    # To request GitHub OIDC JWT token
     steps:
       - name: Checkout Source Code
@@ -159,7 +159,7 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
         run: |
           echo "Deploying release for commit: $COMMIT_SHA"
-          aws ecs update-service --cluster prod-cluster --service web-app --force-new-deployment
+          aws ecs update-service --cluster prod-cluster --service web-app --force-new-deploymen
 ```
 
 ### 2. Script Injection Mitigation Example
@@ -177,7 +177,7 @@ permissions: {}
 jobs:
   validate-metadata:
     name: Validate Title and Description
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lates
     permissions:
       contents: read
     steps:
@@ -187,7 +187,7 @@ jobs:
           persist-credentials: false
 
       # SECURE: Values mapped to environment variables
-      - name: Verify PR Title Format
+      - name: Verify PR Title Forma
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_BODY: ${{ github.event.pull_request.body }}
@@ -241,7 +241,7 @@ jobs:
 
 ---
 
-## Verification Checklist
+## Verification Checklis
 
 When authoring or auditing GitHub Actions workflow configurations, verify every checkpoint:
 
@@ -266,14 +266,14 @@ When authoring or auditing GitHub Actions workflow configurations, verify every 
   ```bash
   # Validate syntax and detect unescaped injection vectors
   actionlint .github/workflows/*.yml
-  
+
   # Audit workflows for CI/CD security vulnerabilities
   zizmor .github/workflows/
   ```
 - **Local Runner Execution**:
   ```bash
-  # Test workflows locally with nektos/act
-  act pull_request
+  # Test workflows locally with nektos/ac
+  act pull_reques
   ```
 - **Runtime Sandboxing**:
   - [StepSecurity Harden-Runner](https://github.com/step-security/harden-runner) (Network egress filtering and file integrity monitoring)
