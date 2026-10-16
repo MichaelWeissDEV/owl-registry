@@ -89,7 +89,7 @@ See [references/explain-reading.md](references/explain-reading.md) for the full 
 | Thousands of identical small queries | Batch, join, or cache (see `redis-caching`) |
 | Many rows returned | Fix the query shape; consider `SERIALIZE` cost (PG 17+) and client fetch size |
 
-Index creation on a live table: use `CREATE INDEX CONCURRENTLY` and follow `database-migrations` for lock and failure handling. Before adding one, check duplicates and usage:
+Index creation on a live table: use `CREATE INDEX CONCURRENTLY` (not inside a transaction block) and follow `database-migrations` for lock and rollout handling. A failed concurrent build leaves an `INVALID` index that still costs writes (`SELECT indexrelid::regclass FROM pg_index WHERE NOT indisvalid;`): drop it and retry. State the write cost: every index is maintained on each INSERT/DELETE and on UPDATEs of indexed columns, so report its size (`pg_relation_size`) and the table's write rate. Before adding one, check duplicates and usage:
 
 ```sql
 SELECT relname, indexrelname, idx_scan, pg_size_pretty(pg_relation_size(indexrelid)) AS size
