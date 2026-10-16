@@ -3,7 +3,7 @@
 
 The default OWL skill registry - curated skills that 'owl install' can fetch.
 
-**80 skills** · last update: `2026-10-15T16:40:46+00:00` · [statistics](STATS.md)
+**116 skills** · last update: `2026-10-16T00:20:20+00:00` · [statistics](STATS.md)
 
 Machine readable: [`index.json`](index.json). Install with `owl install <name> -r <registry>` (see `owl registry add`).
 
@@ -11,163 +11,251 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 
 | Skill | Author | Version | Description | Tags | Updated |
 | --- | --- | --- | --- | --- | --- |
+| [`agent-behavior-evaluation`](skills/agent-behavior-evaluation/SKILL.md) | michaelweissdev | 1.0.0 | Design and run small, honest evaluations of whether an AI agent or Agent Skill changes behavior as intended: activation tests (should and... | agent-skills, ai-agents, evals, evaluation, quality, testing | 2026-10-15 |
 | [`agent-skill-authoring`](skills/agent-skill-authoring/SKILL.md) | michaelweissdev | 1.0.0 | Author, structure, document, and validate compliant, high-quality Agent Skills for OWL, Claude Code, and other Agent Skills-compatible sy... | agent-skills, ai-agents, meta-skill, owl, skill-authoring, specifications | 2026-10-15 |
 | [`ansible-automation`](skills/ansible-automation/SKILL.md) | michaelweissdev | 1.0.0 | Design, author, harden, and validate Ansible playbooks, roles, and automation workflows. Use when writing Ansible tasks, structuring reus... | ansible, ansible-lint, automation, devops, idempotency, playbooks, roles, vault | 2026-10-15 |
 | [`api-design`](skills/api-design/SKILL.md) | michaelweissdev | 1.0.0 | Architect intuitive, consistent, and backward-compatible RESTful and library APIs. Use when defining HTTP REST endpoints, standardizing J... | api-design, backward-compatibility, endpoints, json, openapi, rest | 2026-10-15 |
+| [`architecture-decision-records`](skills/architecture-decision-records/SKILL.md) | michaelweissdev | 1.0.0 | Create, review, and maintain Architecture Decision Records (ADRs): short, numbered, immutable documents capturing one significant decisio... | adr, architecture, decisions, documentation, madr, markdown | 2026-10-15 |
 | [`aws-cloud-architecture`](skills/aws-cloud-architecture/SKILL.md) | michaelweissdev | 1.0.0 | Architect, secure, and evaluate cloud infrastructure on Amazon Web Services (AWS) using the Well-Architected Framework. Use when designin... | aws, cloud-architecture, devops, ecs, eks, iam, lambda, s3, vpc, well-architected | 2026-10-15 |
 | [`bash-scripting`](skills/bash-scripting/SKILL.md) | michaelweissdev | 1.0.0 | Write reliable, defensive, and portable Bash scripts following industry best practices. Use when authoring shell scripts, automating buil... | automation, bash, posix, scripting, shell, shellcheck | 2026-10-15 |
+| [`browser-debugging`](skills/browser-debugging/SKILL.md) | michaelweissdev | 1.0.0 | Debug front-end problems in the browser with Chrome DevTools: Console, Sources breakpoints, Network, Elements/computed styles, Applicatio... | breakpoints, chrome, console, debugging, devtools, frontend, network, source-maps | 2026-10-15 |
 | [`c-development`](skills/c-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, review, and secure robust C applications (C11/C17/C23) with explicit memory management, boundary checks, and sanitizer verificat... | c, clang, gcc, memory-safety, pointers, sanitizers, undefined-behavior | 2026-10-15 |
 | [`changelog-writing`](skills/changelog-writing/SKILL.md) | michaelweissdev | 1.0.0 | Write and maintain clean, human-readable CHANGELOG.md files adhering to the Keep a Changelog convention. Use when documenting releases, u... | changelog, documentation, keep-a-changelog, release-notes, releases | 2026-10-15 |
 | [`ci-github-actions`](skills/ci-github-actions/SKILL.md) | michaelweissdev | 1.0.0 | Design, harden, and optimize automated CI/CD workflows using GitHub Actions. Use when writing workflow YAML files, configuring matrix bui... | automation, caching, ci-cd, devops, github-actions, oidc, security | 2026-10-15 |
-| [`code-comments`](skills/code-comments/SKILL.md) | michaelweissdev | 1.0.0 | Write purposeful, accurate, and maintainable code comments and API documentation across major programming languages. Use when deciding wh... | best-practices, comments, docstrings, documentation, godoc, javadoc, jsdoc, rustdoc | 2026-10-15 |
+| [`code-comments`](skills/code-comments/SKILL.md) | michaelweissdev | 1.1.0 | Write purposeful, accurate, and maintainable code comments and API documentation across major programming languages. Use when deciding wh... | best-practices, comments, docstrings, documentation, godoc, javadoc, jsdoc, rustdoc | 2026-10-15 |
 | [`code-review`](skills/code-review/SKILL.md) | michaelweissdev | 1.0.0 | Conduct systematic, actionable code reviews assessing correctness, security, architecture, performance, maintainability, and test coverag... | code-review, maintainability, pr-review, quality, security, testing | 2026-10-15 |
 | [`container-security`](skills/container-security/SKILL.md) | michaelweissdev | 1.0.0 | Harden, scan, and secure container images and runtimes against privilege escalation and supply-chain exploits. Use when configuring rootl... | capabilities, container-security, distroless, docker, hardening, rootless, trivy | 2026-10-15 |
+| [`contract-testing`](skills/contract-testing/SKILL.md) | michaelweissdev | 1.0.0 | Prevent integration breakage between services with contract testing: consumer-driven contracts with Pact (consumer tests, provider states... | can-i-deploy, consumer-driven-contracts, contract-testing, microservices, openapi, pact, schemathesis | 2026-10-15 |
 | [`conventional-commits`](skills/conventional-commits/SKILL.md) | michaelweissdev | 1.0.0 | Write, review, validate, and organize precise Conventional Commits 1.0.0 messages from actual code changes. Use when the user asks for a ... | commits, conventional-commits, git, release | 2026-10-15 |
 | [`cpp-development`](skills/cpp-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, review, and modernize idiomatic C++ applications (C++17/C++20/C++23) following the C++ Core Guidelines and RAII principles. Use ... | cmake, core-guidelines, cpp, modern-cpp, raii, smart-pointers, templates | 2026-10-15 |
+| [`cross-platform-testing`](skills/cross-platform-testing/SKILL.md) | michaelweissdev | 1.0.0 | Design and debug test matrices across operating systems, CPU architectures, and language/runtime versions: what actually differs (paths, ... | arm64, ci, cross-platform, github-actions, macos, matrix, portability, testing, windows | 2026-10-15 |
+| [`cryptographic-code-review`](skills/cryptographic-code-review/SKILL.md) | michaelweissdev | 1.0.0 | Review application code that uses cryptography for misuse: weak or wrong primitives, nonce/IV reuse, unauthenticated encryption, password... | aes-gcm, code-review, cryptography, cwe, kdf, nonce, password-hashing, randomness, tls | 2026-10-15 |
 | [`csv-data-processing`](skills/csv-data-processing/SKILL.md) | michaelweissdev | 1.0.0 | Parse, validate, clean, transform, and export CSV and TSV tabular data following RFC 4180. Use when handling delimiter ambiguity (comma, ... | csv, data-processing, duckdb, encoding, rfc4180, streaming, tsv | 2026-10-15 |
+| [`database-migrations`](skills/database-migrations/SKILL.md) | michaelweissdev | 1.0.0 | Plan, write, review and roll out relational database schema and data migrations without downtime or data loss - expand/contract sequencin... | backfill, expand-contract, locks, migrations, postgresql, schema, zero-downtime | 2026-10-15 |
+| [`dataset-quality`](skills/dataset-quality/SKILL.md) | michaelweissdev | 1.0.0 | Audit, clean and document datasets used for training, fine-tuning, evaluation or analytics - schema and null checks, exact and near-dupli... | data-leakage, data-quality, datasets, deduplication, huggingface-datasets, labels, pii | 2026-10-15 |
 | [`debugging-workflow`](skills/debugging-workflow/SKILL.md) | michaelweissdev | 1.0.0 | Systematically reproduce, isolate, diagnose, and resolve software bugs using hypothesis-driven debugging. Use when diagnosing failing tes... | debugging, git-bisect, rca, regression-testing, testing, troubleshooting | 2026-10-15 |
 | [`dependency-management`](skills/dependency-management/SKILL.md) | michaelweissdev | 1.0.0 | Audit, update, lock, and secure third-party open-source dependencies across software supply chains. Use when analyzing transitive depende... | audit, dependabot, dependencies, lockfiles, sbom, security, supply-chain | 2026-10-15 |
 | [`diagrams-mermaid`](skills/diagrams-mermaid/SKILL.md) | michaelweissdev | 1.0.0 | Design, render, and validate technical architecture diagrams using Mermaid.js syntax within Markdown. Use when authoring system architect... | architecture, diagrams, flowcharts, mermaid, sequence-diagram, visualization | 2026-10-15 |
 | [`docker-development`](skills/docker-development/SKILL.md) | michaelweissdev | 1.0.0 | Build, optimize, run, and orchestrate containerized applications using Docker and Docker Compose. Use when writing efficient multi-stage ... | compose, containers, devops, docker, dockerfile, multi-stage | 2026-10-15 |
-| [`docx-processing`](skills/docx-processing/SKILL.md) | michaelweissdev | 1.0.0 | Generate, parse, modify, and format Microsoft Word (.docx) documents programmatically. Use when creating styled corporate reports, extrac... | document-processing, docx, formatting, office, python-docx, word | 2026-10-15 |
+| [`docx-processing`](skills/docx-processing/SKILL.md) | michaelweissdev | 1.1.0 | Generate, parse, modify, and format Microsoft Word (.docx) documents programmatically. Use when creating styled corporate reports, extrac... | document-processing, docx, formatting, office, python-docx, word | 2026-10-15 |
 | [`elasticsearch-search`](skills/elasticsearch-search/SKILL.md) | michaelweissdev | 1.0.0 | Architect, index, query, and optimize Elasticsearch and OpenSearch distributed search clusters. Use when defining explicit schema mapping... | aggregations, elasticsearch, fulltext, ilm, indexing, inverted-index, opensearch, query-dsl, search | 2026-10-15 |
 | [`error-handling`](skills/error-handling/SKILL.md) | michaelweissdev | 1.0.0 | Architect and implement resilient error handling, custom error hierarchies, and recovery strategies across application boundaries. Use wh... | error-handling, exceptions, exponential-backoff, jitter, resilience, retry | 2026-10-15 |
+| [`frontend-design-review`](skills/frontend-design-review/SKILL.md) | michaelweissdev | 1.0.0 | Review the visual and interaction design of a web UI from screenshots and code: hierarchy, spacing and alignment, typography, color and t... | css, design-review, design-tokens, responsive, spacing, typography, ui, ux | 2026-10-15 |
+| [`fuzz-testing`](skills/fuzz-testing/SKILL.md) | michaelweissdev | 1.0.0 | Design coverage-guided fuzzing campaigns: choose a fuzz target, write a deterministic harness (libFuzzer/cargo-fuzz, Atheris for Python, ... | afl, atheris, cargo-fuzz, corpus, crash-triage, fuzzing, libfuzzer, sanitizers | 2026-10-15 |
 | [`git-branching-worktrees`](skills/git-branching-worktrees/SKILL.md) | michaelweissdev | 1.0.0 | Manage Git feature branches and isolated Git worktrees for concurrent tasks without context-switching overhead or stashing conflicts. Use... | branches, concurrency, git, isolation, worktrees | 2026-10-15 |
+| [`git-history-forensics`](skills/git-history-forensics/SKILL.md) | michaelweissdev | 1.0.0 | Investigate and recover from Git history problems with hypothesis-driven, read-only-first methods: find when/where a bug or change was in... | bisect, blame, forensics, fsck, git, history, recovery, reflog | 2026-10-15 |
 | [`git-merge-conflicts`](skills/git-merge-conflicts/SKILL.md) | michaelweissdev | 1.0.0 | Detect, analyze, and resolve three-way Git merge and rebase conflicts without discarding code changes. Use when merge or rebase operation... | conflict-resolution, diff3, git, merge-conflicts, rebase, three-way-merge | 2026-10-15 |
 | [`git-workflow`](skills/git-workflow/SKILL.md) | michaelweissdev | 1.0.0 | Inspect repository status, inspect diffs, stage focused changes, create well-scoped commits, and coordinate with remotes safely. Use when... | commits, diff, git, staging, version-control | 2026-10-15 |
-| [`github-actions-security`](skills/github-actions-security/SKILL.md) | michaelweissdev | 1.0.0 | Harden, audit, and secure GitHub Actions CI/CD workflows and supply chains. Use when configuring GITHUB_TOKEN permissions to least privil... | actionlint, ci-cd, devops, github-actions, hardening, oidc, security, supply-chain | 2026-10-15 |
+| [`github-actions-security`](skills/github-actions-security/SKILL.md) | michaelweissdev | 1.1.0 | Harden, audit, and secure GitHub Actions workflows and their supply chain. Use when setting least-privilege GITHUB_TOKEN permissions, pin... | actionlint, ci-cd, devops, github-actions, hardening, oidc, security, supply-chain | 2026-10-15 |
 | [`github-issues-prs`](skills/github-issues-prs/SKILL.md) | michaelweissdev | 1.0.0 | Draft reproducible GitHub issues, structured pull request descriptions, technical responses to code reviews, and cross-referenced issue d... | bug-reports, code-review, collaboration, github, issues, pull-requests | 2026-10-15 |
 | [`go-development`](skills/go-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, test, and maintain idiomatic Go applications following official Go conventions. Use when writing Go packages and modules, implem... | concurrency, context, go, golang, goroutines, interfaces, testing | 2026-10-15 |
 | [`graphql-development`](skills/graphql-development/SKILL.md) | michaelweissdev | 1.0.0 | Architect, implement, secure, and optimize production GraphQL APIs using Schema Definition Language (SDL), resolver design, DataLoader ba... | api, backend, dataloader, graphql, relay-pagination, resolvers, sdl, security | 2026-10-15 |
 | [`grpc-protobuf`](skills/grpc-protobuf/SKILL.md) | michaelweissdev | 1.0.0 | Design, implement, and maintain high-performance gRPC microservices and Protocol Buffers v3 schemas. Use when authoring proto3 definition... | buf, distributed-systems, grpc, microservices, proto3, protobuf, rpc, streaming | 2026-10-15 |
+| [`implementation-planning`](skills/implementation-planning/SKILL.md) | michaelweissdev | 1.0.0 | Turn a feature request or bug report into a verified, ordered implementation plan of small steps, each with files touched, a verification... | ai-agents, engineering-process, planning, scoping, task-breakdown, workflow | 2026-10-15 |
+| [`incident-response`](skills/incident-response/SKILL.md) | michaelweissdev | 1.0.0 | Guide defensive security incident handling on systems the user owns or is authorized to investigate: triage and scoping, evidence preserv... | containment, dfir, evidence, forensics, incident-response, nist-800-61, security | 2026-10-15 |
 | [`integration-testing`](skills/integration-testing/SKILL.md) | michaelweissdev | 1.0.0 | Architect, implement, and run reliable integration tests verifying interactions across database, network, API, and process boundaries. Us... | api-testing, databases, fixtures, integration-tests, testcontainers, testing | 2026-10-15 |
 | [`java-development`](skills/java-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, refactor, and review modern Java applications (Java 17/21 LTS) following clean OOP and functional paradigms. Use when writing im... | gradle, java, junit5, maven, pattern-matching, records, sealed-classes | 2026-10-15 |
 | [`javascript-development`](skills/javascript-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, refactor, and review modern JavaScript (ES2022+) applications using standard ECMAScript features. Use when writing ES modules, m... | async, ecmascript, esm, event-loop, javascript, nodejs, promises | 2026-10-15 |
 | [`kafka-streaming`](skills/kafka-streaming/SKILL.md) | michaelweissdev | 1.0.0 | Architect, produce to, consume from, and operate Apache Kafka event streaming systems. Use when partitioning topics for ordered processin... | avro, distributed-systems, dlq, eos, event-streaming, kafka, pub-sub, schema-registry | 2026-10-15 |
 | [`kotlin-development`](skills/kotlin-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, test, and refactor idiomatic Kotlin applications across JVM and Android targets. Use when applying Kotlin null safety (?., ?:, l... | coroutines, data-classes, flow, jvm, kotlin, null-safety, sealed-classes | 2026-10-15 |
 | [`kubernetes-manifests`](skills/kubernetes-manifests/SKILL.md) | michaelweissdev | 1.0.0 | Design, author, harden, and validate production-grade Kubernetes resource manifests and Helm charts. Use when authoring or reviewing Depl... | devops, helm, k8s, kubernetes, manifests, networkpolicy, rbac, securitycontext | 2026-10-15 |
+| [`kubernetes-troubleshooting`](skills/kubernetes-troubleshooting/SKILL.md) | michaelweissdev | 1.0.0 | Diagnose broken Kubernetes workloads with a layered, read-only-first method: Pending pods, ImagePullBackOff, CrashLoopBackOff, OOMKilled,... | debugging, events, kubectl, kubernetes, networking, pods, troubleshooting | 2026-10-15 |
 | [`latex-authoring`](skills/latex-authoring/SKILL.md) | michaelweissdev | 1.0.0 | Draft, structure, format, and debug scientific documents, technical papers, and mathematical manuscripts using LaTeX. Use when typesettin... | academic, bibtex, latex, math, pdf, scientific-writing, typesetting | 2026-10-15 |
 | [`linux-cli`](skills/linux-cli/SKILL.md) | michaelweissdev | 1.0.0 | Execute commands and manipulate text, files, and processes safely in GNU/Linux environments. Use when composing shell pipelines, finding ... | bash, cli, linux, pipes, processes, text-processing | 2026-10-15 |
+| [`linux-ebpf-tracing`](skills/linux-ebpf-tracing/SKILL.md) | michaelweissdev | 1.0.0 | Diagnose Linux latency, CPU, I/O, syscall and scheduling problems by writing small, bounded bpftrace programs after forming a hypothesis,... | bpftrace, ebpf, kernel, latency, linux, observability, tracing | 2026-10-15 |
 | [`linux-filesystems`](skills/linux-filesystems/SKILL.md) | michaelweissdev | 1.0.0 | Navigate, inspect, manage, and troubleshoot Linux filesystems (ext4, XFS), mount points, inodes, and links. Use when resolving disk space... | ext4, filesystems, fstab, inodes, linux, mounts, storage, xfs | 2026-10-15 |
 | [`linux-hardening`](skills/linux-hardening/SKILL.md) | michaelweissdev | 1.0.0 | Apply defense-in-depth system hardening measures across Linux servers and services. Use when securing OpenSSH configurations (/etc/ssh/ss... | auditd, hardening, linux, security, selinux, ssh, systemd-sandboxing, ufw | 2026-10-15 |
 | [`linux-networking`](skills/linux-networking/SKILL.md) | michaelweissdev | 1.0.0 | Inspect, test, and diagnose Linux network interfaces, IP routing, DNS resolution, open sockets, and firewalls using modern Linux network ... | curl, dns, firewall, ip, linux, networking, sockets | 2026-10-15 |
 | [`linux-permissions`](skills/linux-permissions/SKILL.md) | michaelweissdev | 1.0.0 | Manage POSIX file permissions, ACLs, umask, special bits (SUID, SGID, Sticky), and Linux capabilities following the principle of least pr... | acl, capabilities, chmod, chown, linux, permissions, security | 2026-10-15 |
 | [`linux-processes-systemd`](skills/linux-processes-systemd/SKILL.md) | michaelweissdev | 1.0.0 | Manage Linux processes, write systemd services and timers, inspect journald logs, configure resource limits, and debug failing daemon pro... | cgroups, daemons, journald, linux, processes, services, systemd, timers | 2026-10-15 |
-| [`linux-troubleshooting`](skills/linux-troubleshooting/SKILL.md) | michaelweissdev | 1.0.0 | Systematically isolate, diagnose, and resolve Linux system, storage, memory, performance, and service failures. Use when diagnosing high ... | disk, linux, logs, oom, performance, systemd, troubleshooting | 2026-10-15 |
+| [`linux-troubleshooting`](skills/linux-troubleshooting/SKILL.md) | michaelweissdev | 1.1.0 | Systematically isolate, diagnose, and resolve Linux system, storage, memory, performance, and service failures. Use when diagnosing high ... | disk, linux, logs, oom, performance, systemd, troubleshooting | 2026-10-15 |
+| [`llm-evaluation`](skills/llm-evaluation/SKILL.md) | michaelweissdev | 1.0.0 | Design, run and interpret evaluations of LLM-based systems - build a task-specific golden set, pick metrics (exact match, programmatic ch... | benchmarks, evaluation, llm, llm-as-judge, lm-evaluation-harness, regression-testing, statistics | 2026-10-15 |
+| [`local-llm-deployment`](skills/local-llm-deployment/SKILL.md) | michaelweissdev | 1.0.0 | Choose, size, run and secure open-weight LLMs on local or self-hosted machines with Ollama (0.40.x) and llama.cpp (llama-server, GGUF, ll... | gguf, inference, llama-cpp, local-llm, ollama, openai-compatible, quantization | 2026-10-15 |
 | [`logging-observability`](skills/logging-observability/SKILL.md) | michaelweissdev | 1.0.0 | Implement structured JSON logging, distributed tracing context, and observability metrics across services. Use when configuring structure... | logging, metrics, observability, pii-redaction, structured-logging, tracing | 2026-10-15 |
 | [`macos-cli`](skills/macos-cli/SKILL.md) | michaelweissdev | 1.0.0 | Navigate, script, and manage macOS terminal environments, accounting for BSD toolchain differences from GNU/Linux. Use when writing cross... | bsd, cross-platform, homebrew, launchd, macos, terminal, zsh | 2026-10-15 |
 | [`markdown-writing`](skills/markdown-writing/SKILL.md) | michaelweissdev | 1.0.0 | Author clean, semantically structured, and compliant Markdown documents following CommonMark and GitHub Flavored Markdown (GFM) specifica... | commonmark, documentation, gfm, markdown, markdownlint, writing | 2026-10-15 |
-| [`mcp-server-development`](skills/mcp-server-development/SKILL.md) | michaelweissdev | 1.0.0 | Build, test, debug, and secure Model Context Protocol (MCP) servers providing tools, resources, and prompts to AI assistants. Use when de... | ai-agents, mcp, model-context-protocol, resources, sse, stdio, tools, zod | 2026-10-15 |
+| [`mcp-server-development`](skills/mcp-server-development/SKILL.md) | michaelweissdev | 1.1.0 | Build, test, debug, and secure Model Context Protocol (MCP) servers that expose tools, resources, and prompts to AI clients. Use when wri... | ai-agents, mcp, model-context-protocol, resources, security, stdio, streamable-http, tools, zod | 2026-10-15 |
+| [`memory-sanitizers`](skills/memory-sanitizers/SKILL.md) | michaelweissdev | 1.0.0 | Find and interpret memory, undefined-behavior and data-race bugs in C and C++ programs with Clang/GCC sanitizers (AddressSanitizer, LeakS... | asan, c, cpp, debugging, memory-safety, msan, sanitizers, tsan, ubsan | 2026-10-15 |
 | [`mongodb-development`](skills/mongodb-development/SKILL.md) | michaelweissdev | 1.0.0 | Design, model, index, and query production document databases using MongoDB. Use when deciding between embedding and referencing relation... | acid-transactions, aggregation, document-database, esr-rule, indexing, mongodb, nosql | 2026-10-15 |
+| [`mutation-testing`](skills/mutation-testing/SKILL.md) | michaelweissdev | 1.0.0 | Measure and improve test-suite strength with mutation testing: pick a tool (mutmut or cosmic-ray for Python, cargo-mutants for Rust, Stry... | cargo-mutants, cosmic-ray, mutation-testing, mutmut, pitest, stryker, test-quality | 2026-10-15 |
 | [`nodejs-development`](skills/nodejs-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, test, and package server-side Node.js applications and CLI utilities using modern ES Modules and runtime APIs. Use when building... | backend, cli, esm, event-loop, nodejs, npm, streams | 2026-10-15 |
 | [`oauth-jwt-auth`](skills/oauth-jwt-auth/SKILL.md) | michaelweissdev | 1.0.0 | Architect, implement, and audit OAuth 2.0, OpenID Connect (OIDC), and JSON Web Token (JWT) authentication and authorization systems. Use ... | authentication, authorization, csrf, jwks, jwt, oauth2, oidc, pkce, security, tokens | 2026-10-15 |
-| [`pdf-processing`](skills/pdf-processing/SKILL.md) | michaelweissdev | 1.0.0 | Extract text, parse structured tables, manipulate pages, fill form fields, and generate PDF documents programmatically. Use when extracti... | document-processing, ocr, pdf, pdfplumber, pypdf, reportlab | 2026-10-15 |
+| [`parallel-agent-coordination`](skills/parallel-agent-coordination/SKILL.md) | michaelweissdev | 1.0.0 | Split work across multiple concurrent AI agents or subagents safely: decide whether parallelism is worth it, partition work by file owner... | coordination, delegation, multi-agent, parallelism, subagents, worktrees | 2026-10-15 |
+| [`pdf-processing`](skills/pdf-processing/SKILL.md) | michaelweissdev | 1.1.0 | Extract text, parse structured tables, manipulate pages, fill form fields, and generate PDF documents programmatically. Use when extracti... | document-processing, ocr, pdf, pdfplumber, pypdf, reportlab | 2026-10-15 |
 | [`performance-profiling`](skills/performance-profiling/SKILL.md) | michaelweissdev | 1.0.0 | Profile system and application CPU, memory, and I/O bottlenecks across Linux, Go, Python, Java, and Node.js environments. Use when diagno... | cpu, ebpf, flamegraphs, latency, memory, microbenchmarking, perf, performance, pprof, profiling, py-spy | 2026-10-15 |
+| [`performance-regression-testing`](skills/performance-regression-testing/SKILL.md) | michaelweissdev | 1.0.0 | Detect performance regressions reliably in CI and local review: design benchmarks, control noise, take enough samples, compare against a ... | benchmarking, ci, criterion, hyperfine, performance, pytest-benchmark, regression, statistics | 2026-10-15 |
 | [`playwright-testing`](skills/playwright-testing/SKILL.md) | michaelweissdev | 1.0.0 | Author, execute, and maintain end-to-end (E2E) web integration tests using Playwright. Use when designing Page Object Models (POM), autho... | auto-waiting, browser, e2e, fixtures, locators, network-mocking, playwright, pom, testing, trace-viewer | 2026-10-15 |
-| [`postgresql-development`](skills/postgresql-development/SKILL.md) | michaelweissdev | 1.0.0 | Design, optimize, and migrate production PostgreSQL databases using advanced PostgreSQL features. Use when indexing JSONB columns with GI... | explain, gin, jsonb, migrations, postgres, postgresql, rls, sql | 2026-10-15 |
+| [`postgresql-development`](skills/postgresql-development/SKILL.md) | michaelweissdev | 1.1.0 | Design, optimize, migrate, and secure PostgreSQL databases (supported majors 14-18, 18 current). Use when indexing JSONB with GIN or expr... | explain, gin, jsonb, locking, migrations, postgres, postgresql, rls, sql | 2026-10-15 |
+| [`postgresql-performance`](skills/postgresql-performance/SKILL.md) | michaelweissdev | 1.0.0 | Diagnose and fix slow PostgreSQL workloads from evidence - find the expensive statements with pg_stat_statements, read EXPLAIN (ANALYZE, ... | explain, indexing, locks, performance, pg_stat_statements, postgresql, vacuum | 2026-10-16 |
 | [`pptx-processing`](skills/pptx-processing/SKILL.md) | michaelweissdev | 1.0.0 | Generate, edit, and inspect modern PowerPoint (.pptx) presentation decks programmatically using python-pptx. Use when building executive ... | office, powerpoint, pptx, presentations, python-pptx, slides | 2026-10-15 |
-| [`python-development`](skills/python-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, review, test, and refactor idiomatic Python applications following PEP 8, strict type hints, and modern ecosystem standards. Use... | asyncio, best-practices, mypy, pytest, python, ruff, typing | 2026-10-15 |
+| [`property-based-testing`](skills/property-based-testing/SKILL.md) | michaelweissdev | 1.0.0 | Design and write property-based tests (Hypothesis for Python, proptest for Rust, same ideas for fast-check/QuickCheck): choose properties... | hypothesis, property-based-testing, proptest, quickcheck, shrinking, stateful-testing, testing | 2026-10-15 |
+| [`python-development`](skills/python-development/SKILL.md) | michaelweissdev | 1.1.0 | Develop, review, test, and refactor idiomatic Python applications following PEP 8, strict type hints, and modern ecosystem standards. Use... | asyncio, best-practices, mypy, pytest, python, ruff, typing | 2026-10-15 |
 | [`python-packaging`](skills/python-packaging/SKILL.md) | michaelweissdev | 1.0.0 | Package, build, distribute, and manage modern Python libraries and CLI tools. Use when writing or updating pyproject.toml, configuring bu... | build, packaging, pypi, pyproject, python, uv, wheels | 2026-10-15 |
+| [`rag-evaluation`](skills/rag-evaluation/SKILL.md) | michaelweissdev | 1.0.0 | Evaluate retrieval-augmented generation systems component by component - build a query set with labelled relevant passages, compute retri... | chunking, evaluation, faithfulness, groundedness, ndcg, rag, recall, retrieval | 2026-10-15 |
+| [`react-composition-patterns`](skills/react-composition-patterns/SKILL.md) | michaelweissdev | 1.0.0 | Design React component APIs through composition: children and slots, compound components with context, controlled vs uncontrolled state, ... | api-design, composition, compound-components, context, hooks, react, react-19, typescript | 2026-10-15 |
+| [`react-performance`](skills/react-performance/SKILL.md) | michaelweissdev | 1.0.0 | Diagnose and fix React rendering, bundle, and data-loading performance using measurement first (React DevTools Profiler, Chrome Performan... | bundle, core-web-vitals, memoization, performance, profiler, react, react-compiler, suspense | 2026-10-15 |
 | [`readme-authoring`](skills/readme-authoring/SKILL.md) | michaelweissdev | 1.0.0 | Draft, structure, and refine professional repository README.md files that clearly communicate project value, quickstart steps, configurat... | badges, documentation, markdown, onboarding, open-source, readme | 2026-10-15 |
 | [`redis-caching`](skills/redis-caching/SKILL.md) | michaelweissdev | 1.0.0 | Design, implement, and optimize high-throughput Redis caching layers and in-memory data architectures. Use when selecting data structures... | caching, databases, distributed-cache, key-value, memory-optimization, redis, redlock | 2026-10-15 |
 | [`refactoring`](skills/refactoring/SKILL.md) | michaelweissdev | 1.0.0 | Safely improve software internal design and maintainability without altering external behavior or breaking API contracts. Use when applyi... | clean-code, maintainability, patterns, refactoring, technical-debt, testing | 2026-10-15 |
 | [`release-engineering`](skills/release-engineering/SKILL.md) | michaelweissdev | 1.0.0 | Coordinate, verify, and execute safe software release engineering workflows. Use when validating build artifacts, ensuring cross-manifest... | artifacts, deployment, devops, packaging, release-engineering, semver | 2026-10-15 |
+| [`review-feedback-handling`](skills/review-feedback-handling/SKILL.md) | michaelweissdev | 1.0.0 | Receive and act on code review feedback (human, bot, or agent reviewer) with technical rigor: verify each comment against the code, class... | ai-agents, code-review, collaboration, feedback, pull-requests | 2026-10-15 |
 | [`rust-cargo`](skills/rust-cargo/SKILL.md) | michaelweissdev | 1.0.0 | Manage Rust packages, multi-crate Cargo workspaces, conditional compilation features, dependency graphs, benchmarks, and crates.io publis... | build, cargo, crates, dependencies, packaging, rust, workspaces | 2026-10-15 |
-| [`rust-development`](skills/rust-development/SKILL.md) | michaelweissdev | 1.0.0 | Develop, review, and optimize idiomatic, memory-safe Rust code following the Rust API Guidelines. Use when writing Rust crates, managing ... | cargo, clippy, lifetimes, memory-safety, ownership, rust, traits | 2026-10-15 |
+| [`rust-development`](skills/rust-development/SKILL.md) | michaelweissdev | 1.1.0 | Develop, review, and optimize idiomatic, memory-safe Rust code following the Rust API Guidelines. Use when writing Rust crates, managing ... | cargo, clippy, lifetimes, memory-safety, ownership, rust, traits | 2026-10-15 |
 | [`secrets-management`](skills/secrets-management/SKILL.md) | michaelweissdev | 1.0.0 | Manage, rotate, inject, and protect application secrets, API keys, certificates, and credentials throughout development and deployment li... | api-keys, credentials, env-vars, gitleaks, secrets, security, vault | 2026-10-15 |
 | [`secure-coding`](skills/secure-coding/SKILL.md) | michaelweissdev | 1.0.0 | Apply defensive programming and secure software engineering principles to prevent common vulnerabilities (OWASP Top 10, CWE Top 25). Use ... | auth, cwe, injection, owasp, sanitization, secure-coding, security | 2026-10-15 |
-| [`security-code-review`](skills/security-code-review/SKILL.md) | michaelweissdev | 1.0.0 | Perform structured, evidence-based security code reviews to identify vulnerabilities, trust boundary violations, and injection flaws. Use... | audit, code-review, cwe, owasp, security, trust-boundaries, vulnerabilities | 2026-10-15 |
+| [`security-code-review`](skills/security-code-review/SKILL.md) | michaelweissdev | 1.1.0 | Perform structured, evidence-based security reviews of source code and diffs: map the attack surface, trace untrusted data from source to... | audit, code-review, cwe, owasp, security, trust-boundaries, vulnerabilities | 2026-10-15 |
+| [`security-differential-review`](skills/security-differential-review/SKILL.md) | michaelweissdev | 1.0.0 | Review a code change (pull request, commit range, release diff) for security regressions by focusing on what the diff adds, removes, and ... | code-review, diff, git, pull-request, regression, risk-triage, security | 2026-10-15 |
 | [`semantic-versioning`](skills/semantic-versioning/SKILL.md) | michaelweissdev | 1.0.0 | Apply Semantic Versioning 2.0.0 (SemVer) principles to libraries, tools, and APIs. Use when determining version bumps (MAJOR, MINOR, PATC... | api-compatibility, dependencies, releases, semver, versioning | 2026-10-15 |
-| [`skill-security-audit`](skills/skill-security-audit/SKILL.md) | michaelweissdev | 1.0.0 | Audit, inspect, and evaluate third-party Agent Skills and tool definitions for security risks, prompt injection, and data exfiltration. U... | ai-safety, exfiltration, prompt-injection, red-team, security, skill-audit | 2026-10-15 |
+| [`semgrep-rule-authoring`](skills/semgrep-rule-authoring/SKILL.md) | michaelweissdev | 1.0.0 | Write, test, and tune custom Semgrep rules (YAML) that detect one specific bug pattern with low false-positive noise, using pattern opera... | custom-rules, sast, semgrep, static-analysis, taint-analysis, testing, variant-analysis | 2026-10-15 |
+| [`skill-security-audit`](skills/skill-security-audit/SKILL.md) | michaelweissdev | 1.1.0 | Audit third-party Agent Skills, plugins, and MCP tool definitions for security risk before installation: prompt injection, hidden or invi... | ai-safety, exfiltration, prompt-injection, security, skill-audit, supply-chain | 2026-10-15 |
+| [`software-supply-chain-audit`](skills/software-supply-chain-audit/SKILL.md) | michaelweissdev | 1.0.0 | Audit the trustworthiness of a project's software supply chain: whether each dependency and build input is the intended one, is verifiabl... | dependency-confusion, lockfile, provenance, sbom, sigstore, slsa, supply-chain, typosquatting | 2026-10-15 |
 | [`sphinx-documentation`](skills/sphinx-documentation/SKILL.md) | michaelweissdev | 1.0.0 | Build, structure, and maintain technical documentation sites using Sphinx, reStructuredText (rST), MyST Markdown, and autodoc. Use when c... | autodoc, documentation, myst, python, readthedocs, rst, sphinx | 2026-10-15 |
 | [`sql-development`](skills/sql-development/SKILL.md) | michaelweissdev | 1.0.0 | Write, format, review, and optimize relational SQL queries following standard conventions. Use when composing complex SELECT queries with... | acid, ctes, databases, joins, query-optimization, rdbms, sql, transactions | 2026-10-15 |
 | [`swift-development`](skills/swift-development/SKILL.md) | michaelweissdev | 1.0.0 | Architect, implement, and test modern Swift applications (Swift 5.9 / 6.0) following the official Swift API Design Guidelines. Use when d... | actors, concurrency, ios, macos, protocols, spm, swift, value-types | 2026-10-15 |
 | [`system-architecture-design`](skills/system-architecture-design/SKILL.md) | michaelweissdev | 1.0.0 | Design, document, and evaluate distributed software architectures, domain models, and scalability patterns. Use when drafting Architectur... | adr, architecture, c4-model, cqrs, ddd, event-driven, microservices, modular-monolith, scalability, system-design | 2026-10-15 |
 | [`technical-writing`](skills/technical-writing/SKILL.md) | michaelweissdev | 1.0.0 | Author precise, authoritative, and user-centric technical documentation, API references, and architecture guides. Use when drafting syste... | architecture, clarity, documentation, style-guide, technical-writing, tutorials | 2026-10-15 |
 | [`terraform-iac`](skills/terraform-iac/SKILL.md) | michaelweissdev | 1.0.0 | Architect, author, validate, and manage Infrastructure as Code using Terraform and OpenTofu. Use when designing HCL root and reusable chi... | checkov, devops, hcl, iac, modules, opentofu, state-locking, terraform, tflint | 2026-10-15 |
+| [`terraform-security-review`](skills/terraform-security-review/SKILL.md) | michaelweissdev | 1.0.0 | Review Terraform code, plans and state for security risks without changing infrastructure: public exposure, over-broad IAM, unencrypted s... | checkov, iac, iam, review, security, state, terraform, trivy | 2026-10-15 |
 | [`test-driven-development`](skills/test-driven-development/SKILL.md) | michaelweissdev | 1.0.0 | Apply the disciplined Red-Green-Refactor Test-Driven Development (TDD) cycle to design clean, testable, and minimal code. Use when develo... | agile, design, red-green-refactor, tdd, testing, unit-testing | 2026-10-15 |
 | [`threat-modeling`](skills/threat-modeling/SKILL.md) | michaelweissdev | 1.0.0 | Identify architectural security risks, map trust boundaries, and evaluate attack paths using STRIDE and risk assessment frameworks. Use w... | architecture, attack-trees, risk-assessment, security, stride, threat-modeling | 2026-10-15 |
 | [`typescript-development`](skills/typescript-development/SKILL.md) | michaelweissdev | 1.0.0 | Architect, implement, and review type-safe TypeScript applications under strict mode. Use when defining discriminated unions, writing reu... | discriminated-unions, generics, strict, tsconfig, types, typescript | 2026-10-15 |
 | [`unit-testing`](skills/unit-testing/SKILL.md) | michaelweissdev | 1.0.0 | Design, write, and maintain robust, isolated, and deterministic unit tests. Use when writing unit test suites (pytest, jest, cargo test, ... | fixtures, jest, mocks, pytest, tdd, testing, unit-tests | 2026-10-15 |
+| [`variant-analysis`](skills/variant-analysis/SKILL.md) | michaelweissdev | 1.0.0 | After one vulnerability is confirmed, find its siblings: extract the root cause, generalize it in steps (exact, structural, semantic), se... | code-search, regression, ripgrep, root-cause, security, semgrep, variant-analysis | 2026-10-15 |
+| [`verification-before-completion`](skills/verification-before-completion/SKILL.md) | michaelweissdev | 1.0.0 | Enforce an evidence standard before an AI agent claims work is done, fixed, passing, or ready. Use when about to say "done", "fixed", "te... | ai-agents, completion, evidence, honesty, quality-gates, verification | 2026-10-15 |
+| [`vulnerability-validation`](skills/vulnerability-validation/SKILL.md) | michaelweissdev | 1.0.0 | Decide whether a suspected vulnerability (scanner hit, review finding, bug report) is real, reachable, and worth its claimed severity, us... | cvss, false-positives, proof-of-concept, reachability, security, severity, triage | 2026-10-15 |
+| [`web-accessibility-review`](skills/web-accessibility-review/SKILL.md) | michaelweissdev | 1.0.0 | Review web UI code and running pages for accessibility against WCAG 2.2 (A/AA) and the WAI-ARIA Authoring Practices: semantics, names, ke... | a11y, accessibility, aria, axe, contrast, keyboard, screen-reader, wcag | 2026-10-15 |
 | [`web-html-css`](skills/web-html-css/SKILL.md) | michaelweissdev | 1.0.0 | Build accessible, semantic, and responsive web user interfaces using modern HTML5 and CSS3. Use when structuring semantic HTML markup, de... | accessibility, css, flexbox, grid, html, responsive, wcag, web | 2026-10-15 |
-| [`xlsx-processing`](skills/xlsx-processing/SKILL.md) | michaelweissdev | 1.0.0 | Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically using openpyxl. Use when generating financial spreads... | excel, financial-modeling, formulas, office, openpyxl, spreadsheets, xlsx | 2026-10-15 |
+| [`web-security-testing`](skills/web-security-testing/SKILL.md) | michaelweissdev | 1.0.0 | Plan and run authorized, defensive security testing of web applications you own or have written permission to test (localhost, a dev/stag... | appsec, authz, cookies, defensive, headers, idor, owasp, web-security, wstg | 2026-10-15 |
+| [`xlsx-processing`](skills/xlsx-processing/SKILL.md) | michaelweissdev | 1.1.0 | Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically using openpyxl. Use when generating financial spreads... | excel, financial-modeling, formulas, office, openpyxl, spreadsheets, xlsx | 2026-10-15 |
 
 ## By topic
 
-- **ai-agents** (3): `agent-skill-authoring`, `mcp-server-development`, `skill-security-audit`
+- **accessibility** (1): `web-accessibility-review`
+- **ai-agents** (9): `agent-behavior-evaluation`, `agent-skill-authoring`, `architecture-decision-records`, `implementation-planning`, `mcp-server-development`, `parallel-agent-coordination`, `review-feedback-handling`, `skill-security-audit`, `verification-before-completion`
+- **api** (1): `contract-testing`
 - **architecture** (3): `api-design`, `error-handling`, `threat-modeling`
-- **databases** (6): `csv-data-processing`, `elasticsearch-search`, `mongodb-development`, `postgresql-development`, `redis-caching`, `sql-development`
-- **devops** (12): `ansible-automation`, `aws-cloud-architecture`, `ci-github-actions`, `container-security`, `dependency-management`, `docker-development`, `kubernetes-manifests`, `linux-hardening`, `logging-observability`, `release-engineering`, `secrets-management`, `terraform-iac`
-- **devtools** (35): `agent-skill-authoring`, `bash-scripting`, `changelog-writing`, `ci-github-actions`, `code-review`, `conventional-commits`, `csv-data-processing`, `debugging-workflow`, `diagrams-mermaid`, `docker-development`, `docx-processing`, `git-branching-worktrees`, `git-merge-conflicts`, `git-workflow`, `github-issues-prs`, `latex-authoring`, `linux-cli`, `linux-filesystems`, `linux-networking`, `linux-permissions`, `linux-processes-systemd`, `linux-troubleshooting`, `macos-cli`, `markdown-writing`, `mcp-server-development`, `pdf-processing`, `performance-profiling`, `pptx-processing`, `python-packaging`, `readme-authoring`, `rust-cargo`, `semantic-versioning`, `skill-security-audit`, `sphinx-documentation`, `xlsx-processing`
-- **documentation** (12): `changelog-writing`, `code-comments`, `diagrams-mermaid`, `docx-processing`, `latex-authoring`, `markdown-writing`, `pdf-processing`, `pptx-processing`, `readme-authoring`, `sphinx-documentation`, `technical-writing`, `xlsx-processing`
+- **ci** (1): `cross-platform-testing`
+- **code-review** (2): `security-differential-review`, `variant-analysis`
+- **cryptography** (1): `cryptographic-code-review`
+- **data-engineering** (1): `dataset-quality`
+- **databases** (8): `csv-data-processing`, `database-migrations`, `elasticsearch-search`, `mongodb-development`, `postgresql-development`, `postgresql-performance`, `redis-caching`, `sql-development`
+- **debugging** (3): `browser-debugging`, `git-history-forensics`, `memory-sanitizers`
+- **deployment** (2): `database-migrations`, `local-llm-deployment`
+- **design** (1): `frontend-design-review`
+- **devops** (14): `ansible-automation`, `aws-cloud-architecture`, `ci-github-actions`, `container-security`, `dependency-management`, `docker-development`, `kubernetes-manifests`, `kubernetes-troubleshooting`, `linux-hardening`, `logging-observability`, `release-engineering`, `secrets-management`, `terraform-iac`, `terraform-security-review`
+- **devtools** (41): `agent-behavior-evaluation`, `agent-skill-authoring`, `bash-scripting`, `browser-debugging`, `changelog-writing`, `ci-github-actions`, `code-review`, `conventional-commits`, `csv-data-processing`, `debugging-workflow`, `diagrams-mermaid`, `docker-development`, `docx-processing`, `git-branching-worktrees`, `git-merge-conflicts`, `git-workflow`, `github-issues-prs`, `implementation-planning`, `latex-authoring`, `linux-cli`, `linux-filesystems`, `linux-networking`, `linux-permissions`, `linux-processes-systemd`, `linux-troubleshooting`, `macos-cli`, `markdown-writing`, `mcp-server-development`, `parallel-agent-coordination`, `pdf-processing`, `performance-profiling`, `pptx-processing`, `python-packaging`, `readme-authoring`, `review-feedback-handling`, `rust-cargo`, `semantic-versioning`, `skill-security-audit`, `sphinx-documentation`, `verification-before-completion`, `xlsx-processing`
+- **documentation** (13): `architecture-decision-records`, `changelog-writing`, `code-comments`, `diagrams-mermaid`, `docx-processing`, `latex-authoring`, `markdown-writing`, `pdf-processing`, `pptx-processing`, `readme-authoring`, `sphinx-documentation`, `technical-writing`, `xlsx-processing`
+- **evaluation** (1): `dataset-quality`
+- **frontend** (5): `browser-debugging`, `frontend-design-review`, `react-composition-patterns`, `react-performance`, `web-accessibility-review`
+- **linux** (1): `linux-ebpf-tracing`
+- **machine-learning** (4): `dataset-quality`, `llm-evaluation`, `local-llm-deployment`, `rag-evaluation`
+- **microservices** (1): `contract-testing`
+- **observability** (1): `postgresql-performance`
 - **office** (5): `docx-processing`, `latex-authoring`, `pdf-processing`, `pptx-processing`, `xlsx-processing`
 - **operating-systems** (9): `bash-scripting`, `linux-cli`, `linux-filesystems`, `linux-hardening`, `linux-networking`, `linux-permissions`, `linux-processes-systemd`, `linux-troubleshooting`, `macos-cli`
+- **operations** (2): `incident-response`, `kubernetes-troubleshooting`
+- **performance** (3): `linux-ebpf-tracing`, `performance-regression-testing`, `react-performance`
 - **programming-languages** (14): `c-development`, `cpp-development`, `go-development`, `java-development`, `javascript-development`, `kotlin-development`, `nodejs-development`, `python-development`, `python-packaging`, `rust-cargo`, `rust-development`, `swift-development`, `typescript-development`, `web-html-css`
-- **security** (13): `c-development`, `ci-github-actions`, `container-security`, `dependency-management`, `github-actions-security`, `linux-hardening`, `linux-permissions`, `oauth-jwt-auth`, `secrets-management`, `secure-coding`, `security-code-review`, `skill-security-audit`, `threat-modeling`
-- **software-development** (44): `agent-skill-authoring`, `api-design`, `bash-scripting`, `c-development`, `code-comments`, `code-review`, `cpp-development`, `csv-data-processing`, `debugging-workflow`, `dependency-management`, `diagrams-mermaid`, `docker-development`, `error-handling`, `go-development`, `graphql-development`, `grpc-protobuf`, `integration-testing`, `java-development`, `javascript-development`, `kafka-streaming`, `kotlin-development`, `logging-observability`, `mcp-server-development`, `nodejs-development`, `postgresql-development`, `python-development`, `python-packaging`, `refactoring`, `release-engineering`, `rust-cargo`, `rust-development`, `secure-coding`, `security-code-review`, `semantic-versioning`, `sphinx-documentation`, `sql-development`, `swift-development`, `system-architecture-design`, `technical-writing`, `test-driven-development`, `threat-modeling`, `typescript-development`, `unit-testing`, `web-html-css`
-- **testing** (5): `debugging-workflow`, `integration-testing`, `playwright-testing`, `test-driven-development`, `unit-testing`
+- **quality** (6): `frontend-design-review`, `llm-evaluation`, `mutation-testing`, `property-based-testing`, `rag-evaluation`, `web-accessibility-review`
+- **query-tuning** (1): `postgresql-performance`
+- **react** (2): `react-composition-patterns`, `react-performance`
+- **release-engineering** (1): `database-migrations`
+- **search** (1): `rag-evaluation`
+- **security** (23): `c-development`, `ci-github-actions`, `container-security`, `cryptographic-code-review`, `dependency-management`, `fuzz-testing`, `github-actions-security`, `incident-response`, `linux-hardening`, `linux-permissions`, `oauth-jwt-auth`, `secrets-management`, `secure-coding`, `security-code-review`, `security-differential-review`, `semgrep-rule-authoring`, `skill-security-audit`, `software-supply-chain-audit`, `terraform-security-review`, `threat-modeling`, `variant-analysis`, `vulnerability-validation`, `web-security-testing`
+- **self-hosting** (1): `local-llm-deployment`
+- **software-design** (1): `react-composition-patterns`
+- **software-development** (57): `agent-skill-authoring`, `api-design`, `architecture-decision-records`, `bash-scripting`, `c-development`, `code-comments`, `code-review`, `contract-testing`, `cpp-development`, `cross-platform-testing`, `csv-data-processing`, `debugging-workflow`, `dependency-management`, `diagrams-mermaid`, `docker-development`, `error-handling`, `fuzz-testing`, `git-history-forensics`, `go-development`, `graphql-development`, `grpc-protobuf`, `implementation-planning`, `integration-testing`, `java-development`, `javascript-development`, `kafka-streaming`, `kotlin-development`, `logging-observability`, `mcp-server-development`, `memory-sanitizers`, `mutation-testing`, `nodejs-development`, `parallel-agent-coordination`, `performance-regression-testing`, `postgresql-development`, `property-based-testing`, `python-development`, `python-packaging`, `refactoring`, `release-engineering`, `review-feedback-handling`, `rust-cargo`, `rust-development`, `secure-coding`, `security-code-review`, `semantic-versioning`, `sphinx-documentation`, `sql-development`, `swift-development`, `system-architecture-design`, `technical-writing`, `test-driven-development`, `threat-modeling`, `typescript-development`, `unit-testing`, `verification-before-completion`, `web-html-css`
+- **static-analysis** (1): `semgrep-rule-authoring`
+- **supply-chain** (1): `software-supply-chain-audit`
+- **testing** (14): `agent-behavior-evaluation`, `contract-testing`, `cross-platform-testing`, `debugging-workflow`, `fuzz-testing`, `integration-testing`, `llm-evaluation`, `mutation-testing`, `performance-regression-testing`, `playwright-testing`, `property-based-testing`, `test-driven-development`, `unit-testing`, `web-security-testing`
 - **version-control** (8): `changelog-writing`, `conventional-commits`, `git-branching-worktrees`, `git-merge-conflicts`, `git-workflow`, `github-issues-prs`, `release-engineering`, `semantic-versioning`
+- **vulnerability-management** (1): `vulnerability-validation`
+- **web** (1): `web-security-testing`
 
 ## By tag
 
+- **a11y** (1): `web-accessibility-review`
 - **academic** (1): `latex-authoring`
-- **accessibility** (1): `web-html-css`
+- **accessibility** (2): `web-accessibility-review`, `web-html-css`
 - **acid** (1): `sql-development`
 - **acid-transactions** (1): `mongodb-development`
 - **acl** (1): `linux-permissions`
 - **actionlint** (1): `github-actions-security`
 - **actors** (1): `swift-development`
-- **adr** (1): `system-architecture-design`
-- **agent-skills** (1): `agent-skill-authoring`
+- **adr** (2): `architecture-decision-records`, `system-architecture-design`
+- **aes-gcm** (1): `cryptographic-code-review`
+- **afl** (1): `fuzz-testing`
+- **agent-skills** (2): `agent-behavior-evaluation`, `agent-skill-authoring`
 - **aggregation** (1): `mongodb-development`
 - **aggregations** (1): `elasticsearch-search`
 - **agile** (1): `test-driven-development`
-- **ai-agents** (2): `agent-skill-authoring`, `mcp-server-development`
+- **ai-agents** (6): `agent-behavior-evaluation`, `agent-skill-authoring`, `implementation-planning`, `mcp-server-development`, `review-feedback-handling`, `verification-before-completion`
 - **ai-safety** (1): `skill-security-audit`
 - **ansible** (1): `ansible-automation`
 - **ansible-lint** (1): `ansible-automation`
 - **api** (1): `graphql-development`
 - **api-compatibility** (1): `semantic-versioning`
-- **api-design** (1): `api-design`
+- **api-design** (2): `api-design`, `react-composition-patterns`
 - **api-keys** (1): `secrets-management`
 - **api-testing** (1): `integration-testing`
-- **architecture** (4): `diagrams-mermaid`, `system-architecture-design`, `technical-writing`, `threat-modeling`
+- **appsec** (1): `web-security-testing`
+- **architecture** (5): `architecture-decision-records`, `diagrams-mermaid`, `system-architecture-design`, `technical-writing`, `threat-modeling`
+- **aria** (1): `web-accessibility-review`
+- **arm64** (1): `cross-platform-testing`
 - **artifacts** (1): `release-engineering`
+- **asan** (1): `memory-sanitizers`
 - **async** (1): `javascript-development`
 - **asyncio** (1): `python-development`
+- **atheris** (1): `fuzz-testing`
 - **attack-trees** (1): `threat-modeling`
 - **audit** (2): `dependency-management`, `security-code-review`
 - **auditd** (1): `linux-hardening`
 - **auth** (1): `secure-coding`
 - **authentication** (1): `oauth-jwt-auth`
 - **authorization** (1): `oauth-jwt-auth`
+- **authz** (1): `web-security-testing`
 - **auto-waiting** (1): `playwright-testing`
 - **autodoc** (1): `sphinx-documentation`
 - **automation** (3): `ansible-automation`, `bash-scripting`, `ci-github-actions`
 - **avro** (1): `kafka-streaming`
 - **aws** (1): `aws-cloud-architecture`
+- **axe** (1): `web-accessibility-review`
 - **backend** (2): `graphql-development`, `nodejs-development`
+- **backfill** (1): `database-migrations`
 - **backward-compatibility** (1): `api-design`
 - **badges** (1): `readme-authoring`
 - **bash** (2): `bash-scripting`, `linux-cli`
+- **benchmarking** (1): `performance-regression-testing`
+- **benchmarks** (1): `llm-evaluation`
 - **best-practices** (2): `code-comments`, `python-development`
 - **bibtex** (1): `latex-authoring`
+- **bisect** (1): `git-history-forensics`
+- **blame** (1): `git-history-forensics`
+- **bpftrace** (1): `linux-ebpf-tracing`
 - **branches** (1): `git-branching-worktrees`
+- **breakpoints** (1): `browser-debugging`
 - **browser** (1): `playwright-testing`
 - **bsd** (1): `macos-cli`
 - **buf** (1): `grpc-protobuf`
 - **bug-reports** (1): `github-issues-prs`
 - **build** (2): `python-packaging`, `rust-cargo`
-- **c** (1): `c-development`
+- **bundle** (1): `react-performance`
+- **c** (2): `c-development`, `memory-sanitizers`
 - **c4-model** (1): `system-architecture-design`
 - **caching** (2): `ci-github-actions`, `redis-caching`
+- **can-i-deploy** (1): `contract-testing`
 - **capabilities** (2): `container-security`, `linux-permissions`
 - **cargo** (2): `rust-cargo`, `rust-development`
+- **cargo-fuzz** (1): `fuzz-testing`
+- **cargo-mutants** (1): `mutation-testing`
 - **cgroups** (1): `linux-processes-systemd`
 - **changelog** (1): `changelog-writing`
-- **checkov** (1): `terraform-iac`
+- **checkov** (2): `terraform-iac`, `terraform-security-review`
 - **chmod** (1): `linux-permissions`
 - **chown** (1): `linux-permissions`
+- **chrome** (1): `browser-debugging`
+- **chunking** (1): `rag-evaluation`
+- **ci** (2): `cross-platform-testing`, `performance-regression-testing`
 - **ci-cd** (2): `ci-github-actions`, `github-actions-security`
 - **clang** (1): `c-development`
 - **clarity** (1): `technical-writing`
@@ -176,46 +264,77 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **clippy** (1): `rust-development`
 - **cloud-architecture** (1): `aws-cloud-architecture`
 - **cmake** (1): `cpp-development`
-- **code-review** (3): `code-review`, `github-issues-prs`, `security-code-review`
-- **collaboration** (1): `github-issues-prs`
+- **code-review** (6): `code-review`, `cryptographic-code-review`, `github-issues-prs`, `review-feedback-handling`, `security-code-review`, `security-differential-review`
+- **code-search** (1): `variant-analysis`
+- **collaboration** (2): `github-issues-prs`, `review-feedback-handling`
 - **comments** (1): `code-comments`
 - **commits** (2): `conventional-commits`, `git-workflow`
 - **commonmark** (1): `markdown-writing`
+- **completion** (1): `verification-before-completion`
 - **compose** (1): `docker-development`
+- **composition** (1): `react-composition-patterns`
+- **compound-components** (1): `react-composition-patterns`
 - **concurrency** (3): `git-branching-worktrees`, `go-development`, `swift-development`
 - **conflict-resolution** (1): `git-merge-conflicts`
+- **console** (1): `browser-debugging`
+- **consumer-driven-contracts** (1): `contract-testing`
 - **container-security** (1): `container-security`
 - **containers** (1): `docker-development`
-- **context** (1): `go-development`
+- **containment** (1): `incident-response`
+- **context** (2): `go-development`, `react-composition-patterns`
+- **contract-testing** (1): `contract-testing`
+- **contrast** (1): `web-accessibility-review`
 - **conventional-commits** (1): `conventional-commits`
+- **cookies** (1): `web-security-testing`
+- **coordination** (1): `parallel-agent-coordination`
 - **core-guidelines** (1): `cpp-development`
+- **core-web-vitals** (1): `react-performance`
 - **coroutines** (1): `kotlin-development`
-- **cpp** (1): `cpp-development`
+- **corpus** (1): `fuzz-testing`
+- **cosmic-ray** (1): `mutation-testing`
+- **cpp** (2): `cpp-development`, `memory-sanitizers`
 - **cpu** (1): `performance-profiling`
 - **cqrs** (1): `system-architecture-design`
+- **crash-triage** (1): `fuzz-testing`
 - **crates** (1): `rust-cargo`
 - **credentials** (1): `secrets-management`
-- **cross-platform** (1): `macos-cli`
+- **criterion** (1): `performance-regression-testing`
+- **cross-platform** (2): `cross-platform-testing`, `macos-cli`
+- **cryptography** (1): `cryptographic-code-review`
 - **csrf** (1): `oauth-jwt-auth`
-- **css** (1): `web-html-css`
+- **css** (2): `frontend-design-review`, `web-html-css`
 - **csv** (1): `csv-data-processing`
 - **ctes** (1): `sql-development`
 - **curl** (1): `linux-networking`
-- **cwe** (2): `secure-coding`, `security-code-review`
+- **custom-rules** (1): `semgrep-rule-authoring`
+- **cvss** (1): `vulnerability-validation`
+- **cwe** (3): `cryptographic-code-review`, `secure-coding`, `security-code-review`
 - **daemons** (1): `linux-processes-systemd`
 - **data-classes** (1): `kotlin-development`
+- **data-leakage** (1): `dataset-quality`
 - **data-processing** (1): `csv-data-processing`
+- **data-quality** (1): `dataset-quality`
 - **databases** (3): `integration-testing`, `redis-caching`, `sql-development`
 - **dataloader** (1): `graphql-development`
+- **datasets** (1): `dataset-quality`
 - **ddd** (1): `system-architecture-design`
-- **debugging** (1): `debugging-workflow`
+- **debugging** (4): `browser-debugging`, `debugging-workflow`, `kubernetes-troubleshooting`, `memory-sanitizers`
+- **decisions** (1): `architecture-decision-records`
+- **deduplication** (1): `dataset-quality`
+- **defensive** (1): `web-security-testing`
+- **delegation** (1): `parallel-agent-coordination`
 - **dependabot** (1): `dependency-management`
 - **dependencies** (3): `dependency-management`, `rust-cargo`, `semantic-versioning`
+- **dependency-confusion** (1): `software-supply-chain-audit`
 - **deployment** (1): `release-engineering`
 - **design** (1): `test-driven-development`
+- **design-review** (1): `frontend-design-review`
+- **design-tokens** (1): `frontend-design-review`
 - **devops** (8): `ansible-automation`, `aws-cloud-architecture`, `ci-github-actions`, `docker-development`, `github-actions-security`, `kubernetes-manifests`, `release-engineering`, `terraform-iac`
+- **devtools** (1): `browser-debugging`
+- **dfir** (1): `incident-response`
 - **diagrams** (1): `diagrams-mermaid`
-- **diff** (1): `git-workflow`
+- **diff** (2): `git-workflow`, `security-differential-review`
 - **diff3** (1): `git-merge-conflicts`
 - **discriminated-unions** (1): `typescript-development`
 - **disk** (1): `linux-troubleshooting`
@@ -229,31 +348,40 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **docstrings** (1): `code-comments`
 - **document-database** (1): `mongodb-development`
 - **document-processing** (2): `docx-processing`, `pdf-processing`
-- **documentation** (6): `changelog-writing`, `code-comments`, `markdown-writing`, `readme-authoring`, `sphinx-documentation`, `technical-writing`
+- **documentation** (7): `architecture-decision-records`, `changelog-writing`, `code-comments`, `markdown-writing`, `readme-authoring`, `sphinx-documentation`, `technical-writing`
 - **docx** (1): `docx-processing`
 - **duckdb** (1): `csv-data-processing`
 - **e2e** (1): `playwright-testing`
-- **ebpf** (1): `performance-profiling`
+- **ebpf** (2): `linux-ebpf-tracing`, `performance-profiling`
 - **ecmascript** (1): `javascript-development`
 - **ecs** (1): `aws-cloud-architecture`
 - **eks** (1): `aws-cloud-architecture`
 - **elasticsearch** (1): `elasticsearch-search`
 - **encoding** (1): `csv-data-processing`
 - **endpoints** (1): `api-design`
+- **engineering-process** (1): `implementation-planning`
 - **env-vars** (1): `secrets-management`
 - **eos** (1): `kafka-streaming`
 - **error-handling** (1): `error-handling`
 - **esm** (2): `javascript-development`, `nodejs-development`
 - **esr-rule** (1): `mongodb-development`
+- **evals** (1): `agent-behavior-evaluation`
+- **evaluation** (3): `agent-behavior-evaluation`, `llm-evaluation`, `rag-evaluation`
 - **event-driven** (1): `system-architecture-design`
 - **event-loop** (2): `javascript-development`, `nodejs-development`
 - **event-streaming** (1): `kafka-streaming`
+- **events** (1): `kubernetes-troubleshooting`
+- **evidence** (2): `incident-response`, `verification-before-completion`
 - **excel** (1): `xlsx-processing`
 - **exceptions** (1): `error-handling`
 - **exfiltration** (1): `skill-security-audit`
-- **explain** (1): `postgresql-development`
+- **expand-contract** (1): `database-migrations`
+- **explain** (2): `postgresql-development`, `postgresql-performance`
 - **exponential-backoff** (1): `error-handling`
 - **ext4** (1): `linux-filesystems`
+- **faithfulness** (1): `rag-evaluation`
+- **false-positives** (1): `vulnerability-validation`
+- **feedback** (1): `review-feedback-handling`
 - **filesystems** (1): `linux-filesystems`
 - **financial-modeling** (1): `xlsx-processing`
 - **firewall** (1): `linux-networking`
@@ -262,18 +390,23 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **flexbox** (1): `web-html-css`
 - **flow** (1): `kotlin-development`
 - **flowcharts** (1): `diagrams-mermaid`
+- **forensics** (2): `git-history-forensics`, `incident-response`
 - **formatting** (1): `docx-processing`
 - **formulas** (1): `xlsx-processing`
+- **frontend** (1): `browser-debugging`
+- **fsck** (1): `git-history-forensics`
 - **fstab** (1): `linux-filesystems`
 - **fulltext** (1): `elasticsearch-search`
+- **fuzzing** (1): `fuzz-testing`
 - **gcc** (1): `c-development`
 - **generics** (1): `typescript-development`
 - **gfm** (1): `markdown-writing`
+- **gguf** (1): `local-llm-deployment`
 - **gin** (1): `postgresql-development`
-- **git** (4): `conventional-commits`, `git-branching-worktrees`, `git-merge-conflicts`, `git-workflow`
+- **git** (6): `conventional-commits`, `git-branching-worktrees`, `git-history-forensics`, `git-merge-conflicts`, `git-workflow`, `security-differential-review`
 - **git-bisect** (1): `debugging-workflow`
 - **github** (1): `github-issues-prs`
-- **github-actions** (2): `ci-github-actions`, `github-actions-security`
+- **github-actions** (3): `ci-github-actions`, `cross-platform-testing`, `github-actions-security`
 - **gitleaks** (1): `secrets-management`
 - **go** (1): `go-development`
 - **godoc** (1): `code-comments`
@@ -282,17 +415,28 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **gradle** (1): `java-development`
 - **graphql** (1): `graphql-development`
 - **grid** (1): `web-html-css`
+- **groundedness** (1): `rag-evaluation`
 - **grpc** (1): `grpc-protobuf`
 - **hardening** (3): `container-security`, `github-actions-security`, `linux-hardening`
 - **hcl** (1): `terraform-iac`
+- **headers** (1): `web-security-testing`
 - **helm** (1): `kubernetes-manifests`
+- **history** (1): `git-history-forensics`
 - **homebrew** (1): `macos-cli`
+- **honesty** (1): `verification-before-completion`
+- **hooks** (1): `react-composition-patterns`
 - **html** (1): `web-html-css`
-- **iac** (1): `terraform-iac`
-- **iam** (1): `aws-cloud-architecture`
+- **huggingface-datasets** (1): `dataset-quality`
+- **hyperfine** (1): `performance-regression-testing`
+- **hypothesis** (1): `property-based-testing`
+- **iac** (2): `terraform-iac`, `terraform-security-review`
+- **iam** (2): `aws-cloud-architecture`, `terraform-security-review`
 - **idempotency** (1): `ansible-automation`
+- **idor** (1): `web-security-testing`
 - **ilm** (1): `elasticsearch-search`
-- **indexing** (2): `elasticsearch-search`, `mongodb-development`
+- **incident-response** (1): `incident-response`
+- **indexing** (3): `elasticsearch-search`, `mongodb-development`, `postgresql-performance`
+- **inference** (1): `local-llm-deployment`
 - **injection** (1): `secure-coding`
 - **inodes** (1): `linux-filesystems`
 - **integration-tests** (1): `integration-testing`
@@ -318,38 +462,55 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **jwt** (1): `oauth-jwt-auth`
 - **k8s** (1): `kubernetes-manifests`
 - **kafka** (1): `kafka-streaming`
+- **kdf** (1): `cryptographic-code-review`
 - **keep-a-changelog** (1): `changelog-writing`
+- **kernel** (1): `linux-ebpf-tracing`
 - **key-value** (1): `redis-caching`
+- **keyboard** (1): `web-accessibility-review`
 - **kotlin** (1): `kotlin-development`
-- **kubernetes** (1): `kubernetes-manifests`
+- **kubectl** (1): `kubernetes-troubleshooting`
+- **kubernetes** (2): `kubernetes-manifests`, `kubernetes-troubleshooting`
+- **labels** (1): `dataset-quality`
 - **lambda** (1): `aws-cloud-architecture`
-- **latency** (1): `performance-profiling`
+- **latency** (2): `linux-ebpf-tracing`, `performance-profiling`
 - **latex** (1): `latex-authoring`
 - **launchd** (1): `macos-cli`
+- **libfuzzer** (1): `fuzz-testing`
 - **lifetimes** (1): `rust-development`
-- **linux** (7): `linux-cli`, `linux-filesystems`, `linux-hardening`, `linux-networking`, `linux-permissions`, `linux-processes-systemd`, `linux-troubleshooting`
+- **linux** (8): `linux-cli`, `linux-ebpf-tracing`, `linux-filesystems`, `linux-hardening`, `linux-networking`, `linux-permissions`, `linux-processes-systemd`, `linux-troubleshooting`
+- **llama-cpp** (1): `local-llm-deployment`
+- **llm** (1): `llm-evaluation`
+- **llm-as-judge** (1): `llm-evaluation`
+- **lm-evaluation-harness** (1): `llm-evaluation`
+- **local-llm** (1): `local-llm-deployment`
 - **locators** (1): `playwright-testing`
+- **lockfile** (1): `software-supply-chain-audit`
 - **lockfiles** (1): `dependency-management`
+- **locking** (1): `postgresql-development`
+- **locks** (2): `database-migrations`, `postgresql-performance`
 - **logging** (1): `logging-observability`
 - **logs** (1): `linux-troubleshooting`
-- **macos** (2): `macos-cli`, `swift-development`
+- **macos** (3): `cross-platform-testing`, `macos-cli`, `swift-development`
+- **madr** (1): `architecture-decision-records`
 - **maintainability** (2): `code-review`, `refactoring`
 - **manifests** (1): `kubernetes-manifests`
-- **markdown** (2): `markdown-writing`, `readme-authoring`
+- **markdown** (3): `architecture-decision-records`, `markdown-writing`, `readme-authoring`
 - **markdownlint** (1): `markdown-writing`
 - **math** (1): `latex-authoring`
+- **matrix** (1): `cross-platform-testing`
 - **maven** (1): `java-development`
 - **mcp** (1): `mcp-server-development`
+- **memoization** (1): `react-performance`
 - **memory** (1): `performance-profiling`
 - **memory-optimization** (1): `redis-caching`
-- **memory-safety** (2): `c-development`, `rust-development`
+- **memory-safety** (3): `c-development`, `memory-sanitizers`, `rust-development`
 - **merge-conflicts** (1): `git-merge-conflicts`
 - **mermaid** (1): `diagrams-mermaid`
 - **meta-skill** (1): `agent-skill-authoring`
 - **metrics** (1): `logging-observability`
 - **microbenchmarking** (1): `performance-profiling`
-- **microservices** (2): `grpc-protobuf`, `system-architecture-design`
-- **migrations** (1): `postgresql-development`
+- **microservices** (3): `contract-testing`, `grpc-protobuf`, `system-architecture-design`
+- **migrations** (2): `database-migrations`, `postgresql-development`
 - **mocks** (1): `unit-testing`
 - **model-context-protocol** (1): `mcp-server-development`
 - **modern-cpp** (1): `cpp-development`
@@ -357,88 +518,126 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **modules** (1): `terraform-iac`
 - **mongodb** (1): `mongodb-development`
 - **mounts** (1): `linux-filesystems`
+- **msan** (1): `memory-sanitizers`
+- **multi-agent** (1): `parallel-agent-coordination`
 - **multi-stage** (1): `docker-development`
+- **mutation-testing** (1): `mutation-testing`
+- **mutmut** (1): `mutation-testing`
 - **mypy** (1): `python-development`
 - **myst** (1): `sphinx-documentation`
+- **ndcg** (1): `rag-evaluation`
+- **network** (1): `browser-debugging`
 - **network-mocking** (1): `playwright-testing`
-- **networking** (1): `linux-networking`
+- **networking** (2): `kubernetes-troubleshooting`, `linux-networking`
 - **networkpolicy** (1): `kubernetes-manifests`
+- **nist-800-61** (1): `incident-response`
 - **nodejs** (2): `javascript-development`, `nodejs-development`
+- **nonce** (1): `cryptographic-code-review`
 - **nosql** (1): `mongodb-development`
 - **npm** (1): `nodejs-development`
 - **null-safety** (1): `kotlin-development`
 - **oauth2** (1): `oauth-jwt-auth`
-- **observability** (1): `logging-observability`
+- **observability** (2): `linux-ebpf-tracing`, `logging-observability`
 - **ocr** (1): `pdf-processing`
 - **office** (3): `docx-processing`, `pptx-processing`, `xlsx-processing`
 - **oidc** (3): `ci-github-actions`, `github-actions-security`, `oauth-jwt-auth`
+- **ollama** (1): `local-llm-deployment`
 - **onboarding** (1): `readme-authoring`
 - **oom** (1): `linux-troubleshooting`
 - **open-source** (1): `readme-authoring`
-- **openapi** (1): `api-design`
+- **openai-compatible** (1): `local-llm-deployment`
+- **openapi** (2): `api-design`, `contract-testing`
 - **openpyxl** (1): `xlsx-processing`
 - **opensearch** (1): `elasticsearch-search`
 - **opentofu** (1): `terraform-iac`
-- **owasp** (2): `secure-coding`, `security-code-review`
+- **owasp** (3): `secure-coding`, `security-code-review`, `web-security-testing`
 - **owl** (1): `agent-skill-authoring`
 - **ownership** (1): `rust-development`
 - **packaging** (3): `python-packaging`, `release-engineering`, `rust-cargo`
+- **pact** (1): `contract-testing`
+- **parallelism** (1): `parallel-agent-coordination`
+- **password-hashing** (1): `cryptographic-code-review`
 - **pattern-matching** (1): `java-development`
 - **patterns** (1): `refactoring`
 - **pdf** (2): `latex-authoring`, `pdf-processing`
 - **pdfplumber** (1): `pdf-processing`
 - **perf** (1): `performance-profiling`
-- **performance** (2): `linux-troubleshooting`, `performance-profiling`
+- **performance** (5): `linux-troubleshooting`, `performance-profiling`, `performance-regression-testing`, `postgresql-performance`, `react-performance`
 - **permissions** (1): `linux-permissions`
+- **pg_stat_statements** (1): `postgresql-performance`
+- **pii** (1): `dataset-quality`
 - **pii-redaction** (1): `logging-observability`
 - **pipes** (1): `linux-cli`
+- **pitest** (1): `mutation-testing`
 - **pkce** (1): `oauth-jwt-auth`
+- **planning** (1): `implementation-planning`
 - **playbooks** (1): `ansible-automation`
 - **playwright** (1): `playwright-testing`
+- **pods** (1): `kubernetes-troubleshooting`
 - **pointers** (1): `c-development`
 - **pom** (1): `playwright-testing`
+- **portability** (1): `cross-platform-testing`
 - **posix** (1): `bash-scripting`
 - **postgres** (1): `postgresql-development`
-- **postgresql** (1): `postgresql-development`
+- **postgresql** (3): `database-migrations`, `postgresql-development`, `postgresql-performance`
 - **powerpoint** (1): `pptx-processing`
 - **pprof** (1): `performance-profiling`
 - **pptx** (1): `pptx-processing`
 - **pr-review** (1): `code-review`
 - **presentations** (1): `pptx-processing`
 - **processes** (2): `linux-cli`, `linux-processes-systemd`
+- **profiler** (1): `react-performance`
 - **profiling** (1): `performance-profiling`
 - **promises** (1): `javascript-development`
 - **prompt-injection** (1): `skill-security-audit`
+- **proof-of-concept** (1): `vulnerability-validation`
+- **property-based-testing** (1): `property-based-testing`
+- **proptest** (1): `property-based-testing`
 - **proto3** (1): `grpc-protobuf`
 - **protobuf** (1): `grpc-protobuf`
 - **protocols** (1): `swift-development`
+- **provenance** (1): `software-supply-chain-audit`
 - **pub-sub** (1): `kafka-streaming`
-- **pull-requests** (1): `github-issues-prs`
+- **pull-request** (1): `security-differential-review`
+- **pull-requests** (2): `github-issues-prs`, `review-feedback-handling`
 - **py-spy** (1): `performance-profiling`
 - **pypdf** (1): `pdf-processing`
 - **pypi** (1): `python-packaging`
 - **pyproject** (1): `python-packaging`
 - **pytest** (2): `python-development`, `unit-testing`
+- **pytest-benchmark** (1): `performance-regression-testing`
 - **python** (3): `python-development`, `python-packaging`, `sphinx-documentation`
 - **python-docx** (1): `docx-processing`
 - **python-pptx** (1): `pptx-processing`
-- **quality** (1): `code-review`
+- **quality** (2): `agent-behavior-evaluation`, `code-review`
+- **quality-gates** (1): `verification-before-completion`
+- **quantization** (1): `local-llm-deployment`
 - **query-dsl** (1): `elasticsearch-search`
 - **query-optimization** (1): `sql-development`
+- **quickcheck** (1): `property-based-testing`
+- **rag** (1): `rag-evaluation`
 - **raii** (1): `cpp-development`
+- **randomness** (1): `cryptographic-code-review`
 - **rbac** (1): `kubernetes-manifests`
 - **rca** (1): `debugging-workflow`
 - **rdbms** (1): `sql-development`
+- **reachability** (1): `vulnerability-validation`
+- **react** (2): `react-composition-patterns`, `react-performance`
+- **react-19** (1): `react-composition-patterns`
+- **react-compiler** (1): `react-performance`
 - **readme** (1): `readme-authoring`
 - **readthedocs** (1): `sphinx-documentation`
 - **rebase** (1): `git-merge-conflicts`
+- **recall** (1): `rag-evaluation`
 - **records** (1): `java-development`
+- **recovery** (1): `git-history-forensics`
 - **red-green-refactor** (1): `test-driven-development`
-- **red-team** (1): `skill-security-audit`
 - **redis** (1): `redis-caching`
 - **redlock** (1): `redis-caching`
 - **refactoring** (1): `refactoring`
-- **regression-testing** (1): `debugging-workflow`
+- **reflog** (1): `git-history-forensics`
+- **regression** (3): `performance-regression-testing`, `security-differential-review`, `variant-analysis`
+- **regression-testing** (2): `debugging-workflow`, `llm-evaluation`
 - **relay-pagination** (1): `graphql-development`
 - **release** (1): `conventional-commits`
 - **release-engineering** (1): `release-engineering`
@@ -448,13 +647,18 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **resilience** (1): `error-handling`
 - **resolvers** (1): `graphql-development`
 - **resources** (1): `mcp-server-development`
-- **responsive** (1): `web-html-css`
+- **responsive** (2): `frontend-design-review`, `web-html-css`
 - **rest** (1): `api-design`
+- **retrieval** (1): `rag-evaluation`
 - **retry** (1): `error-handling`
+- **review** (1): `terraform-security-review`
 - **rfc4180** (1): `csv-data-processing`
+- **ripgrep** (1): `variant-analysis`
 - **risk-assessment** (1): `threat-modeling`
+- **risk-triage** (1): `security-differential-review`
 - **rls** (1): `postgresql-development`
 - **roles** (1): `ansible-automation`
+- **root-cause** (1): `variant-analysis`
 - **rootless** (1): `container-security`
 - **rpc** (1): `grpc-protobuf`
 - **rst** (1): `sphinx-documentation`
@@ -463,102 +667,140 @@ Machine readable: [`index.json`](index.json). Install with `owl install <name> -
 - **rustdoc** (1): `code-comments`
 - **s3** (1): `aws-cloud-architecture`
 - **sanitization** (1): `secure-coding`
-- **sanitizers** (1): `c-development`
-- **sbom** (1): `dependency-management`
+- **sanitizers** (3): `c-development`, `fuzz-testing`, `memory-sanitizers`
+- **sast** (1): `semgrep-rule-authoring`
+- **sbom** (2): `dependency-management`, `software-supply-chain-audit`
 - **scalability** (1): `system-architecture-design`
+- **schema** (1): `database-migrations`
 - **schema-registry** (1): `kafka-streaming`
+- **schemathesis** (1): `contract-testing`
 - **scientific-writing** (1): `latex-authoring`
+- **scoping** (1): `implementation-planning`
+- **screen-reader** (1): `web-accessibility-review`
 - **scripting** (1): `bash-scripting`
 - **sdl** (1): `graphql-development`
 - **sealed-classes** (2): `java-development`, `kotlin-development`
 - **search** (1): `elasticsearch-search`
 - **secrets** (1): `secrets-management`
 - **secure-coding** (1): `secure-coding`
-- **security** (13): `ci-github-actions`, `code-review`, `dependency-management`, `github-actions-security`, `graphql-development`, `linux-hardening`, `linux-permissions`, `oauth-jwt-auth`, `secrets-management`, `secure-coding`, `security-code-review`, `skill-security-audit`, `threat-modeling`
+- **security** (19): `ci-github-actions`, `code-review`, `dependency-management`, `github-actions-security`, `graphql-development`, `incident-response`, `linux-hardening`, `linux-permissions`, `mcp-server-development`, `oauth-jwt-auth`, `secrets-management`, `secure-coding`, `security-code-review`, `security-differential-review`, `skill-security-audit`, `terraform-security-review`, `threat-modeling`, `variant-analysis`, `vulnerability-validation`
 - **securitycontext** (1): `kubernetes-manifests`
 - **selinux** (1): `linux-hardening`
+- **semgrep** (2): `semgrep-rule-authoring`, `variant-analysis`
 - **semver** (2): `release-engineering`, `semantic-versioning`
 - **sequence-diagram** (1): `diagrams-mermaid`
 - **services** (1): `linux-processes-systemd`
+- **severity** (1): `vulnerability-validation`
 - **shell** (1): `bash-scripting`
 - **shellcheck** (1): `bash-scripting`
+- **shrinking** (1): `property-based-testing`
+- **sigstore** (1): `software-supply-chain-audit`
 - **skill-audit** (1): `skill-security-audit`
 - **skill-authoring** (1): `agent-skill-authoring`
 - **slides** (1): `pptx-processing`
+- **slsa** (1): `software-supply-chain-audit`
 - **smart-pointers** (1): `cpp-development`
 - **sockets** (1): `linux-networking`
+- **source-maps** (1): `browser-debugging`
+- **spacing** (1): `frontend-design-review`
 - **specifications** (1): `agent-skill-authoring`
 - **sphinx** (1): `sphinx-documentation`
 - **spm** (1): `swift-development`
 - **spreadsheets** (1): `xlsx-processing`
 - **sql** (2): `postgresql-development`, `sql-development`
-- **sse** (1): `mcp-server-development`
 - **ssh** (1): `linux-hardening`
 - **staging** (1): `git-workflow`
+- **state** (1): `terraform-security-review`
 - **state-locking** (1): `terraform-iac`
+- **stateful-testing** (1): `property-based-testing`
+- **static-analysis** (1): `semgrep-rule-authoring`
+- **statistics** (2): `llm-evaluation`, `performance-regression-testing`
 - **stdio** (1): `mcp-server-development`
 - **storage** (1): `linux-filesystems`
+- **streamable-http** (1): `mcp-server-development`
 - **streaming** (2): `csv-data-processing`, `grpc-protobuf`
 - **streams** (1): `nodejs-development`
 - **strict** (1): `typescript-development`
 - **stride** (1): `threat-modeling`
 - **structured-logging** (1): `logging-observability`
+- **stryker** (1): `mutation-testing`
 - **style-guide** (1): `technical-writing`
-- **supply-chain** (2): `dependency-management`, `github-actions-security`
+- **subagents** (1): `parallel-agent-coordination`
+- **supply-chain** (4): `dependency-management`, `github-actions-security`, `skill-security-audit`, `software-supply-chain-audit`
+- **suspense** (1): `react-performance`
 - **swift** (1): `swift-development`
 - **system-design** (1): `system-architecture-design`
 - **systemd** (2): `linux-processes-systemd`, `linux-troubleshooting`
 - **systemd-sandboxing** (1): `linux-hardening`
+- **taint-analysis** (1): `semgrep-rule-authoring`
+- **task-breakdown** (1): `implementation-planning`
 - **tdd** (2): `test-driven-development`, `unit-testing`
 - **technical-debt** (1): `refactoring`
 - **technical-writing** (1): `technical-writing`
 - **templates** (1): `cpp-development`
 - **terminal** (1): `macos-cli`
-- **terraform** (1): `terraform-iac`
+- **terraform** (2): `terraform-iac`, `terraform-security-review`
+- **test-quality** (1): `mutation-testing`
 - **testcontainers** (1): `integration-testing`
-- **testing** (8): `code-review`, `debugging-workflow`, `go-development`, `integration-testing`, `playwright-testing`, `refactoring`, `test-driven-development`, `unit-testing`
+- **testing** (12): `agent-behavior-evaluation`, `code-review`, `cross-platform-testing`, `debugging-workflow`, `go-development`, `integration-testing`, `playwright-testing`, `property-based-testing`, `refactoring`, `semgrep-rule-authoring`, `test-driven-development`, `unit-testing`
 - **text-processing** (1): `linux-cli`
 - **tflint** (1): `terraform-iac`
 - **threat-modeling** (1): `threat-modeling`
 - **three-way-merge** (1): `git-merge-conflicts`
 - **timers** (1): `linux-processes-systemd`
+- **tls** (1): `cryptographic-code-review`
 - **tokens** (1): `oauth-jwt-auth`
 - **tools** (1): `mcp-server-development`
 - **trace-viewer** (1): `playwright-testing`
-- **tracing** (1): `logging-observability`
+- **tracing** (2): `linux-ebpf-tracing`, `logging-observability`
 - **traits** (1): `rust-development`
 - **transactions** (1): `sql-development`
-- **trivy** (1): `container-security`
-- **troubleshooting** (2): `debugging-workflow`, `linux-troubleshooting`
+- **triage** (1): `vulnerability-validation`
+- **trivy** (2): `container-security`, `terraform-security-review`
+- **troubleshooting** (3): `debugging-workflow`, `kubernetes-troubleshooting`, `linux-troubleshooting`
 - **trust-boundaries** (1): `security-code-review`
+- **tsan** (1): `memory-sanitizers`
 - **tsconfig** (1): `typescript-development`
 - **tsv** (1): `csv-data-processing`
 - **tutorials** (1): `technical-writing`
 - **types** (1): `typescript-development`
-- **typescript** (1): `typescript-development`
+- **typescript** (2): `react-composition-patterns`, `typescript-development`
 - **typesetting** (1): `latex-authoring`
 - **typing** (1): `python-development`
+- **typography** (1): `frontend-design-review`
+- **typosquatting** (1): `software-supply-chain-audit`
+- **ubsan** (1): `memory-sanitizers`
 - **ufw** (1): `linux-hardening`
+- **ui** (1): `frontend-design-review`
 - **undefined-behavior** (1): `c-development`
 - **unit-testing** (1): `test-driven-development`
 - **unit-tests** (1): `unit-testing`
 - **uv** (1): `python-packaging`
+- **ux** (1): `frontend-design-review`
+- **vacuum** (1): `postgresql-performance`
 - **value-types** (1): `swift-development`
+- **variant-analysis** (2): `semgrep-rule-authoring`, `variant-analysis`
 - **vault** (2): `ansible-automation`, `secrets-management`
+- **verification** (1): `verification-before-completion`
 - **version-control** (1): `git-workflow`
 - **versioning** (1): `semantic-versioning`
 - **visualization** (1): `diagrams-mermaid`
 - **vpc** (1): `aws-cloud-architecture`
 - **vulnerabilities** (1): `security-code-review`
-- **wcag** (1): `web-html-css`
+- **wcag** (2): `web-accessibility-review`, `web-html-css`
 - **web** (1): `web-html-css`
+- **web-security** (1): `web-security-testing`
 - **well-architected** (1): `aws-cloud-architecture`
 - **wheels** (1): `python-packaging`
+- **windows** (1): `cross-platform-testing`
 - **word** (1): `docx-processing`
+- **workflow** (1): `implementation-planning`
 - **workspaces** (1): `rust-cargo`
-- **worktrees** (1): `git-branching-worktrees`
+- **worktrees** (2): `git-branching-worktrees`, `parallel-agent-coordination`
 - **writing** (1): `markdown-writing`
+- **wstg** (1): `web-security-testing`
 - **xfs** (1): `linux-filesystems`
 - **xlsx** (1): `xlsx-processing`
+- **zero-downtime** (1): `database-migrations`
 - **zod** (1): `mcp-server-development`
 - **zsh** (1): `macos-cli`

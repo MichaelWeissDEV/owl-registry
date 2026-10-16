@@ -2,9 +2,37 @@
   "format": 2,
   "name": "owl-registry",
   "description": "The default OWL skill registry - curated skills that 'owl install' can fetch.",
-  "generated_at": "2026-10-15T16:40:46+00:00",
-  "count": 80,
+  "generated_at": "2026-10-16T00:20:20+00:00",
+  "count": 116,
   "skills": [
+    {
+      "ref": "michaelweissdev/agent-behavior-evaluation",
+      "author": "michaelweissdev",
+      "name": "agent-behavior-evaluation",
+      "version": "1.0.0",
+      "description": "Design and run small, honest evaluations of whether an AI agent or Agent Skill changes behavior as intended: activation tests (should and should not trigger), execution tests with pass/fail rubrics, baseline comparison, repeat runs, and reporting that never overstates what was tested. Use when authoring or revising a skill or system prompt, comparing agent behavior with and without a skill, writing scenarios.md files, or triaging regressions in agent output. Not for writing the skill itself (see agent-skill-authoring) or unit-testing application code (see unit-testing).",
+      "tags": [
+        "agent-skills",
+        "ai-agents",
+        "evals",
+        "evaluation",
+        "quality",
+        "testing"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Any environment where an agent can be run on fixed prompts in isolated sessions. Optional scripting (Python 3 or shell) for aggregating results.\n",
+      "sha256": "61bf72535261ef52d340f034359848a814847c49d9a8fa02a602dd565996e7b5",
+      "path": "skills/agent-behavior-evaluation",
+      "files": 4,
+      "size": 14117,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
     {
       "ref": "michaelweissdev/agent-skill-authoring",
       "author": "michaelweissdev",
@@ -89,6 +117,34 @@
       "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
     },
     {
+      "ref": "michaelweissdev/architecture-decision-records",
+      "author": "michaelweissdev",
+      "name": "architecture-decision-records",
+      "version": "1.0.0",
+      "description": "Create, review, and maintain Architecture Decision Records (ADRs): short, numbered, immutable documents capturing one significant decision with context, options, outcome, and consequences. Use when a technical choice is hard to reverse, has real alternatives, will puzzle future readers, or when setting up a docs/adr directory, superseding an old decision, or auditing a decision log. Covers Nygard-style and MADR templates, status lifecycle, and what not to record. Not for system design itself (see system-architecture-design) or task planning (see implementation-planning).",
+      "tags": [
+        "adr",
+        "architecture",
+        "decisions",
+        "documentation",
+        "madr",
+        "markdown"
+      ],
+      "topics": [
+        "ai-agents",
+        "documentation",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Any Agent Skills-compatible coding agent; plain Markdown files in a git repository. No tooling required.\n",
+      "sha256": "0919fd8598ebe7e28e6a0a5f40b10109308c998786d52eb2d79259f441093bff",
+      "path": "skills/architecture-decision-records",
+      "files": 4,
+      "size": 12776,
+      "updated_at": "2026-10-15T19:14:15+00:00",
+      "revision": "e2afc0d1c05041bc5f86d3366888ccc66df7b008"
+    },
+    {
       "ref": "michaelweissdev/aws-cloud-architecture",
       "author": "michaelweissdev",
       "name": "aws-cloud-architecture",
@@ -145,6 +201,36 @@
       "size": 7338,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/browser-debugging",
+      "author": "michaelweissdev",
+      "name": "browser-debugging",
+      "version": "1.0.0",
+      "description": "Debug front-end problems in the browser with Chrome DevTools: Console, Sources breakpoints, Network, Elements/computed styles, Application storage, Performance, and source maps; including debugging through an MCP/automation browser. Use when a page throws errors, a request fails or returns the wrong data, CSS does not apply, state or storage looks wrong, a bug only reproduces in the browser, or you need to turn a vague \"it's broken\" into a minimal repro with evidence. Do not use for writing automated tests (playwright-testing), general non-browser debugging method (debugging-workflow), Node.js server debugging (nodejs-development), or security testing (web-security-testing).",
+      "tags": [
+        "breakpoints",
+        "chrome",
+        "console",
+        "debugging",
+        "devtools",
+        "frontend",
+        "network",
+        "source-maps"
+      ],
+      "topics": [
+        "debugging",
+        "devtools",
+        "frontend"
+      ],
+      "license": null,
+      "compatibility": "Chromium-based browsers with Chrome DevTools; Firefox and Safari have equivalent panels with different names. Optional automation via Playwright or a browser MCP server.\n",
+      "sha256": "3c36e256ee8880c18c1169c2348857c8fadcd294469fbdc01177cc52f9829ba3",
+      "path": "skills/browser-debugging",
+      "files": 4,
+      "size": 13967,
+      "updated_at": "2026-10-15T19:15:41+00:00",
+      "revision": "969622ed0335475bcd34d64696388f2d1525c5b6"
     },
     {
       "ref": "michaelweissdev/c-development",
@@ -235,8 +321,8 @@
       "ref": "michaelweissdev/code-comments",
       "author": "michaelweissdev",
       "name": "code-comments",
-      "version": "1.0.0",
-      "description": "Write purposeful, accurate, and maintainable code comments and API documentation across major programming languages. Use when deciding whether to add or remove comments, writing public API documentation (docstrings, rustdoc, Javadoc, JSDoc, GoDoc), explaining non-obvious algorithms, documenting security invariants, or refactoring noisy, redundant comments.",
+      "version": "1.1.0",
+      "description": "Write purposeful, accurate, and maintainable code comments and API documentation across major programming languages. Use when deciding whether to add or remove comments, writing public API documentation (docstrings, rustdoc, Javadoc, JSDoc, GoDoc), explaining non-obvious algorithms, documenting security invariants, or refactoring noisy, redundant comments. Do not use for README or architecture documents, commit messages (use conventional-commits), changelogs, or when asked to leave comments untouched in a mechanical refactor.",
       "tags": [
         "best-practices",
         "comments",
@@ -253,12 +339,12 @@
       ],
       "license": null,
       "compatibility": "Agent Skills-compatible coding agents reading, writing, or reviewing code comments across Python, Rust, C/C++, Go, Java, Kotlin, TS/JS, Swift, Bash, and SQL.\n",
-      "sha256": "67873b451854397a73fae79130c34b4d338d394d3a92847cdf2c1e2134a51e82",
+      "sha256": "23553b3a5e72f9b6a324e91d787cc93315e561fccd1b409258584847f9aeec1d",
       "path": "skills/code-comments",
       "files": 3,
-      "size": 14076,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
+      "size": 16863,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "a543ad85e5501cb781d0228c2aba4442f4d92688"
     },
     {
       "ref": "michaelweissdev/code-review",
@@ -316,6 +402,36 @@
       "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
     },
     {
+      "ref": "michaelweissdev/contract-testing",
+      "author": "michaelweissdev",
+      "name": "contract-testing",
+      "version": "1.0.0",
+      "description": "Prevent integration breakage between services with contract testing: consumer-driven contracts with Pact (consumer tests, provider states, provider verification, broker workflow, pending pacts, can-i-deploy) and schema-first contracts with OpenAPI (breaking-change diffing, schema-conformance testing with Schemathesis). Includes matcher strategy, versioning and deploy-gating, and when contracts are the wrong tool. Use when separately deployed consumers and providers (microservices, mobile apps vs API, event/message consumers) break each other in integration or when end-to-end tests are slow and flaky. Do NOT use for in-process integration tests (integration-testing), API design itself (api-design), gRPC schema evolution (grpc-protobuf), or browser E2E (playwright-testing).",
+      "tags": [
+        "can-i-deploy",
+        "consumer-driven-contracts",
+        "contract-testing",
+        "microservices",
+        "openapi",
+        "pact",
+        "schemathesis"
+      ],
+      "topics": [
+        "api",
+        "microservices",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. Pact (JS, JVM, Python, Go, others) with a Pact Broker or PactFlow; OpenAPI 3.x specs; Schemathesis CLI. Check your Pact library version for exact API names.\n",
+      "sha256": "cfcfdb480d882858fbe5c3c951b7ba30e1aaf46790e14692e12602293b2232f9",
+      "path": "skills/contract-testing",
+      "files": 4,
+      "size": 17550,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
       "ref": "michaelweissdev/conventional-commits",
       "author": "michaelweissdev",
       "name": "conventional-commits",
@@ -369,6 +485,67 @@
       "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
     },
     {
+      "ref": "michaelweissdev/cross-platform-testing",
+      "author": "michaelweissdev",
+      "name": "cross-platform-testing",
+      "version": "1.0.0",
+      "description": "Design and debug test matrices across operating systems, CPU architectures, and language/runtime versions: what actually differs (paths, line endings, case sensitivity, file locking, permissions, encodings, locale, time zones, endianness, floating point, shell), how to write portable tests, and how to build a GitHub Actions matrix (include/exclude, fail-fast, experimental legs, pinned runner labels, arm64) that is informative without exploding in cost. Use when software must run on Linux, macOS, Windows or multiple Python/Node/Rust/Java versions, when CI passes on one OS but fails on another, or when adding a support matrix. Do NOT use for general CI authoring (ci-github-actions), CI security hardening (github-actions-security), browser/device test automation (playwright-testing), or benchmarking (performance-regression-testing).",
+      "tags": [
+        "arm64",
+        "ci",
+        "cross-platform",
+        "github-actions",
+        "macos",
+        "matrix",
+        "portability",
+        "testing",
+        "windows"
+      ],
+      "topics": [
+        "ci",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. GitHub Actions hosted runners (labels verified against actions/runner-images README on 2026-10-15). Concepts apply to other CI systems.\n",
+      "sha256": "fe47dadd04958d4800f376b6632db173c4672715359cc109a109840a1a001011",
+      "path": "skills/cross-platform-testing",
+      "files": 4,
+      "size": 21141,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
+      "ref": "michaelweissdev/cryptographic-code-review",
+      "author": "michaelweissdev",
+      "name": "cryptographic-code-review",
+      "version": "1.0.0",
+      "description": "Review application code that uses cryptography for misuse: weak or wrong primitives, nonce/IV reuse, unauthenticated encryption, password hashing, key derivation, randomness, key management, certificate validation, and timing leaks. Use when a diff or codebase calls encryption, hashing, MAC, signature, KDF, or TLS APIs, or stores passwords or tokens. Not for designing new cryptographic protocols or primitives (do not invent them), general JWT/OAuth flow design (use oauth-jwt-auth), or secret storage logistics (use secrets-management).",
+      "tags": [
+        "aes-gcm",
+        "code-review",
+        "cryptography",
+        "cwe",
+        "kdf",
+        "nonce",
+        "password-hashing",
+        "randomness",
+        "tls"
+      ],
+      "topics": [
+        "cryptography",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents reviewing code in any language that uses a mainstream crypto library.\n",
+      "sha256": "2179b381b010abb84bebdf5c83b74881d55082cac0e8703c60259feb4ff5f0a5",
+      "path": "skills/cryptographic-code-review",
+      "files": 4,
+      "size": 15190,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "8206dc4a7dbe050ba9e2b445695366e667e5cd70"
+    },
+    {
       "ref": "michaelweissdev/csv-data-processing",
       "author": "michaelweissdev",
       "name": "csv-data-processing",
@@ -396,6 +573,64 @@
       "size": 5697,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+    },
+    {
+      "ref": "michaelweissdev/database-migrations",
+      "author": "michaelweissdev",
+      "name": "database-migrations",
+      "version": "1.0.0",
+      "description": "Plan, write, review and roll out relational database schema and data migrations without downtime or data loss - expand/contract sequencing, lock-level analysis, batched backfills, rollback and forward-fix plans, migration-tool hygiene. Concrete lock and rewrite rules for PostgreSQL 14-18 (CREATE INDEX CONCURRENTLY, NOT VALID constraints, lock_timeout), with general guidance for MySQL and other engines. Use when adding, renaming or dropping columns or tables, changing types, adding indexes, constraints or foreign keys, splitting tables, backfilling data, or reviewing a migration file or pull request. Not for query tuning (postgresql-performance), schema design or JSONB/RLS (postgresql-development), SQL authoring (sql-development), or document/search stores (mongodb-development, elasticsearch-search).",
+      "tags": [
+        "backfill",
+        "expand-contract",
+        "locks",
+        "migrations",
+        "postgresql",
+        "schema",
+        "zero-downtime"
+      ],
+      "topics": [
+        "databases",
+        "deployment",
+        "release-engineering"
+      ],
+      "license": null,
+      "compatibility": "Tool-agnostic (Flyway, Liquibase, Alembic, Rails, Prisma, golang-migrate, plain SQL). Lock tables verified against the PostgreSQL 18 ALTER TABLE and CREATE INDEX manuals; the same rules hold for 14-17 except where marked. Never run against production without explicit authorization.",
+      "sha256": "59d94b9236bf92617ddb577e9e918a5591e3a772e3864fe186cec9092a0d7342",
+      "path": "skills/database-migrations",
+      "files": 4,
+      "size": 20716,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
+    },
+    {
+      "ref": "michaelweissdev/dataset-quality",
+      "author": "michaelweissdev",
+      "name": "dataset-quality",
+      "version": "1.0.0",
+      "description": "Audit, clean and document datasets used for training, fine-tuning, evaluation or analytics - schema and null checks, exact and near-duplicate detection, label consistency and noise, class imbalance, train/validation/test leakage, PII and licence screening, split design, and dataset cards, with Hugging Face datasets (5.x) and plain Python/pandas examples. Use when preparing or inheriting a dataset, a model's eval score looks too good, labels disagree, or before publishing or training on data. Not for CSV mechanics (csv-data-processing), spreadsheet work (xlsx-processing), model/prompt evaluation (llm-evaluation), retrieval evaluation (rag-evaluation), or database design (postgresql-development).",
+      "tags": [
+        "data-leakage",
+        "data-quality",
+        "datasets",
+        "deduplication",
+        "huggingface-datasets",
+        "labels",
+        "pii"
+      ],
+      "topics": [
+        "data-engineering",
+        "evaluation",
+        "machine-learning"
+      ],
+      "license": null,
+      "compatibility": "Python 3.10+. Bundled script uses only the standard library. Hugging Face datasets 5.1.0 (PyPI, checked 2026-10-15) and pandas are optional. Network access is needed only to download public data the user names.",
+      "sha256": "4a9f915d0c81be2d328d36610304f9d1c18e21bd7ae93b211f255c8b2837d37c",
+      "path": "skills/dataset-quality",
+      "files": 5,
+      "size": 19390,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
     },
     {
       "ref": "michaelweissdev/debugging-workflow",
@@ -514,8 +749,8 @@
       "ref": "michaelweissdev/docx-processing",
       "author": "michaelweissdev",
       "name": "docx-processing",
-      "version": "1.0.0",
-      "description": "Generate, parse, modify, and format Microsoft Word (.docx) documents programmatically. Use when creating styled corporate reports, extracting text and tables from Word documents with python-docx, manipulating document sections, headers, footers, and page breaks, or inspecting OpenXML document structures.",
+      "version": "1.1.0",
+      "description": "Generate, parse, modify, and format Microsoft Word (.docx) documents programmatically. Use when creating styled corporate reports, extracting text and tables from Word documents with python-docx, manipulating document sections, headers, footers, and page breaks, replacing placeholders without losing formatting, or inspecting OpenXML structures and untrusted Word files. Do not use for legacy binary .doc files, PDFs, Google Docs, or for tracked-changes editing workflows that need Word's revision model (python-docx does not write tracked changes).",
       "tags": [
         "document-processing",
         "docx",
@@ -530,13 +765,13 @@
         "office"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents operating with Python docx manipulation libraries (python-docx).\n",
-      "sha256": "88f9a199b3f5cb5dfaa8c8e9774192faca108d0c8ec654e44d94ae458c6912af",
+      "compatibility": "Agent Skills-compatible coding agents operating with python-docx (1.2.x checked in October 2026; Python 3.9+). LibreOffice (`soffice`) is optional for rendering a visual check.\n",
+      "sha256": "6ad13ba54d7838511675f832e9fbe7272712450e93731c3bb9d6122a6fb314fc",
       "path": "skills/docx-processing",
       "files": 2,
-      "size": 8153,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+      "size": 13334,
+      "updated_at": "2026-10-15T19:22:45+00:00",
+      "revision": "eaa88d8d938d3d2de465917139c9990641cf3069"
     },
     {
       "ref": "michaelweissdev/elasticsearch-search",
@@ -595,6 +830,66 @@
       "revision": "8646e26387788a91519259af4d7f6ae103ce0705"
     },
     {
+      "ref": "michaelweissdev/frontend-design-review",
+      "author": "michaelweissdev",
+      "name": "frontend-design-review",
+      "version": "1.0.0",
+      "description": "Review the visual and interaction design of a web UI from screenshots and code: hierarchy, spacing and alignment, typography, color and tokens, responsive behavior, states (empty, loading, error, hover, focus, disabled), consistency with a design system, and polish. Use when asked to critique, polish, or sanity-check a page, component, or Figma-to-code result, or to give a design-quality pass before release. Produces prioritized, actionable findings with concrete CSS/markup changes. Do not use for accessibility conformance (web-accessibility-review), rendering performance (react-performance), HTML/CSS syntax questions (web-html-css), or brand strategy.",
+      "tags": [
+        "css",
+        "design-review",
+        "design-tokens",
+        "responsive",
+        "spacing",
+        "typography",
+        "ui",
+        "ux"
+      ],
+      "topics": [
+        "design",
+        "frontend",
+        "quality"
+      ],
+      "license": null,
+      "compatibility": "Works with screenshots, a running dev server viewed in a browser at multiple viewport widths, or source code (HTML/CSS/Tailwind/CSS-in-JS/React).\n",
+      "sha256": "c77ee972b9544a54bed1661f3fe74f87b01efa55a004ee7b16126d137b1823b6",
+      "path": "skills/frontend-design-review",
+      "files": 4,
+      "size": 11306,
+      "updated_at": "2026-10-15T19:15:40+00:00",
+      "revision": "1165a3f84fc3e4346dab7f02e7271427ffb176cb"
+    },
+    {
+      "ref": "michaelweissdev/fuzz-testing",
+      "author": "michaelweissdev",
+      "name": "fuzz-testing",
+      "version": "1.0.0",
+      "description": "Design coverage-guided fuzzing campaigns: choose a fuzz target, write a deterministic harness (libFuzzer/cargo-fuzz, Atheris for Python, AFL++), seed and minimize a corpus, add dictionaries and sanitizers, triage and minimize crashes, and run short fuzz regressions in CI. Use when code parses untrusted or complex bytes (file formats, protocols, decompressors, deserializers, regex/URL/JSON/XML handling), or native extensions that must not crash or corrupt memory. Use only on code and systems you own or are authorized to test. Do NOT use for input-space property checks with typed values (property-based-testing), for judging test strength (mutation-testing), or for black-box attacks on live services.",
+      "tags": [
+        "afl",
+        "atheris",
+        "cargo-fuzz",
+        "corpus",
+        "crash-triage",
+        "fuzzing",
+        "libfuzzer",
+        "sanitizers"
+      ],
+      "topics": [
+        "security",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. Rust cargo-fuzz (needs a nightly toolchain), C/C++ libFuzzer/AFL++ (Clang), Python Atheris (README lists CPython 3.11 to 3.14, Linux/macOS).\n",
+      "sha256": "966f0533bb8b9c01d549f9f41bac18169f9b22c017847e6dbd2daa435df99703",
+      "path": "skills/fuzz-testing",
+      "files": 4,
+      "size": 17468,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
       "ref": "michaelweissdev/git-branching-worktrees",
       "author": "michaelweissdev",
       "name": "git-branching-worktrees",
@@ -619,6 +914,35 @@
       "size": 6252,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
+    },
+    {
+      "ref": "michaelweissdev/git-history-forensics",
+      "author": "michaelweissdev",
+      "name": "git-history-forensics",
+      "version": "1.0.0",
+      "description": "Investigate and recover from Git history problems with hypothesis-driven, read-only-first methods: find when/where a bug or change was introduced (bisect, pickaxe, line-history blame), recover lost commits, branches, stashes and dropped work (reflog, fsck), and reason about what gc and expiry will delete. Use when someone asks \"who/when/why did this change\", \"I lost my commits after reset/rebase/force-push\", \"find the commit that broke X\", \"recover a deleted branch or dropped stash\", or \"did this secret ever enter history\". Not for everyday branching or merging (use git-workflow, git-merge-conflicts), and history rewriting or secret purges are out of scope until the user explicitly authorizes them.",
+      "tags": [
+        "bisect",
+        "blame",
+        "forensics",
+        "fsck",
+        "git",
+        "history",
+        "recovery",
+        "reflog"
+      ],
+      "topics": [
+        "debugging",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with a shell and Git 2.30 or newer (checked against current git-scm.com documentation). Works on any local clone; no network needed.\n",
+      "sha256": "300061ad3f44857d03a18294fa6bcea73fd417e97a7d80067642fb4216899948",
+      "path": "skills/git-history-forensics",
+      "files": 4,
+      "size": 17632,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
     },
     {
       "ref": "michaelweissdev/git-merge-conflicts",
@@ -677,8 +1001,8 @@
       "ref": "michaelweissdev/github-actions-security",
       "author": "michaelweissdev",
       "name": "github-actions-security",
-      "version": "1.0.0",
-      "description": "Harden, audit, and secure GitHub Actions CI/CD workflows and supply chains. Use when configuring GITHUB_TOKEN permissions to least privilege, authenticating cloud providers via OIDC without static secrets, pinning third-party actions to immutable commit SHAs, preventing script injection from untrusted event contexts, securing pull_request_target, or running actionlint and zizmor security scans.",
+      "version": "1.1.0",
+      "description": "Harden, audit, and secure GitHub Actions workflows and their supply chain. Use when setting least-privilege GITHUB_TOKEN permissions, pinning third-party actions to full commit SHAs, preventing script injection from untrusted event data, handling pull_request_target and workflow_run safely, replacing static cloud keys with OIDC, protecting deployments with environments, or scanning workflows with actionlint and zizmor. Do not use for general CI authoring with no security question, for other CI systems (GitLab CI, Jenkins), or for application code review (use security-code-review).",
       "tags": [
         "actionlint",
         "ci-cd",
@@ -693,13 +1017,13 @@
         "security"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents with access to git, gh, actionlint, or zizmor tooling. Tooling is required only for executable validation.\n",
-      "sha256": "a480f525fa63f241bf5eb3ad8deb248e6e7e0ba8fe04a79aa5680d7cefd93b27",
+      "compatibility": "Agent Skills-compatible coding agents; actionlint or zizmor optional for executable validation. Action versions and SHAs in examples were read from public tag lists in October 2026; re-resolve SHAs yourself before committing.\n",
+      "sha256": "26ee1d84c680e23afe971de953c6accd3a6301c66219a748cd1c0f564f4e1670",
       "path": "skills/github-actions-security",
-      "files": 1,
-      "size": 12346,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "476382e6bb2c3834794013ecb03eadf59fb73423"
+      "files": 2,
+      "size": 19654,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "a543ad85e5501cb781d0228c2aba4442f4d92688"
     },
     {
       "ref": "michaelweissdev/github-issues-prs",
@@ -811,6 +1135,62 @@
       "size": 13526,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "97f38743c06d51eee4e1f4016e3eb30cecccfb1f"
+    },
+    {
+      "ref": "michaelweissdev/implementation-planning",
+      "author": "michaelweissdev",
+      "name": "implementation-planning",
+      "version": "1.0.0",
+      "description": "Turn a feature request or bug report into a verified, ordered implementation plan of small steps, each with files touched, a verification command, and a rollback point. Use when a task spans multiple files or steps, requirements are ambiguous, work will be handed to another agent or person, or before starting a refactor or migration. Covers scoping, open questions, risk ordering, and plan review. Not for one-line fixes, for high-level system design (see system-architecture-design), or for recording a single decision (see architecture-decision-records).",
+      "tags": [
+        "ai-agents",
+        "engineering-process",
+        "planning",
+        "scoping",
+        "task-breakdown",
+        "workflow"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Any Agent Skills-compatible coding agent. Needs read access to the repository; git is useful for confirming current state.\n",
+      "sha256": "01431586d26d19ec745de8726a3e29cd2e13883700649a5e142e11020c449ed8",
+      "path": "skills/implementation-planning",
+      "files": 4,
+      "size": 11376,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
+      "ref": "michaelweissdev/incident-response",
+      "author": "michaelweissdev",
+      "name": "incident-response",
+      "version": "1.0.0",
+      "description": "Guide defensive security incident handling on systems the user owns or is authorized to investigate: triage and scoping, evidence preservation in order of volatility, containment decisions, timeline building, eradication/recovery planning and post-incident review, aligned with NIST SP 800-61 Rev. 3 and RFC 3227. Use when the user suspects a compromise (unexpected logins, malware, leaked credentials, ransomware signs, data exposure) and needs a structured, evidence-safe plan. Not for operational outages without a security angle (use linux-troubleshooting or logging-observability), proactive hardening (use linux-hardening), threat modeling (threat-modeling), offensive testing, or attacking/retaliating against an adversary.",
+      "tags": [
+        "containment",
+        "dfir",
+        "evidence",
+        "forensics",
+        "incident-response",
+        "nist-800-61",
+        "security"
+      ],
+      "topics": [
+        "operations",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with shell access to systems the user is authorized to investigate. Procedures are platform-neutral; examples are Linux-oriented. Not legal advice.\n",
+      "sha256": "8f0a80a8cebdaa9e5466e28755e93ef692c3ab4b9e2286718c7c020ee7f31458",
+      "path": "skills/incident-response",
+      "files": 4,
+      "size": 16345,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
     },
     {
       "ref": "michaelweissdev/integration-testing",
@@ -980,6 +1360,34 @@
       "revision": "5af2e20e59996fa2aa141ae79904c69fdc92692f"
     },
     {
+      "ref": "michaelweissdev/kubernetes-troubleshooting",
+      "author": "michaelweissdev",
+      "name": "kubernetes-troubleshooting",
+      "version": "1.0.0",
+      "description": "Diagnose broken Kubernetes workloads with a layered, read-only-first method: Pending pods, ImagePullBackOff, CrashLoopBackOff, OOMKilled, failing probes, Services with no endpoints, DNS and NetworkPolicy problems, node pressure. Teaches reading status, events and logs in order, forming hypotheses, and when (and how carefully) to use kubectl debug, exec or ephemeral containers. Use when a pod, deployment, service or node is unhealthy and the user needs root cause, not a restart. Not for writing manifests (use kubernetes-manifests), cluster provisioning or Helm authoring, container image hardening (container-security), or incidents that look like a security compromise (incident-response).",
+      "tags": [
+        "debugging",
+        "events",
+        "kubectl",
+        "kubernetes",
+        "networking",
+        "pods",
+        "troubleshooting"
+      ],
+      "topics": [
+        "devops",
+        "operations"
+      ],
+      "license": null,
+      "compatibility": "Requires kubectl configured for the target cluster. kubectl debug with ephemeral containers is stable since Kubernetes v1.25 and needs a container runtime that supports them. Examples target current upstream Kubernetes; managed clusters may restrict some operations.\n",
+      "sha256": "fccf88d11c985ae3c576713eeb7181ba27d187b3980c5306ff18e3a79c3c31a7",
+      "path": "skills/kubernetes-troubleshooting",
+      "files": 4,
+      "size": 17194,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
+    },
+    {
       "ref": "michaelweissdev/latex-authoring",
       "author": "michaelweissdev",
       "name": "latex-authoring",
@@ -1034,6 +1442,34 @@
       "size": 6440,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+    },
+    {
+      "ref": "michaelweissdev/linux-ebpf-tracing",
+      "author": "michaelweissdev",
+      "name": "linux-ebpf-tracing",
+      "version": "1.0.0",
+      "description": "Diagnose Linux latency, CPU, I/O, syscall and scheduling problems by writing small, bounded bpftrace programs after forming a hypothesis, with explicit checks for kernel support (BTF, kernel version), privileges (root or CAP_BPF/CAP_PERFMON), probe stability and tracing overhead. Use when top/strace/perf are not enough and you need per-event or per-latency evidence from a live Linux host, for example \"what is opening these files\", \"why is read latency spiky\", \"which process causes block I/O\". Not for first-line triage (use linux-troubleshooting), for CPU flame-graph profiling workflows (use performance-profiling), nor for macOS/Windows, nor for writing production eBPF programs in C/Rust (libbpf, Aya) or security enforcement.",
+      "tags": [
+        "bpftrace",
+        "ebpf",
+        "kernel",
+        "latency",
+        "linux",
+        "observability",
+        "tracing"
+      ],
+      "topics": [
+        "linux",
+        "performance"
+      ],
+      "license": null,
+      "compatibility": "Linux only. bpftrace 0.19+ for the args.field syntax used here (check bpftrace --version). Needs a kernel with BPF tracing support; BTF (CONFIG_DEBUG_INFO_BTF) strongly recommended for struct access. Requires root or equivalent capabilities. Verify support on the host with bpftrace --info.\n",
+      "sha256": "2130c733769586d35e9f54313a2c5566709e0bdcd36c26a78dad57cd3a89f850",
+      "path": "skills/linux-ebpf-tracing",
+      "files": 4,
+      "size": 16668,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
     },
     {
       "ref": "michaelweissdev/linux-filesystems",
@@ -1184,8 +1620,8 @@
       "ref": "michaelweissdev/linux-troubleshooting",
       "author": "michaelweissdev",
       "name": "linux-troubleshooting",
-      "version": "1.0.0",
-      "description": "Systematically isolate, diagnose, and resolve Linux system, storage, memory, performance, and service failures. Use when diagnosing high load, out-of-memory (OOM) crashes, disk space or inode exhaustion, crashing systemd services, or intermittent system anomalies through reproducible observations.",
+      "version": "1.1.0",
+      "description": "Systematically isolate, diagnose, and resolve Linux system, storage, memory, performance, and service failures. Use when diagnosing high load, out-of-memory (OOM) crashes, disk space or inode exhaustion, crashing systemd services, network or DNS failures, or intermittent anomalies through reproducible observations. Do not use for Kubernetes or container-orchestrator incidents (cluster-level), application logic bugs, macOS or Windows hosts, or for security incident response and forensics on a possibly compromised host.",
       "tags": [
         "disk",
         "linux",
@@ -1200,13 +1636,71 @@
         "operating-systems"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents diagnosing Linux system issues with command-line diagnostic tools.\n",
-      "sha256": "0a1082d789b12088a4cc7159bac7710edabfd490943fd97d213738915de9e9fd",
+      "compatibility": "Agent Skills-compatible coding agents diagnosing Linux hosts with command-line tools. Commands assume a systemd-based distribution with procps, util-linux, and iproute2; some need root and output varies by distribution and kernel version.\n",
+      "sha256": "c619a49fb46239c01475b9149ebee13c274d05132a1556c9e0076445e016e599",
       "path": "skills/linux-troubleshooting",
-      "files": 1,
-      "size": 5985,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "875a4a21558ace4264a36ff5851c2a85578190bf"
+      "files": 2,
+      "size": 13119,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
+    },
+    {
+      "ref": "michaelweissdev/llm-evaluation",
+      "author": "michaelweissdev",
+      "name": "llm-evaluation",
+      "version": "1.0.0",
+      "description": "Design, run and interpret evaluations of LLM-based systems - build a task-specific golden set, pick metrics (exact match, programmatic checks, rubric or LLM-as-judge, pairwise preference), calibrate judges against human labels, quantify uncertainty with confidence intervals and paired tests, guard against contamination, and run regression evals; also running public benchmarks with EleutherAI lm-evaluation-harness (0.4.13, `lm-eval run`). Use when comparing models, prompts or RAG/agent configurations, choosing a model, gating a release on quality, or when someone cites a benchmark score. Not for dataset cleaning (dataset-quality), retrieval-only metrics and groundedness of RAG (rag-evaluation), serving models locally (local-llm-deployment), or unit-testing deterministic code (unit-testing).",
+      "tags": [
+        "benchmarks",
+        "evaluation",
+        "llm",
+        "llm-as-judge",
+        "lm-evaluation-harness",
+        "regression-testing",
+        "statistics"
+      ],
+      "topics": [
+        "machine-learning",
+        "quality",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Python 3.10+. Bundled paired-bootstrap script is standard library only. lm-evaluation-harness 0.4.13 (PyPI, MIT) and Hugging Face evaluate 0.4.6 are optional; hosted-model judging needs the user's own API access and sends data to that provider.",
+      "sha256": "6523b538449eb2d9e45ae49ef115bc92d8c46b9889482df041bde36d77c78b79",
+      "path": "skills/llm-evaluation",
+      "files": 5,
+      "size": 20246,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
+    },
+    {
+      "ref": "michaelweissdev/local-llm-deployment",
+      "author": "michaelweissdev",
+      "name": "local-llm-deployment",
+      "version": "1.0.0",
+      "description": "Choose, size, run and secure open-weight LLMs on local or self-hosted machines with Ollama (0.40.x) and llama.cpp (llama-server, GGUF, llama-quantize) - hardware and memory sizing, quantization choice, context length and KV cache, OpenAI-compatible endpoints, parallelism, Modelfile import, Hugging Face GGUF models, network exposure and authentication, model provenance and licence checks, and troubleshooting slow or out-of-memory runs. Use when the user wants to run a model locally, expose a local inference endpoint to tools or apps, pick a GGUF quantization, convert or quantize a model, or debug performance. Not for measuring model quality (llm-evaluation), hosted APIs, training or fine-tuning, GPU cluster serving (kubernetes-manifests, docker-development for container packaging), or generic Linux setup (linux-cli).",
+      "tags": [
+        "gguf",
+        "inference",
+        "llama-cpp",
+        "local-llm",
+        "ollama",
+        "openai-compatible",
+        "quantization"
+      ],
+      "topics": [
+        "deployment",
+        "machine-learning",
+        "self-hosting"
+      ],
+      "license": null,
+      "compatibility": "macOS, Linux, Windows. Verified against Ollama docs on main and a local Ollama 0.40.3 install (read-only commands), and llama.cpp server/quantize docs on master as of 2026-10-15. Flag names change between llama.cpp builds - confirm with `llama-server --help` for the installed build.",
+      "sha256": "d4164205915c8005530e850ccbe676024fd2d131f890e09751325930532e6954",
+      "path": "skills/local-llm-deployment",
+      "files": 4,
+      "size": 22270,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
     },
     {
       "ref": "michaelweissdev/logging-observability",
@@ -1294,15 +1788,16 @@
       "ref": "michaelweissdev/mcp-server-development",
       "author": "michaelweissdev",
       "name": "mcp-server-development",
-      "version": "1.0.0",
-      "description": "Build, test, debug, and secure Model Context Protocol (MCP) servers providing tools, resources, and prompts to AI assistants. Use when developing custom MCP servers with the TypeScript or Python SDK, implementing tool handlers with Zod/Pydantic schema validation, configuring stdio and SSE transports, managing permission boundaries, or testing with the MCP Inspector.",
+      "version": "1.1.0",
+      "description": "Build, test, debug, and secure Model Context Protocol (MCP) servers that expose tools, resources, and prompts to AI clients. Use when writing a custom MCP server with the TypeScript or Python SDK, choosing between stdio and Streamable HTTP, validating tool inputs, hardening a local or remote server (Origin checks, localhost binding, OAuth resource-server rules, path and command safety), migrating an older HTTP+SSE or SDK v1 server, or debugging a server with the MCP Inspector. Do not use for configuring or consuming existing MCP servers in a client (that is client configuration), for building non-MCP REST APIs, or for generic agent-skill authoring.",
       "tags": [
         "ai-agents",
         "mcp",
         "model-context-protocol",
         "resources",
-        "sse",
+        "security",
         "stdio",
+        "streamable-http",
         "tools",
         "zod"
       ],
@@ -1312,13 +1807,43 @@
         "software-development"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents implementing Model Context Protocol servers in TypeScript or Python.\n",
-      "sha256": "84e402dbccb7a53163955a22911346a709259db98b35b5ceefca1d52df2677cf",
+      "compatibility": "Agent Skills-compatible coding agents implementing MCP servers in TypeScript (Node.js) or Python 3.10+. Protocol facts checked against spec revision 2026-07-28 and the official SDK READMEs in October 2026; re-check SDK docs before pinning versions.\n",
+      "sha256": "560dde123a6a3b41dfb1ca08903a275e540346d75ecf2eaea51ed7be9c766ad5",
       "path": "skills/mcp-server-development",
-      "files": 2,
-      "size": 7469,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "37e28ff18a89fa98801d44a8af8b117075d77e39"
+      "files": 4,
+      "size": 22540,
+      "updated_at": "2026-10-15T19:13:38+00:00",
+      "revision": "deacc523498288492f8260e994516535687671e2"
+    },
+    {
+      "ref": "michaelweissdev/memory-sanitizers",
+      "author": "michaelweissdev",
+      "name": "memory-sanitizers",
+      "version": "1.0.0",
+      "description": "Find and interpret memory, undefined-behavior and data-race bugs in C and C++ programs with Clang/GCC sanitizers (AddressSanitizer, LeakSanitizer, UndefinedBehaviorSanitizer, ThreadSanitizer, MemorySanitizer): choose the right sanitizer, build correctly, read the report, and avoid invalid combinations. Use when a native program crashes with heap corruption, use-after-free, uninitialized reads, intermittent segfaults, leaks, signed overflow or data races, or when adding sanitizer jobs to CI. Not for general C/C++ style (use c-development or cpp-development), CPU/time profiling (use performance-profiling), Rust or managed languages, or kernel sanitizers (KASAN) and exploit development.",
+      "tags": [
+        "asan",
+        "c",
+        "cpp",
+        "debugging",
+        "memory-safety",
+        "msan",
+        "sanitizers",
+        "tsan",
+        "ubsan"
+      ],
+      "topics": [
+        "debugging",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Clang (all five sanitizers on Linux; MSan not on macOS) and GCC (ASan, UBSan, TSan, LSan; no MemorySanitizer). Verified against Clang documentation and local Apple clang 21. Needs the ability to rebuild the program with instrumentation.\n",
+      "sha256": "29f93f0e2bf3e95403adc68b2be73cbb6a8981c112487019f26afe285481b63d",
+      "path": "skills/memory-sanitizers",
+      "files": 4,
+      "size": 16935,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
     },
     {
       "ref": "michaelweissdev/mongodb-development",
@@ -1346,6 +1871,35 @@
       "size": 13807,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "56db3aeea20d0fc4375f28cccbc525da79f50c9e"
+    },
+    {
+      "ref": "michaelweissdev/mutation-testing",
+      "author": "michaelweissdev",
+      "name": "mutation-testing",
+      "version": "1.0.0",
+      "description": "Measure and improve test-suite strength with mutation testing: pick a tool (mutmut or cosmic-ray for Python, cargo-mutants for Rust, Stryker for JS/TS, PIT for Java), scope runs to changed code, interpret killed/survived/timeout/no-coverage mutants, recognize equivalent mutants, write the missing assertions, and set sensible score gates in CI. Use when line coverage is high but you doubt the assertions, when reviewing a test suite's quality for critical logic, or when adding a quality gate for new code. Do NOT use for writing first tests (unit-testing, test-driven-development), exploring input space (property-based-testing, fuzz-testing), or whole-repo runs on slow suites without scoping.",
+      "tags": [
+        "cargo-mutants",
+        "cosmic-ray",
+        "mutation-testing",
+        "mutmut",
+        "pitest",
+        "stryker",
+        "test-quality"
+      ],
+      "topics": [
+        "quality",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. Tool docs checked: Stryker (JS) config, PIT Maven plugin, cargo-mutants, mutmut 3.x. Python, Rust, JS/TS and Java projects with a passing baseline test suite.\n",
+      "sha256": "1fa27726728307446f1619cc9195fc6236864fe7b399a0219ae14b33eb3e8f2d",
+      "path": "skills/mutation-testing",
+      "files": 4,
+      "size": 16199,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
     },
     {
       "ref": "michaelweissdev/nodejs-development",
@@ -1406,11 +1960,39 @@
       "revision": "4464c1e94ec4f3663e88861e9ae22aa371875440"
     },
     {
+      "ref": "michaelweissdev/parallel-agent-coordination",
+      "author": "michaelweissdev",
+      "name": "parallel-agent-coordination",
+      "version": "1.0.0",
+      "description": "Split work across multiple concurrent AI agents or subagents safely: decide whether parallelism is worth it, partition work by file ownership, write self-contained briefs, isolate with git worktrees, merge results, and verify the integrated whole. Use when a task has independent parts, when delegating to subagents, when several agents share one repository, or when reconciling their outputs. Not for sequential or tightly coupled work, single-agent planning (see implementation-planning), or worktree command mechanics (see git-branching-worktrees).",
+      "tags": [
+        "coordination",
+        "delegation",
+        "multi-agent",
+        "parallelism",
+        "subagents",
+        "worktrees"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Agent runtimes that can launch subagents or multiple sessions. Git worktree examples require git 2.17 or newer (`git worktree add` exists since 2.5, but `git worktree remove` arrived in 2.17).\n",
+      "sha256": "c229c6d7a5544420f0ec30cac9f5fa02c5620be7768531fb28fa86edd31d247f",
+      "path": "skills/parallel-agent-coordination",
+      "files": 4,
+      "size": 12243,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
       "ref": "michaelweissdev/pdf-processing",
       "author": "michaelweissdev",
       "name": "pdf-processing",
-      "version": "1.0.0",
-      "description": "Extract text, parse structured tables, manipulate pages, fill form fields, and generate PDF documents programmatically. Use when extracting text or tables from PDFs with pypdf/pdfplumber, merging or rotating pages, handling scanned vs native digital documents, performing OCR with ocrmypdf/tesseract, or verifying rendered PDF visual layouts.",
+      "version": "1.1.0",
+      "description": "Extract text, parse structured tables, manipulate pages, fill form fields, and generate PDF documents programmatically. Use when extracting text or tables from PDFs with pypdf/pdfplumber, merging or rotating pages, handling scanned vs native digital documents, performing OCR with ocrmypdf/tesseract, handling encrypted or untrusted PDFs safely, or verifying rendered PDF visual layouts. Do not use for Word or Excel files, for true redaction of sensitive content without following the redaction rules below, or for legal e-signature workflows.",
       "tags": [
         "document-processing",
         "ocr",
@@ -1425,13 +2007,13 @@
         "office"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents operating with Python PDF libraries (pypdf, pdfplumber, reportlab, or poppler utilities).\n",
-      "sha256": "3209e3d6b0f1d2941fc5a83b2ac0bf01c40277e954bced52bd55784d6ee829de",
+      "compatibility": "Agent Skills-compatible coding agents operating with Python PDF libraries (pypdf 6.x, pdfplumber, reportlab 4/5, pypdfium2) or poppler utilities. API names checked against PyPI releases in October 2026; run `pip show <lib>` to confirm the installed version.\n",
+      "sha256": "16f1a25060630e7b9f830564bda5d0982ebb84c84dc6e06e526a138982124d43",
       "path": "skills/pdf-processing",
-      "files": 3,
-      "size": 10140,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "08fe183772e1cb145aa14568d0612642a8a95f10"
+      "files": 4,
+      "size": 16913,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "a543ad85e5501cb781d0228c2aba4442f4d92688"
     },
     {
       "ref": "michaelweissdev/performance-profiling",
@@ -1463,6 +2045,36 @@
       "size": 13176,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "91e732eeedf381f84f2856369953bcbda11523d2"
+    },
+    {
+      "ref": "michaelweissdev/performance-regression-testing",
+      "author": "michaelweissdev",
+      "name": "performance-regression-testing",
+      "version": "1.0.0",
+      "description": "Detect performance regressions reliably in CI and local review: design benchmarks, control noise, take enough samples, compare against a stored baseline with statistics instead of eyeballing, and choose thresholds that avoid both flaky failures and missed slowdowns. Covers hyperfine (CLI commands), pytest-benchmark (Python), Criterion (Rust), warmup, outliers, baseline storage, A/B interleaving, deterministic proxies (instruction counts, allocations), and shared-runner noise. Use when adding perf gates, investigating \"did this PR make it slower\", or building benchmark suites. Do NOT use to find WHY something is slow or to optimize hot paths (use performance-profiling), for load/capacity testing of services, or for correctness tests.",
+      "tags": [
+        "benchmarking",
+        "ci",
+        "criterion",
+        "hyperfine",
+        "performance",
+        "pytest-benchmark",
+        "regression",
+        "statistics"
+      ],
+      "topics": [
+        "performance",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. Tools: hyperfine, pytest-benchmark (verified 5.3.0), Criterion.rs, GitHub Actions. Benchmark numbers are machine-specific; baselines must be taken on comparable hardware.\n",
+      "sha256": "cb1162fa95241817f67e1f2090c6203ae0504c58b08323a19ae3956c9abafe52",
+      "path": "skills/performance-regression-testing",
+      "files": 4,
+      "size": 17404,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
     },
     {
       "ref": "michaelweissdev/playwright-testing",
@@ -1498,12 +2110,13 @@
       "ref": "michaelweissdev/postgresql-development",
       "author": "michaelweissdev",
       "name": "postgresql-development",
-      "version": "1.0.0",
-      "description": "Design, optimize, and migrate production PostgreSQL databases using advanced PostgreSQL features. Use when indexing JSONB columns with GIN, diagnosing query plans with EXPLAIN (ANALYZE, BUFFERS), writing zero-downtime migrations with CREATE INDEX CONCURRENTLY, configuring Row-Level Security (RLS), or tuning transaction isolation levels.",
+      "version": "1.1.0",
+      "description": "Design, optimize, migrate, and secure PostgreSQL databases (supported majors 14-18, 18 current). Use when indexing JSONB with GIN or expression indexes, reading query plans with EXPLAIN (ANALYZE, BUFFERS), writing low-lock schema migrations (CREATE INDEX CONCURRENTLY, NOT VALID constraints), diagnosing lock waits and invalid indexes, configuring Row-Level Security for multi-tenant apps, or choosing transaction isolation and retry behavior. Do not use for MySQL/SQLite dialects, ORM-only questions with no SQL decision, or managed-service operations such as backup and failover runbooks.",
       "tags": [
         "explain",
         "gin",
         "jsonb",
+        "locking",
         "migrations",
         "postgres",
         "postgresql",
@@ -1515,13 +2128,42 @@
         "software-development"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents administering or writing queries for PostgreSQL 14+ databases.\n",
-      "sha256": "c9615d11d23d18876e50da8c8e9a2fab6dc14e6faf90ac927c152b7bffe3b2c5",
+      "compatibility": "Agent Skills-compatible coding agents writing SQL or migrations for PostgreSQL 14+. Facts checked against PostgreSQL 18 documentation (October 2026; 18.x current, 14 reaches end of life on 2026-11-12). Executing statements needs a database the user has authorized; never run DDL against production without explicit approval.\n",
+      "sha256": "f6715d73b7c3c6d20ae350b0e64fe0b41c14801013a34db4d2b6d7f3be61719c",
       "path": "skills/postgresql-development",
-      "files": 1,
-      "size": 6154,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
+      "files": 3,
+      "size": 17242,
+      "updated_at": "2026-10-15T19:19:53+00:00",
+      "revision": "0710a8f3ed40c28b10a6daefc4da7df16575375c"
+    },
+    {
+      "ref": "michaelweissdev/postgresql-performance",
+      "author": "michaelweissdev",
+      "name": "postgresql-performance",
+      "version": "1.0.0",
+      "description": "Diagnose and fix slow PostgreSQL workloads from evidence - find the expensive statements with pg_stat_statements, read EXPLAIN (ANALYZE, BUFFERS) plans, decide whether an index, a rewrite, statistics, or configuration is the right lever, and investigate locks, bloat, autovacuum and connection saturation. Use when a query or endpoint is slow, a plan changed, CPU or I/O on a Postgres server is high, or the user asks how to read EXPLAIN output or what to index. Covers PostgreSQL 14-18 (version-specific options are labelled). Not for schema design, JSONB/RLS/extension feature usage (use postgresql-development), generic SQL authoring (sql-development), schema change rollout (use database-migrations), or non-Postgres engines.",
+      "tags": [
+        "explain",
+        "indexing",
+        "locks",
+        "performance",
+        "pg_stat_statements",
+        "postgresql",
+        "vacuum"
+      ],
+      "topics": [
+        "databases",
+        "observability",
+        "query-tuning"
+      ],
+      "license": null,
+      "compatibility": "Works with any agent that can run psql or read pasted query plans. Examples target PostgreSQL 14-18; options introduced after 14 are marked. Read-only diagnostics need no special privileges beyond pg_monitor/pg_read_all_stats for other users' statements.",
+      "sha256": "a91283a3a2ff6080f78bd56b2e1f9b7d571be474f74620b90baacdc953d6dbe4",
+      "path": "skills/postgresql-performance",
+      "files": 5,
+      "size": 23855,
+      "updated_at": "2026-10-16T00:20:20+00:00",
+      "revision": "3e443475b6240e781a68e3912c4294b906fcfe6c"
     },
     {
       "ref": "michaelweissdev/pptx-processing",
@@ -1552,11 +2194,40 @@
       "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
     },
     {
+      "ref": "michaelweissdev/property-based-testing",
+      "author": "michaelweissdev",
+      "name": "property-based-testing",
+      "version": "1.0.0",
+      "description": "Design and write property-based tests (Hypothesis for Python, proptest for Rust, same ideas for fast-check/QuickCheck): choose properties (round-trip, oracle, invariant, idempotence, metamorphic, model-based), build generators that hit real input space, read shrunk counterexamples, pin regressions, and keep runs deterministic in CI. Use when a function has a large input space, parsers/serializers/codecs, normalizers, data-structure invariants, or stateful APIs that example-based tests keep missing. Do NOT use for coverage-guided byte-level crash hunting (see fuzz-testing), judging test-suite strength (mutation-testing), or ordinary example tests (unit-testing).",
+      "tags": [
+        "hypothesis",
+        "property-based-testing",
+        "proptest",
+        "quickcheck",
+        "shrinking",
+        "stateful-testing",
+        "testing"
+      ],
+      "topics": [
+        "quality",
+        "software-development",
+        "testing"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents. Examples use Python 3.9+ with Hypothesis (verified on 6.168.5) and Rust with proptest; concepts transfer to other QuickCheck-family libraries.\n",
+      "sha256": "dfc32e26f500e71ee9b31746e54768ff34f568115256109b0b6e2ee204ad51f7",
+      "path": "skills/property-based-testing",
+      "files": 4,
+      "size": 17728,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
       "ref": "michaelweissdev/python-development",
       "author": "michaelweissdev",
       "name": "python-development",
-      "version": "1.0.0",
-      "description": "Develop, review, test, and refactor idiomatic Python applications following PEP 8, strict type hints, and modern ecosystem standards. Use when writing Python modules, designing clean object and functional architectures, configuring Ruff/Mypy/pytest, implementing Asyncio, or improving maintainability and performance.",
+      "version": "1.1.0",
+      "description": "Develop, review, test, and refactor idiomatic Python applications following PEP 8, strict type hints, and modern ecosystem standards. Use when writing Python modules, designing clean object and functional architectures, configuring Ruff/Mypy/pytest, implementing Asyncio, structuring pyproject.toml and uv projects, or improving maintainability and performance. Do not use for data-science notebooks workflows, Django/Flask framework specifics, or packaging/publishing to PyPI release operations that need account credentials.",
       "tags": [
         "asyncio",
         "best-practices",
@@ -1571,13 +2242,13 @@
         "software-development"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents working on Python 3.10+ codebases. Python tooling (pytest, ruff, mypy) is required for executable checks.\n",
-      "sha256": "660c2038f7cf204e9381a67b027e1c56525ef6447e4bb2c95c143a2f3bcc5faf",
+      "compatibility": "Agent Skills-compatible coding agents working on Python 3.11+ codebases (3.10 reached end of life on 2026-10-01; 3.9 earlier). Ruff, mypy (or another type checker), and pytest are needed for executable checks. Version facts checked on devguide.python.org and docs.python.org in October 2026.\n",
+      "sha256": "c9808f6f168a221962349ee4228f59222018857d9f3b9301fc1f0689a84cf634",
       "path": "skills/python-development",
-      "files": 6,
-      "size": 16230,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+      "files": 7,
+      "size": 22904,
+      "updated_at": "2026-10-15T19:20:41+00:00",
+      "revision": "da2082d85a5bbcc0ef37536843c6b91129c54977"
     },
     {
       "ref": "michaelweissdev/python-packaging",
@@ -1607,6 +2278,96 @@
       "size": 4972,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+    },
+    {
+      "ref": "michaelweissdev/rag-evaluation",
+      "author": "michaelweissdev",
+      "name": "rag-evaluation",
+      "version": "1.0.0",
+      "description": "Evaluate retrieval-augmented generation systems component by component - build a query set with labelled relevant passages, compute retrieval metrics (recall@k, precision@k, hit rate, MRR, nDCG@k), then score generation for groundedness (faithfulness to retrieved context), answer correctness, citation accuracy and appropriate abstention, and diagnose whether failures come from chunking, embeddings, retrieval, reranking, context assembly or the generator. Includes a tested stdlib script for retrieval metrics and notes on access-control and prompt-injection tests. Use when building, tuning or regression-testing a RAG pipeline, comparing chunkers, embedding models, rerankers or prompts, or when users report wrong or unsupported answers. Not for generic LLM benchmarking (llm-evaluation), dataset cleaning (dataset-quality), search relevance in Elasticsearch itself (elasticsearch-search), or serving the models (local-llm-deployment).",
+      "tags": [
+        "chunking",
+        "evaluation",
+        "faithfulness",
+        "groundedness",
+        "ndcg",
+        "rag",
+        "recall",
+        "retrieval"
+      ],
+      "topics": [
+        "machine-learning",
+        "quality",
+        "search"
+      ],
+      "license": null,
+      "compatibility": "Python 3.10+. The bundled script uses only the standard library. LLM-judged groundedness needs a judge model; sending corpus text or user queries to a hosted judge requires the user's authorization.",
+      "sha256": "1c85dc8c2f24c7fdf0a342e6cc6a092d4c32cc914ceb523f01f836ce8237467b",
+      "path": "skills/rag-evaluation",
+      "files": 5,
+      "size": 19769,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
+    },
+    {
+      "ref": "michaelweissdev/react-composition-patterns",
+      "author": "michaelweissdev",
+      "name": "react-composition-patterns",
+      "version": "1.0.0",
+      "description": "Design React component APIs through composition: children and slots, compound components with context, controlled vs uncontrolled state, render props and custom hooks, and React 19 conventions (ref as a prop, Context as provider, use() for context). Use when a component has grown a long boolean-prop list, a design-system component needs a flexible API, state is prop-drilled, or a refactor of component structure is requested. Do not use for rendering speed (react-performance), accessibility semantics (web-accessibility-review), typing generics in depth (typescript-development), or non-React frameworks.",
+      "tags": [
+        "api-design",
+        "composition",
+        "compound-components",
+        "context",
+        "hooks",
+        "react",
+        "react-19",
+        "typescript"
+      ],
+      "topics": [
+        "frontend",
+        "react",
+        "software-design"
+      ],
+      "license": null,
+      "compatibility": "React 18/19 with TypeScript/TSX. React 19-specific advice is marked; older versions still need forwardRef and Context.Provider.\n",
+      "sha256": "28980fac589883a57a7855c6ace399753c0aa3137410ffdec825527952d171c1",
+      "path": "skills/react-composition-patterns",
+      "files": 4,
+      "size": 13461,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
+    },
+    {
+      "ref": "michaelweissdev/react-performance",
+      "author": "michaelweissdev",
+      "name": "react-performance",
+      "version": "1.0.0",
+      "description": "Diagnose and fix React rendering, bundle, and data-loading performance using measurement first (React DevTools Profiler, Chrome Performance panel, bundle analysis) and modern React idioms (Suspense, transitions; React Compiler; and the React 19 features use(), Actions, useActionState, useOptimistic). Use when a React UI feels slow, INP/LCP regress, re-renders are excessive, lists lag, bundles are large, or someone proposes useMemo/useCallback/React.memo without evidence. Do not use for generic JS profiling outside React (use performance-profiling), CSS layout issues (web-html-css), or component API design (react-composition-patterns).",
+      "tags": [
+        "bundle",
+        "core-web-vitals",
+        "memoization",
+        "performance",
+        "profiler",
+        "react",
+        "react-compiler",
+        "suspense"
+      ],
+      "topics": [
+        "frontend",
+        "performance",
+        "react"
+      ],
+      "license": null,
+      "compatibility": "React 18.3+/19 applications (Vite, Next.js, or similar) and a Chromium browser with DevTools; examples are TypeScript/TSX.\n",
+      "sha256": "42ed9f8f93b8d629d9ebad2f382903a1ae5141a6ec6bbbd36fa52cde22b9fa22",
+      "path": "skills/react-performance",
+      "files": 4,
+      "size": 14008,
+      "updated_at": "2026-10-15T19:28:00+00:00",
+      "revision": "1efd6dd0d5158ba19abd3d5479c6fe5a8aafe4c6"
     },
     {
       "ref": "michaelweissdev/readme-authoring",
@@ -1717,6 +2478,33 @@
       "revision": "0f493138fc8255afceceea612242de5a9f8ea8f6"
     },
     {
+      "ref": "michaelweissdev/review-feedback-handling",
+      "author": "michaelweissdev",
+      "name": "review-feedback-handling",
+      "version": "1.0.0",
+      "description": "Receive and act on code review feedback (human, bot, or agent reviewer) with technical rigor: verify each comment against the code, classify it, implement what is correct, push back with evidence when it is not, and reply clearly. Use when a PR has review comments, when a reviewer subagent returns findings, or when feedback is vague, conflicting, or possibly wrong. Not for performing a review (see code-review or security-code-review) or for commit message format (see conventional-commits).",
+      "tags": [
+        "ai-agents",
+        "code-review",
+        "collaboration",
+        "feedback",
+        "pull-requests"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Any Agent Skills-compatible coding agent. GitHub CLI (gh) is optional for reading PR comments; posting replies requires explicit user permission.\n",
+      "sha256": "9a3f07b212e5b5f8a7efd1a641a92f5a264442036c3d60cee6d41c8bc053bbf6",
+      "path": "skills/review-feedback-handling",
+      "files": 4,
+      "size": 10781,
+      "updated_at": "2026-10-15T19:14:15+00:00",
+      "revision": "e2afc0d1c05041bc5f86d3366888ccc66df7b008"
+    },
+    {
       "ref": "michaelweissdev/rust-cargo",
       "author": "michaelweissdev",
       "name": "rust-cargo",
@@ -1749,8 +2537,8 @@
       "ref": "michaelweissdev/rust-development",
       "author": "michaelweissdev",
       "name": "rust-development",
-      "version": "1.0.0",
-      "description": "Develop, review, and optimize idiomatic, memory-safe Rust code following the Rust API Guidelines. Use when writing Rust crates, managing ownership, borrowing, and lifetimes, designing robust traits and error hierarchies with Result/Option, configuring Clippy/rustfmt, or evaluating safe alternatives to unsafe code.",
+      "version": "1.1.0",
+      "description": "Develop, review, and optimize idiomatic, memory-safe Rust code following the Rust API Guidelines. Use when writing Rust crates, managing ownership, borrowing, and lifetimes, designing robust traits and error hierarchies with Result/Option, configuring Clippy/rustfmt, choosing an edition or MSRV, or evaluating safe alternatives to unsafe code. Do not use for C/C++ FFI binding generation details, embedded no_std board bring-up, or general performance profiling unrelated to Rust language choices.",
       "tags": [
         "cargo",
         "clippy",
@@ -1765,13 +2553,13 @@
         "software-development"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents operating on Rust 2021+ codebases with Cargo tooling available for builds and checks.\n",
-      "sha256": "87a161f814bb62ca33e95e2e97fed7c3c179bbb1b0156854a8fe15f3076c442b",
+      "compatibility": "Agent Skills-compatible coding agents operating on Rust 2021 or 2024 edition codebases with Cargo available. Edition 2024 requires Rust 1.85+. Version facts checked against the Rust release notes (stable 1.99.0, 2026-10-01) in October 2026.\n",
+      "sha256": "6308015d58e80379dedfe609254ee3ef52063c7482cbd0425eac9fa7a70cce10",
       "path": "skills/rust-development",
-      "files": 5,
-      "size": 12486,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "dd0b7c52f051b99c25346992d260616b2ce36483"
+      "files": 6,
+      "size": 17589,
+      "updated_at": "2026-10-15T19:20:41+00:00",
+      "revision": "da2082d85a5bbcc0ef37536843c6b91129c54977"
     },
     {
       "ref": "michaelweissdev/secrets-management",
@@ -1833,8 +2621,8 @@
       "ref": "michaelweissdev/security-code-review",
       "author": "michaelweissdev",
       "name": "security-code-review",
-      "version": "1.0.0",
-      "description": "Perform structured, evidence-based security code reviews to identify vulnerabilities, trust boundary violations, and injection flaws. Use when auditing pull requests for security regressions, mapping findings to CWE and OWASP classifications, tracing untrusted data flows, or validating cryptographic implementations.",
+      "version": "1.1.0",
+      "description": "Perform structured, evidence-based security reviews of source code and diffs: map the attack surface, trace untrusted data from source to sink, check authorization and tenancy, assess crypto and secret handling, classify findings by CWE and OWASP with severity and a confidence level. Use when reviewing a pull request for security regressions, auditing a service or module you are authorized to review, or writing remediation guidance with tests. Do not use for exploiting systems you do not own, penetration testing live targets, auditing third-party agent skills (use skill-security-audit), hardening CI workflows (use github-actions-security), or general code-quality review.",
       "tags": [
         "audit",
         "code-review",
@@ -1849,13 +2637,41 @@
         "software-development"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents performing security analysis on source code.\n",
-      "sha256": "9d49e2abadcb53ac26aa7e05ddef31e6a999de31d710a59270db35c3a450794b",
+      "compatibility": "Agent Skills-compatible coding agents reading source code. Read-only by default; running code or tests requires the user's go-ahead. OWASP references checked against Top 10:2025 and API Security Top 10:2023 in October 2026.\n",
+      "sha256": "f97d01724cdcff5971076d065d8af1b625d43309db106ac3724606c4b6202de8",
       "path": "skills/security-code-review",
-      "files": 1,
-      "size": 5192,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "53544cc9478fc4f0c27064d960fd5e13a3aca1d1"
+      "files": 2,
+      "size": 14088,
+      "updated_at": "2026-10-15T19:18:19+00:00",
+      "revision": "ac9b340f1d49f6e59c13aff9b4dfb1216219ca70"
+    },
+    {
+      "ref": "michaelweissdev/security-differential-review",
+      "author": "michaelweissdev",
+      "name": "security-differential-review",
+      "version": "1.0.0",
+      "description": "Review a code change (pull request, commit range, release diff) for security regressions by focusing on what the diff adds, removes, and silently changes, including deleted checks, weakened defaults, and callers outside the diff. Use when asked to security-review a PR or branch, audit what changed between two releases, or triage a large diff by risk. Not for whole-codebase audits (use security-code-review), threat models (use threat-modeling), or deciding exploitability of one finding (use vulnerability-validation).",
+      "tags": [
+        "code-review",
+        "diff",
+        "git",
+        "pull-request",
+        "regression",
+        "risk-triage",
+        "security"
+      ],
+      "topics": [
+        "code-review",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with git and read access to the repository.\n",
+      "sha256": "8756a04058f3cc96f2b4c709b6555b789016b4d97d3fafa6ed7fab4e655f3a5b",
+      "path": "skills/security-differential-review",
+      "files": 4,
+      "size": 13020,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "ade5aa6481a70d53d8a38324f8c8fdde1f469f6f"
     },
     {
       "ref": "michaelweissdev/semantic-versioning",
@@ -1885,18 +2701,46 @@
       "revision": "71af5a57abfef764d8aa61cd3349d3060b669738"
     },
     {
+      "ref": "michaelweissdev/semgrep-rule-authoring",
+      "author": "michaelweissdev",
+      "name": "semgrep-rule-authoring",
+      "version": "1.0.0",
+      "description": "Write, test, and tune custom Semgrep rules (YAML) that detect one specific bug pattern with low false-positive noise, using pattern operators, metavariable constraints, taint mode, and annotated test files run with semgrep --test. Use when turning a confirmed vulnerability or review finding into a reusable detector, hunting variants across a codebase, or fixing a noisy or silent rule. Not for running stock rulesets (use security-code-review) or for deciding whether a finding is real (use vulnerability-validation).",
+      "tags": [
+        "custom-rules",
+        "sast",
+        "semgrep",
+        "static-analysis",
+        "taint-analysis",
+        "testing",
+        "variant-analysis"
+      ],
+      "topics": [
+        "security",
+        "static-analysis"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with shell access. Examples verified against Semgrep CLI 1.174.0 (Community Edition); re-check the rule syntax docs for newer versions.\n",
+      "sha256": "f20daec50815d949883064b2ddafc25971d717d32084c2ce0e5e30a2bce27946",
+      "path": "skills/semgrep-rule-authoring",
+      "files": 4,
+      "size": 14983,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "4629207704884af8bff6731e14da6d7f529633b4"
+    },
+    {
       "ref": "michaelweissdev/skill-security-audit",
       "author": "michaelweissdev",
       "name": "skill-security-audit",
-      "version": "1.0.0",
-      "description": "Audit, inspect, and evaluate third-party Agent Skills and tool definitions for security risks, prompt injection, and data exfiltration. Use when evaluating external skill repositories, detecting hidden malicious instructions or backdoors, identifying unauthorized shell script execution, auditing credential access patterns, or analyzing skill supply-chain dependencies.",
+      "version": "1.1.0",
+      "description": "Audit third-party Agent Skills, plugins, and MCP tool definitions for security risk before installation: prompt injection, hidden or invisible instructions, credential access, exfiltration, dangerous shell, over-broad triggers, and supply-chain drift. Use when reviewing an external skill repository or package, deciding whether to install or update a skill, or writing an audit report with evidence and severity. Do not use to review your own application's source code (use security-code-review), to harden CI workflows (use github-actions-security), or to build an MCP server (use mcp-server-development). A clean scan is never proof of safety.",
       "tags": [
         "ai-safety",
         "exfiltration",
         "prompt-injection",
-        "red-team",
         "security",
-        "skill-audit"
+        "skill-audit",
+        "supply-chain"
       ],
       "topics": [
         "ai-agents",
@@ -1904,13 +2748,42 @@
         "security"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents auditing untrusted skill packages and agent extensions.\n",
-      "sha256": "172b59a3d5e405c387052f8f413ba9a6e3128e411d4c42021bd3607d76bdae0b",
+      "compatibility": "Agent Skills-compatible coding agents performing static, read-only review of untrusted skill packages. The bundled scanner needs Python 3.9+ and only reads files; it never executes package content.\n",
+      "sha256": "bcafed41e06d389632c598ce8a52f9e8cf1d12ea411d345d8d85a3f6d2a91a37",
       "path": "skills/skill-security-audit",
-      "files": 2,
-      "size": 8043,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "37e28ff18a89fa98801d44a8af8b117075d77e39"
+      "files": 3,
+      "size": 17108,
+      "updated_at": "2026-10-15T19:16:13+00:00",
+      "revision": "c0234d0ac896e6913577f3817d48967616cd8e9f"
+    },
+    {
+      "ref": "michaelweissdev/software-supply-chain-audit",
+      "author": "michaelweissdev",
+      "name": "software-supply-chain-audit",
+      "version": "1.0.0",
+      "description": "Audit the trustworthiness of a project's software supply chain: whether each dependency and build input is the intended one, is verifiable (integrity, provenance, signatures), and how the build pipeline could be tampered with. Covers lockfile integrity, install-time code execution, typosquatting and dependency confusion, maintainer and package health, SLSA build levels, SBOM quality (SPDX, CycloneDX), and attestation verification. Use when vetting a new dependency, reviewing a lockfile or registry change, assessing release pipeline integrity, or responding to a compromised-package report. Not for routine updates or SBOM generation (use dependency-management), workflow hardening details (use github-actions-security), or auditing agent skills (use skill-security-audit).",
+      "tags": [
+        "dependency-confusion",
+        "lockfile",
+        "provenance",
+        "sbom",
+        "sigstore",
+        "slsa",
+        "supply-chain",
+        "typosquatting"
+      ],
+      "topics": [
+        "security",
+        "supply-chain"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with read access to a repository and optionally package-manager CLIs. Commands listed are real; flags depend on tool versions, so check each tool's --help.\n",
+      "sha256": "4534f125528341264c93c4dccb0b088874116b5383dba75ae059fb8f5e6b9aa3",
+      "path": "skills/software-supply-chain-audit",
+      "files": 4,
+      "size": 16123,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "8206dc4a7dbe050ba9e2b445695366e667e5cd70"
     },
     {
       "ref": "michaelweissdev/sphinx-documentation",
@@ -2022,12 +2895,12 @@
       ],
       "license": null,
       "compatibility": "Agent Skills-compatible coding agents designing software architectures, authoring technical documentation, or reviewing system topologies. Tooling is required only for executable validation.\n",
-      "sha256": "ec9ca2d467ff4153e8514b6f9be0070e399ce4f9c64e098eaa07dfbbc7763b35",
+      "sha256": "c31d37609c3e7b9c0dab97476c1ffbca525e8606986a490692bdc856b394bab5",
       "path": "skills/system-architecture-design",
       "files": 1,
-      "size": 15865,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "00840c03c0781f666e36ec5cdacfb489223829ce"
+      "size": 16122,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
     },
     {
       "ref": "michaelweissdev/technical-writing",
@@ -2084,6 +2957,35 @@
       "size": 11791,
       "updated_at": "2026-10-15T16:40:46+00:00",
       "revision": "32d6d7bb1ece1a1c3f989cccbb9b7fa66c7de04d"
+    },
+    {
+      "ref": "michaelweissdev/terraform-security-review",
+      "author": "michaelweissdev",
+      "name": "terraform-security-review",
+      "version": "1.0.0",
+      "description": "Review Terraform code, plans and state for security risks without changing infrastructure: public exposure, over-broad IAM, unencrypted storage, secrets in code/state/plans, unsafe modules and providers, and weak state backends. Covers static scanning with Trivy and Checkov (tfsec has been folded into Trivy), plan-JSON review, and how to triage and report findings. Use when asked to audit, security-review or gate a Terraform change or repo, or to decide if a scanner finding is real. Not for authoring or refactoring Terraform (use terraform-iac), for cloud account architecture (aws-cloud-architecture), for running apply/destroy/import, nor for reading or printing state files and secret values.",
+      "tags": [
+        "checkov",
+        "iac",
+        "iam",
+        "review",
+        "security",
+        "state",
+        "terraform",
+        "trivy"
+      ],
+      "topics": [
+        "devops",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Terraform or OpenTofu repositories. Static review needs only file access; optional tools: terraform (for validate and plan JSON), trivy, checkov. Scanner flags checked against current docs; verify with --help on the installed version.\n",
+      "sha256": "9ffb968c8d143869bede8afcbad9a67a34833542c33000e39b01425a50b33dc9",
+      "path": "skills/terraform-security-review",
+      "files": 4,
+      "size": 17990,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
     },
     {
       "ref": "michaelweissdev/test-driven-development",
@@ -2196,6 +3098,120 @@
       "revision": "8c81a9887d9efaf2d8a9f7e006f63fe96ee56caf"
     },
     {
+      "ref": "michaelweissdev/variant-analysis",
+      "author": "michaelweissdev",
+      "name": "variant-analysis",
+      "version": "1.0.0",
+      "description": "After one vulnerability is confirmed, find its siblings: extract the root cause, generalize it in steps (exact, structural, semantic), search the codebase and its history with grep, Semgrep, and manual tracing, and record coverage so the hunt has a stopping point. Use when a bug was just fixed or reported and you need to know where else the same mistake exists, or when turning a CVE or advisory into a codebase-wide check. Not for first-pass auditing (use security-code-review) or deciding if one finding is real (use vulnerability-validation).",
+      "tags": [
+        "code-search",
+        "regression",
+        "ripgrep",
+        "root-cause",
+        "security",
+        "semgrep",
+        "variant-analysis"
+      ],
+      "topics": [
+        "code-review",
+        "security"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with read access to the repository; ripgrep and Semgrep optional. Semgrep example verified with CLI 1.174.0.\n",
+      "sha256": "ed6802c35a87d3879be62c096a27472078008c5d0cf931808a6dbc09a55e8d5c",
+      "path": "skills/variant-analysis",
+      "files": 4,
+      "size": 11789,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "4629207704884af8bff6731e14da6d7f529633b4"
+    },
+    {
+      "ref": "michaelweissdev/verification-before-completion",
+      "author": "michaelweissdev",
+      "name": "verification-before-completion",
+      "version": "1.0.0",
+      "description": "Enforce an evidence standard before an AI agent claims work is done, fixed, passing, or ready. Use when about to say \"done\", \"fixed\", \"tests pass\", \"should work\", commit, open a PR, or hand work back; when summarizing what a subagent reported; or when a claim rests on memory or inference instead of a command run in this session. Defines claim-to-evidence mapping, fresh-run rules, and honest reporting of unverified items. Not a test-writing guide (see test-driven-development) or a review guide (see code-review).",
+      "tags": [
+        "ai-agents",
+        "completion",
+        "evidence",
+        "honesty",
+        "quality-gates",
+        "verification"
+      ],
+      "topics": [
+        "ai-agents",
+        "devtools",
+        "software-development"
+      ],
+      "license": null,
+      "compatibility": "Any Agent Skills-compatible coding agent with shell access. Examples use git and generic test runners; substitute the project's own commands.\n",
+      "sha256": "78a84655b30c94acca8d4054e79eb55055dc20ad1fea0254547efadba8d9f00e",
+      "path": "skills/verification-before-completion",
+      "files": 4,
+      "size": 12733,
+      "updated_at": "2026-10-15T19:28:31+00:00",
+      "revision": "47fc8362693164681acaf2a96d7db4c0b769dad9"
+    },
+    {
+      "ref": "michaelweissdev/vulnerability-validation",
+      "author": "michaelweissdev",
+      "name": "vulnerability-validation",
+      "version": "1.0.0",
+      "description": "Decide whether a suspected vulnerability (scanner hit, review finding, bug report) is real, reachable, and worth its claimed severity, using an evidence ladder, reachability and precondition analysis, and safe confirmation in an authorized test environment. Use when triaging SAST/SCA output, challenging or defending a finding, writing a minimal reproduction for your own or authorized code, or assigning severity with CVSS. Not for finding bugs (use security-code-review), writing weaponized exploits, or testing systems you do not own or have written authorization to test.",
+      "tags": [
+        "cvss",
+        "false-positives",
+        "proof-of-concept",
+        "reachability",
+        "security",
+        "severity",
+        "triage"
+      ],
+      "topics": [
+        "security",
+        "vulnerability-management"
+      ],
+      "license": null,
+      "compatibility": "Agent Skills-compatible coding agents with read access to code and, where authorized, a local or disposable test environment.\n",
+      "sha256": "f776c2b015edd8b530f6c42b027e2bf1224c94f519ae43ec7c5ed99a3c452e38",
+      "path": "skills/vulnerability-validation",
+      "files": 4,
+      "size": 13166,
+      "updated_at": "2026-10-15T19:16:54+00:00",
+      "revision": "ade5aa6481a70d53d8a38324f8c8fdde1f469f6f"
+    },
+    {
+      "ref": "michaelweissdev/web-accessibility-review",
+      "author": "michaelweissdev",
+      "name": "web-accessibility-review",
+      "version": "1.0.0",
+      "description": "Review web UI code and running pages for accessibility against WCAG 2.2 (A/AA) and the WAI-ARIA Authoring Practices: semantics, names, keyboard operation, focus, contrast, target size, forms, dynamic content, and motion. Use when reviewing a component or page for a11y, fixing an axe/Lighthouse finding, building custom widgets (dialog, tabs, menu, combobox), or preparing conformance evidence. Combines automated scans with manual keyboard and screen-reader checks. Do not use for visual styling critique (frontend-design-review), writing HTML/CSS basics (web-html-css), or legal compliance opinions.",
+      "tags": [
+        "a11y",
+        "accessibility",
+        "aria",
+        "axe",
+        "contrast",
+        "keyboard",
+        "screen-reader",
+        "wcag"
+      ],
+      "topics": [
+        "accessibility",
+        "frontend",
+        "quality"
+      ],
+      "license": null,
+      "compatibility": "Any web frontend (plain HTML, React, Vue, etc.); Chromium DevTools plus optionally axe-core/axe DevTools, Lighthouse, and a screen reader (VoiceOver, NVDA, or Narrator).\n",
+      "sha256": "c8aa01b752f89487547139a0916496be767408c809214c546a066cba114dc348",
+      "path": "skills/web-accessibility-review",
+      "files": 4,
+      "size": 13329,
+      "updated_at": "2026-10-15T19:15:41+00:00",
+      "revision": "969622ed0335475bcd34d64696388f2d1525c5b6"
+    },
+    {
       "ref": "michaelweissdev/web-html-css",
       "author": "michaelweissdev",
       "name": "web-html-css",
@@ -2225,11 +3241,42 @@
       "revision": "45729c96bdc51a4ec78b37dcd4a45643b5c962c4"
     },
     {
+      "ref": "michaelweissdev/web-security-testing",
+      "author": "michaelweissdev",
+      "name": "web-security-testing",
+      "version": "1.0.0",
+      "description": "Plan and run authorized, defensive security testing of web applications you own or have written permission to test (localhost, a dev/staging environment, or an explicitly scoped target), organized by the OWASP Web Security Testing Guide: scoping and rules of engagement, passive reconnaissance, security headers and cookies, authentication, session, authorization (IDOR), input handling, client-side, and API checks, with evidence-based reporting and remediation. Use when asked to security-test your own web app, verify fixes, review a scan result, or write a test plan. Refuses unauthorized targets and does not provide exploit payload collections. Do not use for source-code review (security-code-review), writing secure code (secure-coding), threat modeling (threat-modeling), or browser bug hunting (browser-debugging).",
+      "tags": [
+        "appsec",
+        "authz",
+        "cookies",
+        "defensive",
+        "headers",
+        "idor",
+        "owasp",
+        "web-security",
+        "wstg"
+      ],
+      "topics": [
+        "security",
+        "testing",
+        "web"
+      ],
+      "license": null,
+      "compatibility": "Any web app reachable from the tester's machine; tools include a browser with DevTools, curl, an intercepting proxy such as OWASP ZAP, and Playwright for repeatable checks.\n",
+      "sha256": "43b8333c18eb0683953210fec7c3100754625440867034fae73e78484839f730",
+      "path": "skills/web-security-testing",
+      "files": 4,
+      "size": 16143,
+      "updated_at": "2026-10-15T19:29:40+00:00",
+      "revision": "3cfa88b47c683949128188b3eeec1334cd613597"
+    },
+    {
       "ref": "michaelweissdev/xlsx-processing",
       "author": "michaelweissdev",
       "name": "xlsx-processing",
-      "version": "1.0.0",
-      "description": "Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically using openpyxl. Use when generating financial spreadsheets with calculated formulas, applying cell styles and number formats, managing multiple worksheets, building structured tables and charts, or validating formula integrity.",
+      "version": "1.1.0",
+      "description": "Create, parse, format, and audit Microsoft Excel (.xlsx) workbooks programmatically using openpyxl. Use when generating financial spreadsheets with calculated formulas, applying cell styles and number formats, managing multiple worksheets, building structured tables and charts, handling large files in read-only or write-only mode, or preventing formula injection from untrusted data. Do not use for legacy .xls, Google Sheets API work, pivot-table authoring, or when recalculated values are required without a spreadsheet engine (openpyxl cannot calculate).",
       "tags": [
         "excel",
         "financial-modeling",
@@ -2245,13 +3292,13 @@
         "office"
       ],
       "license": null,
-      "compatibility": "Agent Skills-compatible coding agents operating with Python Excel manipulation libraries (openpyxl).\n",
-      "sha256": "bc751fd684b0b97d0c348f5eddca0b2587a932382bdae7e62fe4fc3514ef98d7",
+      "compatibility": "Agent Skills-compatible coding agents operating with openpyxl (3.1.x checked in October 2026; Python 3.8+). LibreOffice is optional for recalculating formulas headlessly. XlsxWriter is an alternative for write-only generation.\n",
+      "sha256": "3b3821340d05c7100ab2715a6b94c23e06c6683c8adca5a166b729c26597e650",
       "path": "skills/xlsx-processing",
       "files": 2,
-      "size": 9155,
-      "updated_at": "2026-10-15T16:40:46+00:00",
-      "revision": "37eabb7d3b1e7e25738d065b7d3bef199b753c78"
+      "size": 12954,
+      "updated_at": "2026-10-15T19:30:12+00:00",
+      "revision": "350b8cae1a90a4400b385f9ce4ccf0ba8c053d84"
     }
   ]
 }
